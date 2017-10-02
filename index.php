@@ -1,3 +1,19 @@
+<?php
+
+// Connection DB
+
+    // Param
+    $db = "mysql:host=localhost;dbname=AuPenDuick;charset=utf8";
+    $user = "root";
+    $password = "mysql01";     // Pierre
+//    $password = "";            // Dorian
+//    $password = "";         // Fabien
+
+    include "function/connect.php";
+    $bdd = connect($db, $user, $password);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
