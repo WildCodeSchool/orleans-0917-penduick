@@ -5,9 +5,7 @@
     // Param
     $db = "mysql:host=localhost;dbname=AuPenDuick;charset=utf8";
     $user = "root";
-    $password = "mysql01";     // Pierre
-//    $password = "";            // Dorian
-//    $password = "";         // Fabien
+    $password = "mysql01"; // Remplacer par votre password
 
     include "function/connect.php";
     $bdd = connect($db, $user, $password);
@@ -25,7 +23,6 @@
     <link rel="stylesheet" type="text/css" media="all" href="dorian.css" />
     <link rel="stylesheet" type="text/css" media="all" href="fabien.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <?php
