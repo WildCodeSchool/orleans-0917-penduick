@@ -27,9 +27,10 @@
 
 <?php
     include "header.php";
-    include "pierre.php";
-    include "dorian.php";
-    include "fabien.php";
+    include "whoarewe.php";
+    include "menu.php";
+    include "findus.php";
+    include "contactus.php";
     include "footer.php";
 ?>
 
