@@ -51,7 +51,7 @@ if (!empty($cleanPost['editPictureInternet'])) {
         '',
     )) or die(print_r($req->errorInfo()));
     // ValidMessage
-    $validMessage = "La photo '" . $cleanPost['editPictureInternetId'] . "' a bien été téléchargé et remplace l'ancienne";
+    $validMessage = "La photo '" . $cleanPost['editPictureInternetId'] . "' a bien été téléchargée et remplace l'ancienne";
 }
 
 // EDIT PICTURE LOCAL
@@ -167,7 +167,7 @@ if (!empty($validMessage)) {
             <!-- LOCAL-->
             <form id="formPicturesDL<?= $data['id'] ?>" action="" method="post" enctype="multipart/form-data">
                 <div class="col-xs-3">
-                    <input type='hidden' name='MAX_FILE_SIZE' value='50000' />
+                    <input type='hidden' name='MAX_FILE_SIZE' value='5000000' />
                     <input type='file' name='editPictureLocal' />
                     <input type="text" class="hidden" name="editPictureLocalId" value="<?= $data['id'] ?>"/>
                 </div>

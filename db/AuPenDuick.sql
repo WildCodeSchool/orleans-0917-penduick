@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  lun. 02 oct. 2017 à 15:32
+-- Généré le :  mer. 04 oct. 2017 à 11:40
 -- Version du serveur :  5.7.19-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -40,8 +40,8 @@ CREATE TABLE `pictures` (
 --
 
 INSERT INTO `pictures` (`id`, `name`, `LocalSrc`, `InternetSrc`) VALUES
-(1, 'photo1', 'test.jpeg', ''),
-(2, 'photo2', '', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkrqqz17Mxsg-PyeZuIBWQgi1bZbmLhRH_U7ADo5qAOQhi4xcI');
+(1, 'photo1', '', 'https://www.odelices.com/images/recettes/gaufres.jpg'),
+(2, 'photo2', 'Crepes-bretonnes2-1024x680.png', '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE `text` (
 --
 
 INSERT INTO `text` (`id`, `text`) VALUES
-(1, 'Coucou'),
+(1, 'Bienvenue'),
 (2, 'Voici la carte          '),
 (3, 'A bientôt');
 
