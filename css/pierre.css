@@ -1,59 +1,71 @@
 
 /* **************** */
-/*	STRUCTURE HTML	*/
-/* **************** */
-
-	body
-	{
-		padding-top: 10px;
-		padding-bottom: 10px;
-		background-image: url('image/fond/fond_1.png');
-		background-repeat: repeat;
-		background-color: #D0E4FE;
-	}
-
-	h1
-	{
-		color: orange;
-		text-align: center;
-	}
-
-	nav
-	{
-
-	}
-
-	header
-	{
-
-	}
-
-	section
-	{
-
-	}
-
-	aside
-	{
-
-	}
-
-	footer
-	{
-
-	}
-
-
-/* **************** */
 /*    Class & ID	*/
 /* **************** */
 
-	.fond_neutre
-	{
-		padding: 10px;
-		background-color: #d0e4fe;
-	}
 
+.fondMenu
+{
+	text-align: center;
+	background-color: rgb(111, 145, 155);
+}
+
+.CouvertsPhotoLimites
+{
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.TitleStars
+{
+	color: white;
+	font-size: 10px;
+}
+
+.TitlePhrase
+{
+	color: white;
+	font-size: 20px;
+}
+
+.Yellow
+{
+	color: rgb(254, 236, 4);
+}
+
+.marginTop
+{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.vignettes
+{
+	border-radius: 6px;
+	text-align: center;
+	background-color: white;
+	cursor: pointer;
+}
+
+.vignettes h3
+{
+	padding-top: 10px;
+}
+
+.vignettes img
+{
+	width: 100%;
+	height: 100%;
+}
+
+/*[class*="col-"], footer*/
+/*{*/
+	/*background-color: lightgreen;*/
+	/*border: 2px solid black;*/
+	/*border-radius: 6px;*/
+	/*line-height: 40px;*/
+	/*text-align: center;*/
+/*}*/
 
 
 /* **************** */
@@ -200,20 +212,3 @@ IDEM AVEC PADDING
 	/*inset  : effet 3D "enfoncé"*/
 	/*outset : effet 3D "surélevé"*/
 	/*ridge  : effet 3D "demi-rond"*/
-
-
-/* **************** */
-/*	EFFET BOOTSTRAP	*/
-/* **************** */
-/*	body
-	{
-		padding-top: 10px;
-	}
-
-	[class*="col-"], footer {
-		background-color: lightgreen;
-		border: 2px solid black;
-		border-radius: 6px;
-		line-height: 40px;
-		text-align: center;
-	} */

@@ -10,18 +10,18 @@
     include "function/connect.php";
     $bdd = connect($db, $user, $password);
 
+    // Récupérer les infos de la BDD
+    include 'controller.php'
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Au Pen Duick</title>
-
-    <link rel="stylesheet" type="text/css" media="all" href="pierre.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="dorian.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="fabien.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/dorian.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/fabien.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/pierre.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
