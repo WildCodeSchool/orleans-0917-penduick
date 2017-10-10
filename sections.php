@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="stylesection.css" rel="stylesheet">
+    <link href="css/dorian.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,11 +25,11 @@
     <div class="row row0">
 
         <div class="col-xs-offset-2 col-xs-8 col-sm-offset-1 col-sm-5 col-lg-offset-3 col-lg-3 logo">
-            <img src="img/logo.png" class="img-responsive" alt="logo au pen duick">
+            <img src="pictures/logotype-au-pen-duick.png" class="img-responsive" alt="logo au pen duick">
         </div> <!-- FIN DIV LOGO -->
 
         <div class="col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-5 col-lg-3 valderance">
-            <img class="img-responsive" src="img/valderance.png" alt="logo val de rance">
+            <img class="img-responsive" src="pictures/logotype-val-de-rance.png" alt="logo val de rance">
         </div> <!-- FIN DIV VALDERANCE -->
 
         <h2 class="col-xs-12 textbio">
