@@ -17,7 +17,7 @@
                 <div class="col-xs-4 col-xs-offset-1 marginTop">
                      <div class="vignettes">
                          <h3><?= $displayText[$i] ?></h3>
-                         <img src="pictures/<?= $displayPictureLocalSrc[$i] ?>" class="img-rounded" alt="<?= $displayPictureName[$i] ?>"/>
+                         <img src="pictures/<?= $displayPictureLocalSrc[$i] ?>" class="pictureEcorne" alt="<?= $displayPictureName[$i] ?>"/>
                      </div>
                 </div>
                 <?php

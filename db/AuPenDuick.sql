@@ -23,7 +23,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE DATABASE AuPenDuick;
+USE AuPenDuick;
 --
 -- Structure de la table `pictures`
 --
