@@ -1,5 +1,5 @@
 <body>
-<header class="fond">
+<header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
@@ -37,6 +37,7 @@
 </header>
 
 <section>
+<div class="fondbody">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -46,9 +47,9 @@
             </div>
         </div>
     </div>
-</section>
 
-<section>
+
+
     <div class="bio">
         <div class="container-fluid">
             <div class="row">
@@ -69,4 +70,5 @@
             </div>
         </div>
     </div>
+</div>
 </section>

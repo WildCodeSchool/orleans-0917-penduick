@@ -1,0 +1,71 @@
+*{
+	font-family: "Segoe";
+}
+
+@font-face {
+    font-family: "Segoe";
+    src: url('fonts/segoe.ttf');
+}
+
+.textbio{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.valderance{
+    margin-top: 66px;
+}
+
+.bus, .tram, .map, .row0{
+    text-align: center;
+}
+
+.localisation{
+    background-color: black;
+    color: white;
+    height: 150px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe{
+    background: gray;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.badge{
+    background: white;
+    color: black;
+}
+
+.tram1{
+    background: rgb(116,50,137);
+    color: white;
+}
+
+.bus1{
+    background: rgb(0,128,71);
+}
+
+.bus2{
+    background: rgb(180,30,140);
+}
+
+.bus3{
+    background: rgb(217,138,185);
+}
+
+.bus4{
+    background: rgb(251,213,66);
+}
+
+.bus5{
+    background: rgb(165,178,28);
+}
+
+.bus6{
+    background: rgb(171,163,78);
+}
