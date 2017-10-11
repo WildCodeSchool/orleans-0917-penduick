@@ -4,7 +4,7 @@
     // Param
     $db = "mysql:host=localhost;dbname=AuPenDuick;charset=utf8";
     $user = "root";
-    $password = "mysql01"; // Remplacer par votre password
+    $password = "060390Pt"; // Remplacer par votre password
     $bdd = connect($db, $user, $password);
     // Récupérer les infos de la BDD
 include 'modele.php'
@@ -14,10 +14,11 @@ include 'modele.php'
 <head>
     <meta charset="UTF-8">
     <title>Au Pen Duick</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="css/pierre.css" />
     <link rel="stylesheet" type="text/css" media="all" href="css/dorian.css" />
     <link rel="stylesheet" type="text/css" media="all" href="css/fabien.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <?php
     include "header.php";
