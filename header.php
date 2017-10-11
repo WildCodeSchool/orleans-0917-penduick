@@ -35,38 +35,3 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="titleHeader">Dégustez les saveurs<br/>d'une crêpe <span class="Yellow textShadow">Biologique</span></h1><hr/>
-                <p>Découvrez nos spécialitées végétariennes<br/><span class="Yellow textShadow">& </span>biologiques d'inspiration bretonnes.</p><hr/>
-                <button type="button" class="btnHeader"><strong class="carte">VOIR LA CARTE</strong></button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="bio">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-5 col-xs-offset-1  col-md-5 col-md-offset-2">
-                    <img src="pictures/logotype-au-pen-duick.png" alt="logo1" id="logo1" class="img-responsive">
-
-                </div>
-                <div class="col-xs-5 col-md-5">
-                    <img src="pictures/logotype-val-de-rance.png" alt="logo2" id="logo2" class="img-responsive">
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="aboutUs">Un espace chaleureux ou vous pourrez vous détendre<br/>& déguster nos spécialités biologiques<br/>d'inspiration Bretonnes.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>

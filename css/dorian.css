@@ -1,10 +1,5 @@
-*{
-	font-family: "Segoe";
-}
-
-@font-face {
-    font-family: "Segoe";
-    src: url('fonts/segoe.ttf');
+.row0, .row1, .row2{
+    background: white;
 }
 
 .textbio{

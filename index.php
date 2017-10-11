@@ -7,7 +7,7 @@
     $password = "mysql01"; // Remplacer par votre password
     $bdd = connect($db, $user, $password);
     // Récupérer les infos de la BDD
-include 'modele.php'
+    include 'modele.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

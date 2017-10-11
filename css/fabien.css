@@ -119,14 +119,14 @@ hr {
 
 
 /*---------------------------------------media queries header----------------------------------------------------*/
-@media (max-width: 480px) {
+@media (max-width: 765px) {
 
     #logo {
         width: 30%;
     }
 
     body {
-        background-image: url("../pictures/au-pen-duik-background2.png") ;
+        background-image: url("../pictures/bg-crepe.jpg") ;
         background-repeat: no-repeat;
         background-position: center center;
         -webkit-background-size: cover;
