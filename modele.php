@@ -8,9 +8,9 @@ while ($data = $reponse->fetch()) {
     $i++;
 }$reponse->closeCursor();
 
-    // Changer les & en <span class='Yellow'>&</span>
+    // Changer les & en <span class='yellow'>&</span>
     foreach ($texts as $key => $text) {
-        $texts[$key] = str_replace("&", "<span class='yellow'>&</span>", $text);
+        $texts[$key] = str_replace("&", "<span class='yellow textShadow'>&</span>", $text);
     }
 
 // Récupérer Images

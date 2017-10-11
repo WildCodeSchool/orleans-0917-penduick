@@ -1,8 +1,12 @@
+/* **************** */
+/*		FONTS		*/
+/* **************** */
+
 @font-face {
     font-family: "Segoe";
     src: url('../fonts/segoe.ttf');
 }
 
-*{
+.fontsSegoe{
     font-family: "Segoe";
 }

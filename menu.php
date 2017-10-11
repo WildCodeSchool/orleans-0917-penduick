@@ -2,16 +2,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h2>
+                <h1 class="titleMenu">
                     <img src="pictures/couverts.png" class="logoMenu" alt="Couverts">
                     <span class="yellow">LA CARTE</span>
-                </h2>
+                </h1>
                 <span class="titleStars">********************************************</span>
                 <br/>
-                <span class="titlePhrase"><?= $displayText[2] ?></span>
+                <span class="titlePhrase"><?= $displayText[4] ?></span>
             </div>
             <?php
-                for ($i = 3; $i <= 6; $i++) {
+                for ($i = 5; $i <= 8; $i++) {
                     ?>
                     <div class="col-xs-4 col-xs-offset-1 menuMargin">
                          <div class="vignettes">

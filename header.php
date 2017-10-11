@@ -1,5 +1,5 @@
-<body>
-<header class="fond">
+<body class="fontsSegoe">
+<header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">

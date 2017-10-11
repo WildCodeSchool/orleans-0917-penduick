@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 10 oct. 2017 à 17:23
+-- Généré le :  mer. 11 oct. 2017 à 15:55
 -- Version du serveur :  5.7.19-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -40,11 +40,13 @@ CREATE TABLE `display` (
 
 INSERT INTO `display` (`id`, `textId`, `picturesId`) VALUES
 (1, 1, 1),
-(2, 4, 2),
-(3, 5, 2),
-(4, 6, 4),
-(5, 7, 3),
-(6, 8, 5);
+(2, 2, 2),
+(3, 3, 2),
+(4, 4, 4),
+(5, 5, 2),
+(6, 6, 3),
+(7, 7, 4),
+(8, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -108,13 +110,13 @@ CREATE TABLE `texts` (
 --
 
 INSERT INTO `texts` (`id`, `text`) VALUES
-(1, 'Bonjour'),
-(2, 'Voici la carte'),
-(3, 'A bientôt &'),
+(1, 'Dégustez les saveurs<br/>\r\n\r\nd\'une crêpe <span class=\"yellow textShadow\">Bio</span>'),
+(2, 'Découvrez nos spécialitées végétariennes<br/>\r\n& bio d\'inspiration bretonnes.'),
+(3, 'Un espace chaleureux ou vous pourrez vous détendre<br/>& déguster nos spécialités biologiques<br/>d\'inspiration Bretonnes.'),
 (4, 'Découvrez la carte de votre restaurant Au Pen Duick & ses spécialités'),
 (5, 'APÉRITIF & ENTRÉE'),
 (6, 'GALETTES BRETONNES'),
-(7, 'CRÊPES BRETONNES'),
+(7, 'CRÊPES VÉGÉTARIENNES'),
 (8, 'DESSERTS');
 
 -- --------------------------------------------------------
@@ -180,7 +182,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `display`
 --
 ALTER TABLE `display`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `menu`

@@ -1,13 +1,4 @@
 /* **************** */
-/*		FONTS		*/
-/* **************** */
-
-@font-face {
-	font-family: "Segoe";
-	src: url('../fonts/segoe.ttf');
-}
-
-/* **************** */
 /*    Class & ID	*/
 /* **************** */
 
@@ -15,7 +6,6 @@
 {
 	text-align: center;
 	background-color: rgb(111, 145, 155);
-	font-family: "Segoe";
 }
 
 .logoMenu
@@ -24,6 +14,11 @@
 	max-width: 30px;
 	min-height: 20px;
 	max-height: 30px;
+}
+
+.titleMenu
+{
+	margin-top: 6vh;
 }
 
 .titleStars
