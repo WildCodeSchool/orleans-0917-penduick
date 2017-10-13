@@ -1,5 +1,5 @@
 .fondbody {
-    background-image: url("../pictures/bg-crepe.jpg") ;
+    background-image: url("../../pictures/bg-crepe.jpg") ;
     background-repeat: no-repeat;
     background-position: bottom center;
     -webkit-background-size: cover;
@@ -123,7 +123,7 @@ hr {
     }
 
     .fondbody {
-        background-image: url("../pictures/bg-crepemini.png") ;
+        background-image: url("../../pictures/bg-crepemini.png") ;
         background-repeat: no-repeat;
         background-position: bottom center;
         -webkit-background-size: cover;
