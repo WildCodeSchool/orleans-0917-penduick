@@ -10,13 +10,14 @@
                 <br/>
                 <span class="titlePhrase">{{ displayTexts.4 }}</span>
             </div>
-            {% for i in 5..8 %}
+            {% for i in range(5, 8) %}
+            {#{% for i in 5..8 %}#}
                 <div class="col-xs-4 col-xs-offset-1 menuMargin">
                     <div class="vignettes">
-                        <div class="col-xs-12">{{ i }}
-                            <h3>{{ displayTexts.i }}</h3>
+                        <div class="col-xs-12">
+                            <h3>{{ displayTexts[i] }}</h3>
                         </div>
-                        <img src="pictures/{{ displayPicturesLocalSrc.i }}" alt="{{ displayPictures.i }}"/>
+                        <img src="pictures/{{ displayPicturesLocalSrc[i] }}" alt="{{ displayPictures[i] }}"/>
                     </div>
                 </div>
             {% endfor %}

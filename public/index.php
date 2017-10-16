@@ -9,6 +9,9 @@ $route = $_GET['route'];
 if ($route == 'home') {
     $personController = new \AuPenDuick\Controller\HomeController();
     echo  $personController->homeAction();
+} elseif ($route == 'carte') {
+    $personController = new \AuPenDuick\Controller\HomeController();
+    echo  $personController->menuContentAction();
 } else {
     echo 'La page n\'existe pas';
 }
