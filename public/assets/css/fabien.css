@@ -18,14 +18,14 @@
 }
 
 #logo {
-    width: calc(70%);
+    width: calc(50%);
     margin-top: calc(2vh);
     margin-bottom: calc(3vh);
     margin-left: calc(1vw);
 }
 
 .puce {
-    margin-top: calc(5vw);
+    margin-top: calc(3vw);
     margin-right: calc(1vw);
     font-size: calc(1vw);
     color: black;
@@ -73,10 +73,7 @@ hr {
     visibility: hidden;
 }
 
-#puce {
-    border: 1px solid black;
-    border-radius: 50px;
-}
+
 
 .btnHeader {
     font-size: calc(1vw);
@@ -116,7 +113,7 @@ hr {
 
 
 /*---------------------------------------media queries header----------------------------------------------------*/
-@media (max-width: 765px) {
+@media (max-width: 480px) {
 
     #logo {
         width: 30%;
@@ -140,12 +137,6 @@ hr {
         color: black;
     }
 
-    #puce {
-        border: 1px solid black;
-        border-radius: 50px;
-        width: 30%;
-        text-decoration: none;
-    }
 
     h1 {
 
@@ -170,12 +161,9 @@ hr {
         height: calc(10vw);
         color: black;
         text-decoration: none;
+        margin-bottom: 15px;
     }
 
-    .bio {
-        background: white;
-        height: auto;
-    }
 
     .aboutUs {
         font-size: 3vw;
@@ -197,32 +185,37 @@ hr {
         margin-left: -2vw;
     }
 
-    #logott {
-        width: 10%;
-    }
-
-    #logofb {
-        width: 10%;
-    }
-
-    .titleHeader {
-        font-size: calc(4vw);
-        padding-top: 35vh;
-        color: white;
-        text-shadow: 1px 1px 2px black;
-    }
 
 
 }
 
+@media (max-width: 768px) {
+    .puce {
+        margin-top: calc(5vw);
+        margin-right: calc(1vw);
+        font-size: calc(1.2vw+10px);
+        color: black;
+    }
 
-
+    .btnHeader {
+        font-size: calc(1.5vw);
+        background: rgb(254,236,4);
+        border: 1px solid grey;
+        border-radius: 50px;
+        box-shadow: 1px 1px 2px black;
+        width: calc(25vw);
+        height: calc(10vw);
+        color: black;
+        text-decoration: none;
+        margin-bottom: 15px;
+    }
+}
 /*------------------------------------------fin media queries header-------------------------------------------------*/
 
 /*------------------------------------------------footer-------------------------------------------------------------*/
 .footer {
     background: black;
-    height: 260px;
+    height: 280px;
 
 }
 
@@ -235,19 +228,36 @@ strong {
     text-decoration: underline;
     margin-right: 3vw;
 }
-/*-----------------------------------------media queries footer------------------------------------------------------*/
 
-@media (max-width: 480px) {
-
-    .footer {
-        background: black;
-        height: 100px;
-    }
-
-    .footer2 {
-        margin-top: 8vh;
-        text-align: center;
-    }
+#logoPinter {
+    width: 15%;
+    margin-right: 15px;
 }
 
-/*----------------------------------------fin media queries footer---------------------------------------------------*/
+#logoInsta {
+    width: 15%;
+    margin-right: 15px;
+}
+
+#logofb {
+    width: 14%;
+    margin-top:2px;
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+.rowfooter {
+    margin-top: 15px;
+}
+/*-----------------------------------------media queries footer------------------------------------------------------*/
+
+/*--------------------------------------------menu content---------------------------------------------------------*/
+#exTab1 .tab-content {
+    color : black;
+    background-color: blue;
+    padding : 5px 15px;
+}
+
+#exTab1 .nav-pills > li > a {
+    border-radius: 0;
+}
