@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.bus, .tram{
+	margin-bottom: 30px;
+}
+
 .localisation{
     background-color: black;
     color: white;
