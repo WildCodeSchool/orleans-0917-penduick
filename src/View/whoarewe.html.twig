@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 class="titleHeader">{{ displayTexts.1 }}</h1><hr/>
-                    <p>{{ displayTexts.2 }}</p><hr/>
+                    <h1 class="titleHeader">{{ displayTexts.1 | raw }}</h1><hr/>
+                    <p>{{ displayTexts.2 | raw }}</p><hr/>
                     <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <p class="aboutUs">{{ displayTexts.3 }}</p>
+                        <p class="aboutUs">{{ displayTexts.3 | raw }}</p>
                     </div>
                 </div>
             </div>

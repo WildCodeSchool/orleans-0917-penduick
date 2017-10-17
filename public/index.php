@@ -3,10 +3,14 @@
 require '../vendor/autoload.php';
 require '../connect.php';
 
-// Routeur basique, necessite une url index.php?route=xxx
-$route = $_GET['route'];
+// Routeur basique
+if (!empty($_GET['route'])) {
+    $route = $_GET['route'];
+} else {
+    $route = '';
+}
 // On appelle une methode d'un controlleur en fonction de la route saisie en URL
-if ($route == 'home') {
+if ($route == 'home' OR $route == '') {
     $personController = new \AuPenDuick\Controller\HomeController();
     echo  $personController->homeAction();
 } elseif ($route == 'carte') {
