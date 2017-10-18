@@ -4,6 +4,13 @@
     background: white;
 }
 
+a.anchor {
+    display: block;
+    position: relative;
+    top: -120px;
+    visibility: hidden;
+}
+
 /* SECTION QUI NOUS SOMMES */
 
 .logoaupenduick{
