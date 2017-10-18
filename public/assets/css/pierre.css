@@ -2,10 +2,9 @@
 /*    Class & ID	*/
 /* **************** */
 
-.fondMenu
-{
-	text-align: center;
-	background-color: rgb(78,192,80);
+.fondMenu {
+    text-align: center;
+    background-color: rgb(78, 192, 80);
 }
 
 .logoMenu {

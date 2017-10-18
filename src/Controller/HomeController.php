@@ -19,9 +19,9 @@ class HomeController extends Controller
 
         // appel de la vue
         return $this->twig->render('home.html.twig', [
-            'displayTexts'=>$displayTexts,
-            'displayPictures'=>$displayPictureName,
-            'displayPicturesLocalSrc'=>$displayPictureLocalSrc,
+            'displayTexts' => $displayTexts,
+            'displayPictures' => $displayPictureName,
+            'displayPicturesLocalSrc' => $displayPictureLocalSrc,
         ]);
     }
 
@@ -41,12 +41,12 @@ class HomeController extends Controller
 
         // appel de la vue
         return $this->twig->render('menucontent.html.twig', [
-            'displayTexts'=>$displayTexts,
-            'displayPictures'=>$displayPictureName,
-            'displayPicturesLocalSrc'=>$displayPictureLocalSrc,
-            'displayDescription'=>$displayDescription,
-            'displayCategory'=>$displayCategory,
-            'displayPrice'=>$displayPrice,
+            'displayTexts' => $displayTexts,
+            'displayPictures' => $displayPictureName,
+            'displayPicturesLocalSrc' => $displayPictureLocalSrc,
+            'displayDescription' => $displayDescription,
+            'displayCategory' => $displayCategory,
+            'displayPrice' => $displayPrice,
         ]);
     }
 }

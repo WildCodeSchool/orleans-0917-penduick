@@ -39,7 +39,11 @@ class DisplayMenuManager extends EntityManager
         $i = 1;
         $reponse = $this->pdo->query("SELECT categoryId FROM displaymenu ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
         while ($data = $reponse->fetch()) {
-            $displayCategory[$i] = $category[$data['categoryId']];
+            if (isset($category[$data['categoryId']])) {
+                $displayCategory[$i] = $category[$data['categoryId']];
+            } else {
+                $displayCategory[$i] = NULL;
+            }
             $i++;
         }
         $reponse->closeCursor();

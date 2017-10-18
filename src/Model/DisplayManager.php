@@ -32,7 +32,11 @@ class DisplayManager extends EntityManager
         $i = 1;
         $reponse = $this->pdo->query("SELECT picturesId FROM display ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
         while ($data = $reponse->fetch()) {
-            $displayPictureName[$i] = $picturesName[$data['picturesId']];
+            if (isset($picturesName[$data['picturesId']])) {
+                $displayPictureName[$i] = $picturesName[$data['picturesId']];
+            } else {
+                $displayPictureName[$i] = NULL;
+            }
             $i++;
         }
         $reponse->closeCursor();
@@ -50,7 +54,11 @@ class DisplayManager extends EntityManager
         $i = 1;
         $reponse = $this->pdo->query("SELECT picturesId FROM display ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
         while ($data = $reponse->fetch()) {
-            $displayPictureLocalSrc[$i] = $picturesLocalSrc[$data['picturesId']];
+            if (isset($picturesLocalSrc[$data['picturesId']])) {
+                $displayPictureLocalSrc[$i] = $picturesLocalSrc[$data['picturesId']];
+            } else {
+                $displayPictureLocalSrc[$i] = NULL;
+            }
             $i++;
         }
         $reponse->closeCursor();
