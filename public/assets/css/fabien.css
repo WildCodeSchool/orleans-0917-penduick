@@ -91,13 +91,6 @@ hr {
     height: auto;
 }
 
-.aboutUs {
-    font-size: 2.3vw;
-    color: black;
-    text-align: center;
-    margin-bottom: 4vh;
-    margin-top: 2vh;
-}
 
 /*---------------------------------------media queries header----------------------------------------------------*/
 @media (max-width: 640px) {
