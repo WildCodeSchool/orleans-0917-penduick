@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 18 oct. 2017 à 16:29
+-- Généré le :  mer. 18 oct. 2017 à 17:33
 -- Version du serveur :  5.7.19-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -124,9 +124,9 @@ INSERT INTO `display` (`id`, `textId`, `picturesId`) VALUES
 (4, 4, 4),
 (5, 5, 2),
 (6, 6, 3),
-(7, 7, NULL),
-(8, 8, NULL),
-(9, 1, NULL);
+(7, 7, 4),
+(8, 8, 5),
+(9, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -241,7 +241,7 @@ INSERT INTO `texts` (`id`, `text`) VALUES
 (5, 'LA CARTE'),
 (6, 'LES CLASSIQUES'),
 (7, 'LES GOURMANDES'),
-(8, 'DESSERTS'),
+(8, 'LES DESSERTS'),
 (9, 'Carte de galettes de sarrasin bio (sans gluten)'),
 (10, 'Crêpes de froment Bio'),
 (11, 'Les Crêpes Flambées');

@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wilder11
- * Date: 18/10/17
- * Time: 15:18
- */
 
 namespace AuPenDuick\Model;
 
-
+/**
+ * Class CategoryManager
+ * @package AuPenDuick\Model
+ */
 class CategoryManager extends EntityManager
 {
     public function findCategory()

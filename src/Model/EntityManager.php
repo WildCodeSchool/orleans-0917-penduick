@@ -1,6 +1,11 @@
 <?php
 
 namespace AuPenDuick\Model;
+
+/**
+ * Class EntityManager
+ * @package AuPenDuick\Model
+ */
 class EntityManager
 {
     protected $pdo;

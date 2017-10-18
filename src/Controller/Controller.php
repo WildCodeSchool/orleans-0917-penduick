@@ -2,7 +2,10 @@
 
 namespace AuPenDuick\Controller;
 
-
+/**
+ * Class Controller
+ * @package AuPenDuick\Controller
+ */
 class Controller
 {
     protected $twig;

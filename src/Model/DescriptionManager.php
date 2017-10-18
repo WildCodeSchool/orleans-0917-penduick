@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wilder11
- * Date: 18/10/17
- * Time: 15:16
- */
 
 namespace AuPenDuick\Model;
 
-
+/**
+ * Class DescriptionManager
+ * @package AuPenDuick\Model
+ */
 class DescriptionManager extends EntityManager
 {
     public function findDescription()

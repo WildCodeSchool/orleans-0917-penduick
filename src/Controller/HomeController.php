@@ -5,6 +5,10 @@ namespace AuPenDuick\Controller;
 use AuPenDuick\Model\DisplayManager;
 use AuPenDuick\Model\DisplayMenuManager;
 
+/**
+ * Class HomeController
+ * @package AuPenDuick\Controller
+ */
 class HomeController extends Controller
 {
     public function homeAction()

@@ -1,11 +1,16 @@
 <?php
 
-
 namespace AuPenDuick\Model;
 
-
+/**
+ * Class TextManager
+ * @package AuPenDuick\Model
+ */
 class TextManager extends EntityManager
 {
+    /**
+     * @return mixed
+     */
     public function findTexts()
     {
         // Récupérer les texts en array depuis la bdd

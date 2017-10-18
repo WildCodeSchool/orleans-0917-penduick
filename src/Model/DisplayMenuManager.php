@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wilder11
- * Date: 18/10/17
- * Time: 15:14
- */
 
 namespace AuPenDuick\Model;
 
-
+/**
+ * Class DisplayMenuManager
+ *  @package AuPenDuick\Model
+ */
 class DisplayMenuManager extends EntityManager
 {
     public function findDisplayDescription()
@@ -42,7 +39,7 @@ class DisplayMenuManager extends EntityManager
             if (isset($category[$data['categoryId']])) {
                 $displayCategory[$i] = $category[$data['categoryId']];
             } else {
-                $displayCategory[$i] = NULL;
+                $displayCategory[$i] = null;
             }
             $i++;
         }

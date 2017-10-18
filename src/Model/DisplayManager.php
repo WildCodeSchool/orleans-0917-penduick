@@ -2,6 +2,10 @@
 
 namespace AuPenDuick\Model;
 
+/**
+ * Class DisplayManager
+ * @package AuPenDuick\Model
+ */
 class DisplayManager extends EntityManager
 {
     public function findDisplayText()
