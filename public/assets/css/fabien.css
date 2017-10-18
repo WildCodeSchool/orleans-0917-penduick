@@ -1,0 +1,343 @@
+.fondbody {
+    background-image: url("../../pictures/bg-crepe.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    padding-top: 90vh;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: white;
+}
+
+.navbar-default .navbar-toggle {
+    margin-top: 20px;
+}
+
+.logo1 {
+    width: calc(40%);
+    margin-top: calc(2vh);
+    margin-bottom: calc(3vh);
+    margin-left: calc(1vw);
+}
+
+.puce {
+    margin-top: calc(3vw);
+    margin-right: calc(1vw);
+    font-size: calc(1vw);
+    color: black;
+}
+
+.logott {
+    width: 40%;
+    margin-top: calc(9vh);
+}
+
+.logofb {
+    width: 30%;
+    margin-left: 2vw;
+    margin-top: calc(9vh);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: black;
+}
+
+.textShadow {
+    text-shadow: 1px 1px 2px black;
+}
+
+.titleHeader {
+    font-size: calc(3vw);
+    margin-top: -53vh;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+p {
+    font-size: calc(2vw);
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.container {
+    margin-left: calc(9vw);
+    margin-top: calc(10vh);
+}
+
+hr {
+    height: calc(0.2vw);
+    visibility: hidden;
+}
+
+.btnHeader {
+    font-size: calc(1vw);
+    background: rgb(254, 236, 4);
+    border: 1px solid grey;
+    border-radius: 50px;
+    box-shadow: 1px 1px 2px black;
+    width: calc(15vw);
+    height: calc(5vh);
+    color: black;
+    text-decoration: none;
+}
+
+.bio {
+    margin-top: 20vh;
+    background: white;
+    height: auto;
+}
+
+.aboutUs {
+    font-size: 2.3vw;
+    color: black;
+    text-align: center;
+    margin-bottom: 4vh;
+    margin-top: 2vh;
+}
+
+/*---------------------------------------media queries header----------------------------------------------------*/
+@media (max-width: 640px) {
+
+    .logo1 {
+        width: 30%;
+    }
+
+    .fondbody {
+        background-image: url("../../pictures/bg-crepemini.png");
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 50%;
+        padding-top: 50vh;
+    }
+
+    .puce {
+        margin-top: calc(5vw);
+        margin-right: calc(1vw);
+        font-size: calc(3.2vw);
+        color: black;
+    }
+
+    .titleHeader {
+        font-size: calc(4vw);
+        margin-top: -33vh;
+        color: white;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    h1 {
+        font-size: calc(6vw);
+        color: white;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    p {
+        font-size: calc(4vw);
+        color: white;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .btnHeader {
+        font-size: calc(2.5vw);
+        background: rgb(254, 236, 4);
+        border: 1px solid grey;
+        border-radius: 50px;
+        box-shadow: 1px 1px 2px black;
+        width: calc(45vw);
+        height: calc(10vw);
+        color: black;
+        text-decoration: none;
+        margin-bottom: 15px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .puce {
+        margin-top: calc(5vw);
+        margin-right: calc(1vw);
+        font-size: calc(1.2vw + 10px);
+        color: black;
+    }
+
+    .btnHeader {
+        font-size: calc(1.5vw);
+        background: rgb(254, 236, 4);
+        border: 1px solid grey;
+        border-radius: 50px;
+        box-shadow: 1px 1px 2px black;
+        width: calc(25vw);
+        height: calc(10vw);
+        color: black;
+        text-decoration: none;
+        margin-bottom: 15px;
+    }
+}
+
+/*------------------------------------------fin media queries header-------------------------------------------------*/
+
+/*------------------------------------------------footer-------------------------------------------------------------*/
+.footer {
+    background: black;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.footer2 {
+    margin-top: 12vh;
+    text-align: center;
+}
+
+strong {
+    text-decoration: underline;
+    margin-right: 3vw;
+}
+
+.logoPinter {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.logoInsta {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.logofb {
+    width: 14%;
+    margin-top: 2px;
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+.rowfooter {
+    margin-top: 15px;
+}
+
+.rowSpacer {
+    margin-top: 15px;
+}
+
+/*-----------------------------------------media queries footer------------------------------------------------------*/
+@media (max-width: 480px) {
+    .logoPinter {
+        width: 25%;
+        margin-right: 15px;
+    }
+
+    .logoInsta {
+        width: 25%;
+        margin-right: 15px;
+    }
+
+    .logofb {
+        width: 24%;
+        margin-top: 2px;
+        border: 2px solid black;
+        border-radius: 50px;
+    }
+}
+
+/*--------------------------------------------menu content---------------------------------------------------------*/
+.menu {
+    margin-top: 100px;
+    text-align: center;
+    font-size: calc(4vw);
+}
+
+#exTab1 .nav-pills > li > a {
+    border-radius: 0;
+    border: 2px solid black;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
+    color: black;
+    background-color: greenyellow !important;
+}
+
+#exTab1 .tab-content {
+    color: black !important;
+    background-color: greenyellow;
+    width: auto;
+    border: 2px solid black;
+}
+
+.ongletCarte {
+    font-size: calc(2.5vw);
+    color: black;
+}
+
+.carte {
+    font-size: calc(1vw);
+    margin-left: 20px;
+    color: black;
+}
+
+.media-heading {
+    padding-top: 30px;
+    margin-left: 20px;
+    font-size: calc(2vw);
+}
+
+media-left, .media-right, .media-body {
+    display: table-cell;
+    vertical-align: top;
+}
+
+a {
+    color: black !important;
+}
+
+a:hover, a:focus {
+    color: black !important;
+    text-decoration: underline;
+}
+
+.crêpe {
+    float: right;
+    margin-right: 15px;
+    border: 1px solid black;
+    width: auto;
+}
+
+/*-----------------------------------------media queries- menu content-----------------------------------------------*/
+
+@media (max-width: 480px) {
+
+    .menu {
+        margin-top: 100px;
+        text-align: center;
+        font-size: calc(6vw);
+    }
+
+    .ongletCarte {
+        font-size: calc(4.5vw);
+        color: black;
+    }
+
+    .carte {
+        font-size: calc(3vw);
+        margin-left: 20px;
+        color: black;
+
+    }
+
+    .media-heading {
+        padding-top: 30px;
+        margin-left: 20px;
+        font-size: calc(5vw);
+    }
+
+    .crêpe {
+        float: right;
+        margin-right: 5px;
+        width: 30%;
+        border: 1px solid black;
+    }
+}
