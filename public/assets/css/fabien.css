@@ -1,12 +1,12 @@
 .fondbody {
-    background-image: url("../../pictures/bg-crepe.jpg") ;
+    background-image: url("../../pictures/bg-crepe.jpg");
     background-repeat: no-repeat;
     background-position: bottom center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     height: 100%;
-    padding-top: 65vh;
+    padding-top: 90vh;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -17,7 +17,7 @@
     margin-top: 20px;
 }
 
-#logo {
+.logo1 {
     width: calc(40%);
     margin-top: calc(2vh);
     margin-bottom: calc(3vh);
@@ -31,12 +31,12 @@
     color: black;
 }
 
-#logott {
+.logott {
     width: 40%;
     margin-top: calc(9vh);
 }
 
-#logofb {
+.logofb {
     width: 30%;
     margin-left: 2vw;
     margin-top: calc(9vh);
@@ -52,8 +52,8 @@
 
 .titleHeader {
     font-size: calc(3vw);
-    margin-top: -33vh;
-    color:white;
+    margin-top: -53vh;
+    color: white;
     text-shadow: 1px 1px 2px black;
 }
 
@@ -73,11 +73,9 @@ hr {
     visibility: hidden;
 }
 
-
-
 .btnHeader {
     font-size: calc(1vw);
-    background: rgb(254,236,4);
+    background: rgb(254, 236, 4);
     border: 1px solid grey;
     border-radius: 50px;
     box-shadow: 1px 1px 2px black;
@@ -93,26 +91,23 @@ hr {
     height: auto;
 }
 
-#logo1 {
-    margin-top: 6vh;
-    margin-left: 8vw;
+.aboutUs {
+    font-size: 2.3vw;
+    color: black;
+    text-align: center;
+    margin-bottom: 4vh;
+    margin-top: 2vh;
 }
-
-#logo2 {
-    margin-top: 14vh;
-    margin-left: -7vw;
-}
-
 
 /*---------------------------------------media queries header----------------------------------------------------*/
-@media (max-width: 480px) {
+@media (max-width: 640px) {
 
-    #logo {
+    .logo1 {
         width: 30%;
     }
 
     .fondbody {
-        background-image: url("../../pictures/bg-crepemini.png") ;
+        background-image: url("../../pictures/bg-crepemini.png");
         background-repeat: no-repeat;
         background-position: bottom center;
         -webkit-background-size: cover;
@@ -129,6 +124,13 @@ hr {
         color: black;
     }
 
+    .titleHeader {
+        font-size: calc(4vw);
+        margin-top: -33vh;
+        color: white;
+        text-shadow: 1px 1px 2px black;
+    }
+
     h1 {
         font-size: calc(6vw);
         color: white;
@@ -143,30 +145,16 @@ hr {
 
     .btnHeader {
         font-size: calc(2.5vw);
-        background: rgb(254,236,4);
+        background: rgb(254, 236, 4);
         border: 1px solid grey;
         border-radius: 50px;
         box-shadow: 1px 1px 2px black;
-        width: calc(35vw);
+        width: calc(45vw);
         height: calc(10vw);
         color: black;
         text-decoration: none;
         margin-bottom: 15px;
     }
-
-    #logo1 {
-        width: 100%;
-        margin-top: 5vh;
-        margin-left : 3vw;
-    }
-
-    #logo2 {
-        width: 100%;
-        margin-top: 8vh;
-        margin-left: -2vw;
-    }
-
-
 
 }
 
@@ -174,13 +162,13 @@ hr {
     .puce {
         margin-top: calc(5vw);
         margin-right: calc(1vw);
-        font-size: calc(1.2vw+10px);
+        font-size: calc(1.2vw + 10px);
         color: black;
     }
 
     .btnHeader {
         font-size: calc(1.5vw);
-        background: rgb(254,236,4);
+        background: rgb(254, 236, 4);
         border: 1px solid grey;
         border-radius: 50px;
         box-shadow: 1px 1px 2px black;
@@ -191,6 +179,7 @@ hr {
         margin-bottom: 15px;
     }
 }
+
 /*------------------------------------------fin media queries header-------------------------------------------------*/
 
 /*------------------------------------------------footer-------------------------------------------------------------*/
@@ -210,19 +199,19 @@ strong {
     margin-right: 3vw;
 }
 
-#logoPinter {
+.logoPinter {
     width: 15%;
     margin-right: 15px;
 }
 
-#logoInsta {
+.logoInsta {
     width: 15%;
     margin-right: 15px;
 }
 
-#logofb {
+.logofb {
     width: 14%;
-    margin-top:2px;
+    margin-top: 2px;
     border: 2px solid black;
     border-radius: 50px;
 }
@@ -234,27 +223,26 @@ strong {
 .rowSpacer {
     margin-top: 15px;
 }
+
 /*-----------------------------------------media queries footer------------------------------------------------------*/
 @media (max-width: 480px) {
-    #logoPinter {
+    .logoPinter {
         width: 25%;
         margin-right: 15px;
     }
 
-    #logoInsta {
+    .logoInsta {
         width: 25%;
         margin-right: 15px;
     }
 
-    #logofb {
+    .logofb {
         width: 24%;
-        margin-top:2px;
+        margin-top: 2px;
         border: 2px solid black;
         border-radius: 50px;
     }
 }
-
-
 
 /*--------------------------------------------menu content---------------------------------------------------------*/
 .menu {
@@ -268,14 +256,13 @@ strong {
     border: 2px solid black;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active  {
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
     color: black;
     background-color: greenyellow !important;
 }
 
-
 #exTab1 .tab-content {
-    color: black!important;
+    color: black !important;
     background-color: greenyellow;
     width: auto;
     border: 2px solid black;
@@ -292,7 +279,7 @@ strong {
     color: black;
 }
 
-.media-heading{
+.media-heading {
     padding-top: 30px;
     margin-left: 20px;
     font-size: calc(2vw);
@@ -304,21 +291,20 @@ media-left, .media-right, .media-body {
 }
 
 a {
-    color: black!important;
+    color: black !important;
 }
 
 a:hover, a:focus {
-    color: black!important;
+    color: black !important;
     text-decoration: underline;
 }
 
-#crêpe {
+.crêpe {
     float: right;
     margin-right: 15px;
     border: 1px solid black;
     width: auto;
 }
-
 
 /*-----------------------------------------media queries- menu content-----------------------------------------------*/
 
@@ -342,13 +328,13 @@ a:hover, a:focus {
 
     }
 
-    .media-heading{
+    .media-heading {
         padding-top: 30px;
         margin-left: 20px;
         font-size: calc(5vw);
     }
 
-    #crêpe {
+    .crêpe {
         float: right;
         margin-right: 5px;
         width: 30%;
