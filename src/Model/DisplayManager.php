@@ -16,7 +16,8 @@ class DisplayManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $displayText[$i] = $texts[$data['textId']];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         return $displayText;
     }
@@ -33,7 +34,8 @@ class DisplayManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $displayPictureName[$i] = $picturesName[$data['picturesId']];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         return $displayPictureName;
     }
@@ -50,8 +52,63 @@ class DisplayManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $displayPictureLocalSrc[$i] = $picturesLocalSrc[$data['picturesId']];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         return $displayPictureLocalSrc;
+    }
+
+    public function findDisplayDescription()
+    {
+        // Récupérer les images (idem, voir ci-dessus)
+        $descriptionManager = new DescriptionManager();
+        $description = $descriptionManager->findDescription();
+
+        // Trier les imagesSrc et les mettre en display
+        $i = 1;
+        $reponse = $this->pdo->query("SELECT descriptionId FROM displaymenu ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
+        while ($data = $reponse->fetch()) {
+            $displayDescription[$i] = $description[$data['descriptionId']];
+            $i++;
+        }
+        $reponse->closeCursor();
+
+        return $displayDescription;
+    }
+
+    public function findDisplayCategory()
+    {
+        // Récupérer les images (idem, voir ci-dessus)
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->findCategory();
+
+        // Trier les imagesSrc et les mettre en display
+        $i = 1;
+        $reponse = $this->pdo->query("SELECT categoryId FROM displaymenu ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
+        while ($data = $reponse->fetch()) {
+            $displayCategory[$i] = $category[$data['categoryId']];
+            $i++;
+        }
+        $reponse->closeCursor();
+
+        return $displayCategory;
+    }
+
+    public function findDisplayPrice()
+    {
+        // Récupérer les images (idem, voir ci-dessus)
+        $categoryManager = new DescriptionManager();
+        $category = $categoryManager->findCategory();
+
+        // Trier les imagesSrc et les mettre en display
+        $i = 1;
+        $reponse = $this->pdo->query("SELECT categoryId FROM displaymenu ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
+        while ($data = $reponse->fetch()) {
+            $displayCategory[$i] = $category[$data['categoryId']];
+            $i++;
+        }
+        $reponse->closeCursor();
+
+        return $displayCategory;
     }
 }

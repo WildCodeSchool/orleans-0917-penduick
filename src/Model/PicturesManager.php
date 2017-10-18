@@ -18,7 +18,8 @@ class PicturesManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $picturesName[$i] = $data['name'];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         return $picturesName;
     }
@@ -30,7 +31,8 @@ class PicturesManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $picturesLocalSrc[$i] = $data['localSrc'];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         return $picturesLocalSrc;
     }

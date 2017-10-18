@@ -14,7 +14,8 @@ class TextManager extends EntityManager
         while ($data = $reponse->fetch()) {
             $texts[$i] = $data['text'];
             $i++;
-        }$reponse->closeCursor();
+        }
+        $reponse->closeCursor();
 
         // Changer les & en <span class='yellow'>&</span>
         foreach ($texts as $key => $text) {
