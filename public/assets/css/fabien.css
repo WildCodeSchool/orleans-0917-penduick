@@ -18,7 +18,7 @@
 }
 
 #logo {
-    width: calc(50%);
+    width: calc(40%);
     margin-top: calc(2vh);
     margin-bottom: calc(3vh);
     margin-left: calc(1vw);
@@ -91,14 +91,6 @@ hr {
     height: auto;
 }
 
-.aboutUs {
-    font-size: 2.3vw;
-    color: black;
-    text-align: center;
-    margin-bottom: 4vh;
-    margin-top: 2vh;
-}
-
 #logo1 {
     margin-top: 6vh;
     margin-left: 8vw;
@@ -124,7 +116,7 @@ hr {
         -moz-background-size: cover;
         -o-background-size: cover;
         height: 50%;
-        padding-top: 20vh;
+        padding-top: 50vh;
     }
 
     .puce {
@@ -135,7 +127,6 @@ hr {
     }
 
     h1 {
-
         font-size: calc(6vw);
         color: white;
         text-shadow: 1px 1px 2px black;
@@ -179,7 +170,6 @@ hr {
         margin-top: 8vh;
         margin-left: -2vw;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -209,8 +199,8 @@ hr {
 /*------------------------------------------------footer-------------------------------------------------------------*/
 .footer {
     background: black;
-    height: 280px;
-
+    height: auto;
+    padding-bottom: 10px;
 }
 
 .footer2 {
@@ -244,15 +234,124 @@ strong {
     margin-top: 15px;
 }
 
+.rowSpacer {
+    margin-top: 15px;
+}
+
 /*-----------------------------------------media queries footer------------------------------------------------------*/
+@media (max-width: 480px) {
+    #logoPinter {
+        width: 25%;
+        margin-right: 15px;
+    }
+
+    #logoInsta {
+        width: 25%;
+        margin-right: 15px;
+    }
+
+    #logofb {
+        width: 24%;
+        margin-top: 2px;
+        border: 2px solid black;
+        border-radius: 50px;
+    }
+}
 
 /*--------------------------------------------menu content---------------------------------------------------------*/
-#exTab1 .tab-content {
-    color: black;
-    background-color: blue;
-    padding: 5px 15px;
+.menu {
+    margin-top: 100px;
+    text-align: center;
+    font-size: calc(4vw);
 }
 
 #exTab1 .nav-pills > li > a {
     border-radius: 0;
+    border: 2px solid black;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
+    color: black;
+    background-color: greenyellow !important;
+}
+
+#exTab1 .tab-content {
+    color: black !important;
+    background-color: greenyellow;
+    width: auto;
+    border: 2px solid black;
+}
+
+.ongletCarte {
+    font-size: calc(2.5vw);
+    color: black;
+}
+
+.carte {
+    font-size: calc(1vw);
+    margin-left: 20px;
+    color: black;
+}
+
+.media-heading {
+    padding-top: 30px;
+    margin-left: 20px;
+    font-size: calc(2vw);
+}
+
+media-left, .media-right, .media-body {
+    display: table-cell;
+    vertical-align: top;
+}
+
+a {
+    color: black !important;
+}
+
+a:hover, a:focus {
+    color: black !important;
+    text-decoration: underline;
+}
+
+#crêpe {
+    float: right;
+    margin-right: 15px;
+    border: 1px solid black;
+    width: auto;
+}
+
+/*-----------------------------------------media queries- menu content-----------------------------------------------*/
+
+@media (max-width: 480px) {
+
+    .menu {
+        margin-top: 100px;
+        text-align: center;
+        font-size: calc(6vw);
+    }
+
+    .ongletCarte {
+        font-size: calc(4.5vw);
+        color: black;
+    }
+
+    .carte {
+        font-size: calc(3vw);
+        margin-left: 20px;
+        color: black;
+
+    }
+
+    .media-heading {
+        padding-top: 30px;
+        margin-left: 20px;
+        font-size: calc(5vw);
+    }
+
+    #crêpe {
+        float: right;
+        margin-right: 5px;
+        width: 30%;
+        border: 1px solid black;
+    }
 }
