@@ -1,25 +1,27 @@
+/* GENERAL */
+
 .row0, .row1, .row2{
     background: white;
 }
 
-.textbio{
-    margin-top: 50px;
-    margin-bottom: 50px;
+/* SECTION QUI NOUS SOMMES */
+
+.logoaupenduick{
+	margin-top: 20px;
 }
 
-.valderance{
-    margin-top: 66px;
-}
-
-.bus, .tram, .map, .row0{
+.aboutUs {
+    font-size: 27px;
+    color: black;
     text-align: center;
+    margin-bottom: 4vh;
+    margin-top: 2vh;
 }
 
-.bus, .tram{
-	margin-bottom: 30px;
-}
+/* SECTION LOCALISATION */
 
 .localisation{
+	font-size: 35px;
     background-color: black;
     color: white;
     height: 150px;
@@ -33,6 +35,21 @@ iframe{
     border: none;
     background: transparent;
     width: 100%;
+    margin-top: -10px;
+}
+
+/* SECTION TRANSPORTS EN COMMUN */
+
+.bus, .tram, .map, .row0{
+    text-align: center;
+}
+
+.bus, .tram{
+	margin-bottom: 30px;
+}
+
+.tram a, .bus a{
+	color: white;
 }
 
 .badge{
@@ -68,3 +85,18 @@ iframe{
 .bus6{
     background: rgb(171,163,78);
 }
+
+/* MEDIA QUERIES POUR TYPOS */
+
+@media (max-width: 650px) {
+
+	.aboutUs{
+		font-size: 18px;
+	}
+
+	.localisation{
+	font-size: 20px;
+	}
+	
+}
+

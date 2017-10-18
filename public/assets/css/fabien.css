@@ -93,14 +93,6 @@ hr {
     height: auto;
 }
 
-.aboutUs {
-    font-size: 2.3vw;
-    color: black;
-    text-align: center;
-    margin-bottom: 4vh;
-    margin-top: 2vh;
-}
-
 #logo1 {
     margin-top: 6vh;
     margin-left: 8vw;
@@ -160,15 +152,6 @@ hr {
         color: black;
         text-decoration: none;
         margin-bottom: 15px;
-    }
-
-
-    .aboutUs {
-        font-size: 3vw;
-        color: black;
-        text-align: center;
-        margin-bottom: 4vh;
-        margin-top: 2vh;
     }
 
     #logo1 {
