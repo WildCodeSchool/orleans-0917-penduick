@@ -35,32 +35,19 @@
 }
 
 .logo1 {
-    width: 40%;
-    margin-top: 2vh;
-    margin-bottom: 3vh;
+    width: 150px;
+    margin-top: 1vh;
     margin-left: 1vw;
 }
 
 .puce {
-    margin-top: 3vw;
-    margin-right: 1vw;
     font-size: calc(1vw+ 3px);
     color: black;
 }
 
-.logott {
-    width: 40%;
-    margin-top: 9vh;
-}
-
-.logofb {
-    width: 30%;
-    margin-left: 2vw;
-    margin-top: 9vh;
-}
-
 .navbar-default .navbar-nav > li > a {
     color: black;
+    line-height: 88px;
 }
 
 .textShadow {
@@ -68,14 +55,14 @@
 }
 
 .titleHeader {
-    font-size: calc(3vw + 1vw);
-    margin-top: -53vh;
+    font-size: calc(3vw + 2em);
+    margin-top: -60vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 p {
-    font-size: 2vw;
+    font-size: calc(2vw + 1em);
     color: white;
     text-shadow: 1px 1px 2px black;
 }
@@ -91,7 +78,7 @@ hr {
 }
 
 .btnHeader {
-    font-size: 1vw;
+    font-size: calc(1vw + 1em);
     background: rgb(254, 236, 4);
     border: 1px solid grey;
     border-radius: 50px;
@@ -113,15 +100,20 @@ hr {
 }
 
 .aboutUs {
-    font-size: 2.3vw;
+    font-size: calc(2vw + 1em);
     color: black;
     text-align: center;
     margin-bottom: 4vh;
     margin-top: 2vh;
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
+/*---------------------------------------media queries header----------------------------------------------------*/
 
-/*--------------------footer---------------------*/
+/*------------------------------------------fin media queries header-------------------------------------------------*/
+
+/*------------------------------------------------footer-------------------------------------------------------------*/
 .footer {
     background: black;
     height: auto;
@@ -148,7 +140,7 @@ strong {
     margin-right: 15px;
 }
 
-.logofb {
+.logofacebook {
     width: 14%;
     margin-top: 2px;
     border: 2px solid black;
@@ -163,7 +155,7 @@ strong {
     margin-top: 15px;
 }
 
-/*--------------------menu content------------------------*/
+/*--------------------------------------------menu content---------------------------------------------------------*/
 .menu {
     margin-top: 100px;
     text-align: center;
@@ -224,6 +216,9 @@ a:hover, a:focus {
     border: 1px solid black;
     width: 30%;
 }
+
+/*-----------------------------------------media queries- menu content-----------------------------------------------*/
+
 
 
 /* **************** */
