@@ -15,12 +15,12 @@ class HomeController extends Controller
     public function homeAction()
     {
         // Appel Compagny (Model)
-        $CompagnyManager = new CompagnyManager();
-        $CompagnyManagerContent = $CompagnyManager->findAllCompagny();
+        $compagnyManager = new CompagnyManager();
+        $compagnyManagerContent = $compagnyManager->findAllCompagny();
 
         // Appel de la vue
         return $this->twig->render('home.html.twig', [
-            'compagny' => $CompagnyManagerContent[0],
+            'compagny' => $compagnyManagerContent[0],
         ]);
     }
 
@@ -39,14 +39,9 @@ class HomeController extends Controller
         $categoryManager = new CategoryManager();
         $categoryManagerContent = $categoryManager->findAllCategory();
 
-//        var_dump($compagnyManagerContent);
-//        var_dump($foodSaltManagerContent);
-//        var_dump($foodSugarManagerContent);
-//        var_dump($categoryManagerContent);
-
         // Appel de la vue
         return $this->twig->render('menucontent.html.twig', [
-            'compagny' => $compagnyManagerContent,
+            'compagny' => $compagnyManagerContent[0],
             'foodsSalt' => $foodSaltManagerContent,
             'foodsSugar' => $foodSugarManagerContent,
             'category' => $categoryManagerContent,
