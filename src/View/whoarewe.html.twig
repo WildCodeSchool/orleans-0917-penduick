@@ -2,12 +2,13 @@
     <div class="fondbody">
         <div class="container" id="whoarewe">
             <div class="row">
-                <div class="col-xs-12">
-                    <h1 class="titleHeader">{{ displayTexts.1 | raw }}</h1>
+                <div>
+                    <h1 class="titleHeader">{{ compagny.header | raw }}</h1>
                     <hr/>
-                    <p>{{ displayTexts.2 | raw }}</p>
+                    <p>{{ compagny.header_2 | raw }}</p>
                     <hr/>
                     <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
+                    {{ compagny.event | raw }}
                 </div>
             </div>
         </div>
@@ -22,7 +23,7 @@
 
                 <div class="row">
                     <div>
-                        <p class="aboutUs">{{ displayTexts.3 | raw }}</p>
+                        <p class="aboutUs">{{ compagny.about_us | raw }}</p>
                     </div>
                 </div>
             </div>

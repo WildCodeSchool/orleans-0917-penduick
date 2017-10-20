@@ -8,17 +8,10 @@ namespace AuPenDuick\Model;
  */
 class CategoryManager extends EntityManager
 {
-    public function findCategory()
+    public function findAllCategory()
     {
-        // Récupérer les description en array depuis la bdd
-        $i = 1;
-        $reponse = $this->pdo->query("SELECT text FROM category ORDER BY id ASC") or die(print_r($this->pdo->errorInfo()));
-        while ($data = $reponse->fetch()) {
-            $category[$i] = $data['text'];
-            $i++;
-        }
-        $reponse->closeCursor();
-
-        return $category;
+        $query = "SELECT * FROM category";
+        $statement = $this->pdo->query($query);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
     }
 }

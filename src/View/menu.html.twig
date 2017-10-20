@@ -8,18 +8,35 @@
                 </h1>
                 <span class="titleStars">********************************************</span>
                 <br/>
-                <span class="titlePhrase">{{ displayTexts.4 | raw }}</span>
+                <span class="titlePhrase">Découvrez la carte de votre restaurant Au Pen Duick <span class="yellow textShadow">&</span> ses spécialitées</span>
             </div>
-            {% for i in range(5, 8) %}
-                <div class="col-xs-4 menuMargin" style="margin-left:11%;">
-                    <div class="vignettes">
-                        <div class="col-xs-12">
-                            <h3>{{ displayTexts[i] | raw }}</h3>
-                        </div>
-                        <img src="pictures/{{ displayPicturesLocalSrc[i] }}" alt="{{ displayPictures[i] }}"/>
+            {#Vignette 1#}
+            <div class="col-xs-4 menuMargin">
+                <div class="vignettes">
+                    <div>
+                        <h3>GALETTES BIO SARRASIN</h3>
                     </div>
+                    <img src="pictures/menu-aperitif.jpg" alt="menu-aperitif"/>
                 </div>
-            {% endfor %}
+            </div>
+            {#Vignette 2#}
+            <div class="col-xs-4 menuMargin">
+                <div class="vignettes">
+                    <div>
+                        <h3>CRÊPES BIO FROMENT</h3>
+                    </div>
+                    <img src="pictures/menu-crepes-bretonnes.jpg" alt="menu-crepes-bretonnes"/>
+                </div>
+            </div>
+            {#Vignette 3#}
+            <div class="col-xs-4 menuMargin">
+                <div class="vignettes">
+                    <div>
+                        <h3>CRÊPES FLAMBÉES</h3>
+                    </div>
+                    <img src="pictures/menu-desserts.jpg" alt="menu-desserts"/>
+                </div>
+            </div>
         </div><!-- row -->
     </div><!-- container -->
 </section>
