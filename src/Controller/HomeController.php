@@ -2,8 +2,9 @@
 
 namespace AuPenDuick\Controller;
 
-use AuPenDuick\Model\DisplayManager;
-use AuPenDuick\Model\DisplayMenuManager;
+use AuPenDuick\Model\CategoryManager;
+use AuPenDuick\Model\CompagnyManager;
+use AuPenDuick\Model\FoodManager;
 
 /**
  * Class HomeController
@@ -13,44 +14,42 @@ class HomeController extends Controller
 {
     public function homeAction()
     {
-        // Appels à DisplayManager (Model)
-        $displayManager = new DisplayManager();
+        // Appel Compagny (Model)
+        $CompagnyManager = new CompagnyManager();
+        $CompagnyManagerContent = $CompagnyManager->findAllCompagny();
 
-        // Détail de récup du display
-        $displayTexts = $displayManager->findDisplayText();
-        $displayPictureName = $displayManager->findDisplayPictureName();
-        $displayPictureLocalSrc = $displayManager->findDisplayPictureLocalSrc();
-
-        // appel de la vue
+        // Appel de la vue
         return $this->twig->render('home.html.twig', [
-            'displayTexts' => $displayTexts,
-            'displayPictures' => $displayPictureName,
-            'displayPicturesLocalSrc' => $displayPictureLocalSrc,
+            'compagny' => $CompagnyManagerContent[0],
         ]);
     }
 
     public function menuContentAction()
     {
-        // Appels à DisplayManager (Model)
-        $displayManager = new DisplayManager();
-        $displayMenuManager = new DisplayMenuManager();
+        // Appel Compagny (Model)
+        $compagnyManager = new CompagnyManager();
+        $compagnyManagerContent = $compagnyManager->findAllCompagny();
 
-        // Détail de récup du display
-        $displayTexts = $displayManager->findDisplayText();
-        $displayPictureName = $displayManager->findDisplayPictureName();
-        $displayPictureLocalSrc = $displayManager->findDisplayPictureLocalSrc();
-        $displayDescription = $displayMenuManager->findDisplayDescription();
-        $displayCategory = $displayMenuManager->findDisplayCategory();
-        $displayPrice = $displayMenuManager->findDisplayPrice();
+        // Appel Foodt (Model)
+        $foodManager = new FoodManager();
+        $foodSaltManagerContent = $foodManager->findAllFoodSalt();
+        $foodSugarManagerContent = $foodManager->findAllFoodSugar();
 
-        // appel de la vue
+        // Appel Category (Model)
+        $categoryManager = new CategoryManager();
+        $categoryManagerContent = $categoryManager->findAllCategory();
+
+//        var_dump($compagnyManagerContent);
+//        var_dump($foodSaltManagerContent);
+//        var_dump($foodSugarManagerContent);
+//        var_dump($categoryManagerContent);
+
+        // Appel de la vue
         return $this->twig->render('menucontent.html.twig', [
-            'displayTexts' => $displayTexts,
-            'displayPictures' => $displayPictureName,
-            'displayPicturesLocalSrc' => $displayPictureLocalSrc,
-            'displayDescription' => $displayDescription,
-            'displayCategory' => $displayCategory,
-            'displayPrice' => $displayPrice,
+            'compagny' => $compagnyManagerContent,
+            'foodsSalt' => $foodSaltManagerContent,
+            'foodsSugar' => $foodSugarManagerContent,
+            'category' => $categoryManagerContent,
         ]);
     }
 }

@@ -1,3 +1,7 @@
 vendor/
 composer.json
 connect.php
+public/AMettreDansController.php
+fournitures/
+db/
+src/View/admin.html.twig
