@@ -2,7 +2,7 @@
 
 namespace AuPenDuick\Model;
 
-class Compagny
+class Company
 {
     public $id;
     public $header;
@@ -19,7 +19,7 @@ class Compagny
 
     /**
      * @param mixed $id
-     * @return Compagny
+     * @return Company
      */
     public function setId($id)
     {
@@ -37,7 +37,7 @@ class Compagny
 
     /**
      * @param mixed $header
-     * @return Compagny
+     * @return Company
      */
     public function setHeader($header)
     {
@@ -55,7 +55,7 @@ class Compagny
 
     /**
      * @param mixed $aboutUs
-     * @return Compagny
+     * @return Company
      */
     public function setAboutUs($aboutUs)
     {
@@ -73,7 +73,7 @@ class Compagny
 
     /**
      * @param mixed $telephone
-     * @return Compagny
+     * @return Company
      */
     public function setTelephone($telephone)
     {
