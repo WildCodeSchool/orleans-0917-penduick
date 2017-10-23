@@ -5,7 +5,7 @@ namespace AuPenDuick\Model;
 
 class FoodManager extends EntityManager
 {
-    public function findAllFood($id)
+    public function findByCategory($id)
     {
         $query = "SELECT * FROM food WHERE category_id=:category_id";
         $statement = $this->pdo->prepare($query);
