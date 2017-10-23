@@ -7,39 +7,27 @@
 
 <div id="exTab1" class="container">
     <ul class="nav nav-pills">
-        <li class="active">
-            <a href="#1a" class="ongletCarte" data-toggle="tab">SALÉ</a>
-        </li>
-        <li><a href="#2a" class="ongletCarte" data-toggle="tab">SUCRÉ</a>
-        </li>
+        {% for consistency, menu in menus %}
+            <li class="{{ loop.first ? 'active' }}">
+                <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
+            </li>
+        {% endfor %}
     </ul>
 
     <div class="tab-content clearfix">
-        <div class="tab-pane active" id="1a">
-            {% for foodSalt in foodsSalt %}
-            <div class="media">
-                <div class="media-body">
-                    <p class="carte">{{ foodSalt.description }}</p>
-                </div>
+        {% for consistency, menu in menus %}
+            <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
+                {% for categories, crepes in menu %}
+                    <h2> {{ categories }} </h2>
+                    <ul>
+                        {% for crepe in crepes %}
+                            <li> {{ crepe.description }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
             </div>
-            {% endfor %}
-            <img src="http://via.placeholder.com/300x300" class="img-responsive crêpe" alt="crêpe">
-        </div>
-
-        <div class="tab-pane" id="2a">
-            <div class="tab-content clearfix">
-                <div class="tab-pane active" id="1a">
-                    {% for foodSugar in foodsSugar %}
-                        <div class="media">
-                            <div class="media-body">
-                                <p class="carte">{{ foodSugar.description }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    <img src="http://via.placeholder.com/300x300" id="crêpe" class="img-responsive" alt="crêpe">
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
-{% include "footer.html.twig" %}
+
+{% include 'footer.html.twig' %}

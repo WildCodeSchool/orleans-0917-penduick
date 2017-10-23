@@ -3,12 +3,12 @@
         <div class="container" id="whoarewe">
             <div class="row">
                 <div>
-                    <h1 class="titleHeader">{{ compagny.header | raw }}</h1>
+                    <h1 class="titleHeader">{{ company.header | raw }}</h1>
                     <hr/>
-                    <p>{{ compagny.header_2 | raw }}</p>
+                    <p>{{ company.header_2 | raw }}</p>
                     <hr/>
-                    <a href="?route=carte" button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></a>
-                    {{ compagny.event | raw }}
+                    <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
+                    {{ company.event | raw }}
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
 
                 <div class="row">
                     <div>
-                        <p class="aboutUs">{{ compagny.about_us | raw }}</p>
+                        <p class="aboutUs">{{ company.about_us | raw }}</p>
                     </div>
                 </div>
             </div>

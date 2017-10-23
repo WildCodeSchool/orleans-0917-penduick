@@ -3,8 +3,9 @@
 namespace AuPenDuick\Controller;
 
 use AuPenDuick\Model\CategoryManager;
-use AuPenDuick\Model\CompagnyManager;
+use AuPenDuick\Model\CompanyManager;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\TypeManager;
 
 /**
  * Class HomeController
@@ -14,37 +15,60 @@ class HomeController extends Controller
 {
     public function homeAction()
     {
-        // Appel Compagny (Model)
-        $compagnyManager = new CompagnyManager();
-        $compagnyManagerContent = $compagnyManager->findAllCompagny();
+        // Appel company (Model)
+        $companyManager = new companyManager();
+        $companyManagerContent = $companyManager->findAllcompany();
 
         // Appel de la vue
         return $this->twig->render('home.html.twig', [
-            'compagny' => $compagnyManagerContent[0],
+            'company' => $companyManagerContent[0],
         ]);
     }
 
     public function menuContentAction()
     {
-        // Appel Compagny (Model)
-        $compagnyManager = new CompagnyManager();
-        $compagnyManagerContent = $compagnyManager->findAllCompagny();
+        // Récupération de tous les types (salé,sucré)
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
 
-        // Appel Foodt (Model)
-        $foodManager = new FoodManager();
-        $foodSaltManagerContent = $foodManager->findAllFoodSalt();
-        $foodSugarManagerContent = $foodManager->findAllFoodSugar();
+        $menus = [];
 
-        // Appel Category (Model)
-        $categoryManager = new CategoryManager();
-        $categoryManagerContent = $categoryManager->findAllCategory();
+        // Récupération des catégories en fonction de l'id du type
+        foreach ($types as $type) {
+            $categoryManager = new CategoryManager();
+            $categories = $categoryManager->findByType($type->getId());
 
-        // Appel de la vue
+            // Récupération des crêpes en fonction de l'id de la catégorie
+            foreach ($categories as $category) {
+                $foodManager = new FoodManager();
+                $foods = $foodManager->findByCategory($category->getId());
+
+                // Tableau des crêpes en fonction du type et de la catégorie
+                foreach ($foods as $food) {
+                    $menus[$type->getConsistency()][$category->getName()][] = $food;
+                }
+            }
+        }
+
         return $this->twig->render('menucontent.html.twig', [
-            'compagny' => $compagnyManagerContent[0],
-            'foodsSalt' => $foodSaltManagerContent,
-            'foodsSugar' => $foodSugarManagerContent,
-            'category' => $categoryManagerContent,
+            'menus' => $menus,
         ]);
+
+
+        // Appel Food by Category (Model)
+
+
+        // Appel Category by Type (Model)
+
+
+        // Vous devriez recupérer les types, puis categ, puis plats et construire un tableau du style
+        // $res[$type_id][$categ_id][] = $plat
+        // puis envoyer $res à votre vue et faire la mise en page dans la vue en bouclant dessus
+
+        //
+
+        // Boucle sur le tableau
+
+
     }
 }

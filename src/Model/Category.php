@@ -6,7 +6,8 @@ namespace AuPenDuick\Model;
 class Category
 {
     private $id;
-    private $text;
+    private $name;
+    private $type_id;
 
     /**
      * @return mixed
@@ -23,24 +24,42 @@ class Category
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getText()
+    public function getName()
     {
-        return $this->text;
+        return $this->name;
     }
 
     /**
-     * @param mixed $text
+     * @param mixed $name
      * @return Category
      */
-    public function setText($text)
+    public function setName($name)
     {
-        $this->text = $text;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTypeId()
+    {
+        return $this->type_id;
+    }
+
+    /**
+     * @param mixed $type_id
+     * @return Category
+     */
+    public function setTypeId($type_id)
+    {
+        $this->id = $type_id;
+
         return $this;
     }
 }
