@@ -35,8 +35,6 @@ class HomeController extends Controller
         $foodSaltManagerContent = $foodManager->findAllFood(1);
         $foodSugarManagerContent = $foodManager->findAllFood(2);
 
-        var_dump($foodSugarManagerContent);
-
         // Appel Category (Model)
         $categoryManager = new CategoryManager();
         $categoryManagerContent = $categoryManager->findAllCategory();
@@ -48,5 +46,5 @@ class HomeController extends Controller
             'foodsSugar' => $foodSugarManagerContent,
             'category' => $categoryManagerContent,
         ]);
-}
+    }
 }
