@@ -5,9 +5,8 @@ namespace AuPenDuick\Model;
 class Food
 {
     private $id;
+    private $title;
     private $description;
-    private $price;
-    private $category_id;
 
     /**
      * @return mixed
@@ -24,6 +23,24 @@ class Food
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     * @return Food
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
         return $this;
     }
 
@@ -80,4 +97,8 @@ class Food
         $this->category_id = $category_id;
         return $this;
     }
+    private $price;
+    private $category_id;
+
+
 }

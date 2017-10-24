@@ -21,7 +21,8 @@
                     <h2> {{ categories }} </h2>
                     <ul>
                         {% for crepe in crepes %}
-                            <li> {{ crepe.description }}</li>
+                            <h4> {{ crepe.title }}</h4>
+                            <li>{{ crepe.description }} </li>
                         {% endfor %}
                     </ul>
                 {% endfor %}
