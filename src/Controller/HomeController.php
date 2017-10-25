@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function homeAction()
     {
         // Appel company (Model)
+
         $companyManager = new CompanyTextsManager();
         $companyManagerContent = $companyManager->findAllcompany();
 
@@ -59,6 +60,7 @@ class HomeController extends Controller
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
+
         ]);
     }
 }

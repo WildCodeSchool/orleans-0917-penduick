@@ -67,6 +67,7 @@ class Category
     /**
      * @return mixed
      */
+
     public function getTypeId()
     {
         return $this->type_id;
@@ -81,5 +82,4 @@ class Category
         $this->type_id = $type_id;
         return $this;
     }
-
 }
