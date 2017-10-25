@@ -33,9 +33,6 @@ class HomeController extends Controller
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
-        $categoryManager = new CategoryManager();
-        $categoriesSelect = $categoryManager->findAll();
-
         $menus = [];
 
         // Récupération des catégories en fonction de l'id du type
@@ -57,7 +54,6 @@ class HomeController extends Controller
 
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
-            'categoriesSelect' => $categoriesSelect,
         ]);
     }
 
