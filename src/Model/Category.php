@@ -7,6 +7,7 @@ class Category
 {
     private $id;
     private $name;
+    private $picture;
     private $type_id;
 
     /**
@@ -24,7 +25,6 @@ class Category
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -43,10 +43,30 @@ class Category
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     * @return Category
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getTypeId()
     {
         return $this->type_id;
@@ -58,8 +78,8 @@ class Category
      */
     public function setTypeId($type_id)
     {
-        $this->id = $type_id;
-
+        $this->type_id = $type_id;
         return $this;
     }
+
 }

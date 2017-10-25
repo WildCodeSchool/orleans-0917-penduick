@@ -3,7 +3,8 @@
 namespace AuPenDuick\Controller;
 
 use AuPenDuick\Model\CategoryManager;
-use AuPenDuick\Model\CompanyManager;
+use AuPenDuick\Model\CompanyPicturesManager;
+use AuPenDuick\Model\CompanyTextsManager;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\TypeManager;
 
@@ -16,7 +17,7 @@ class HomeController extends Controller
     public function homeAction()
     {
         // Appel company (Model)
-        $companyManager = new companyManager();
+        $companyManager = new CompanyTextsManager();
         $companyManagerContent = $companyManager->findAllcompany();
 
         // Appel de la vue
@@ -27,6 +28,13 @@ class HomeController extends Controller
 
     public function menuContentAction()
     {
+        // Récupération des photos de la carte
+        $companyPicturesManager = new CompanyPicturesManager();
+        $pictures = $companyPicturesManager->findAll();
+        foreach ($pictures as $picture) {
+            $listPictures[] = $picture;
+        }
+
         // Récupération de tous les types (salé,sucré)
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
@@ -48,9 +56,9 @@ class HomeController extends Controller
                 }
             }
         }
-
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
+            'pictures' => $listPictures,
         ]);
     }
 }

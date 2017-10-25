@@ -1,5 +1,6 @@
+db/
+fournitures/
 vendor/
 composer.json
 connect.php
-fournitures/
 src/View/admin.html.twig

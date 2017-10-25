@@ -1,8 +1,9 @@
 {% include "head.html.twig" %}
 {% include "header.html.twig" %}
 
+<section id="menu" class="">
 <div class="container">
-    <h1 class="menu">LA CARTE </h1>
+    <h1 class="titreMenu">LA CARTE</h1>
 </div>
 
 <div id="exTab1" class="container">
@@ -14,21 +15,37 @@
         {% endfor %}
     </ul>
 
-    <div class="tab-content clearfix">
-        {% for consistency, menu in menus %}
-            <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
-                {% for categories, crepes in menu %}
-                    <h2> {{ categories }} </h2>
-                    <ul>
-                        {% for crepe in crepes %}
-                            <h4> {{ crepe.title }}</h4>
-                            <li>{{ crepe.description }} </li>
+    <div class="rowP">
+        <div class="col-xs-9">
+            <div class="tab-content clearfix">
+                {% for consistency, menu in menus %}
+                    <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
+                        {% for categories, crepes in menu %}
+                            <div class="col-xs-12">
+                                <h2> {{ categories }} </h2>
+                                <ul>
+                                    {% for crepe in crepes %}
+                                        <h4 class="category">{{ crepe.title }}</h4>
+                                        <span class="description">{{ crepe.description }}</span>
+                                        <span class="price">... {{ crepe.price }}€</span>
+                                        </span>
+                                    {% endfor %}
+                                    {{ categories }}
+                                </ul>
+                            </div>
                         {% endfor %}
-                    </ul>
+
+                    </div>
                 {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+        <div class="col-xs-3 picture">
+            {% for picture in pictures %}
+                <img src="pictures/{{ picture.name }}{{ picture.extension }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
+            {% endfor %}
+        </div>
     </div>
 </div>
+</section>
 
 {% include 'footer.html.twig' %}
