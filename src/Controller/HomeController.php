@@ -60,7 +60,11 @@ class HomeController extends Controller
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
-
         ]);
+    }
+
+    public function adminAction()
+    {
+        return $this->twig->render('Admin/chemin.html.twig');
     }
 }
