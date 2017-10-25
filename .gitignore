@@ -3,5 +3,4 @@ fournitures/
 vendor/
 composer.json
 connect.php
-src/View/admin.html.twig
-
+src/View/admin/

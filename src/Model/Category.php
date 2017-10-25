@@ -2,7 +2,6 @@
 
 namespace AuPenDuick\Model;
 
-
 class Category
 {
     private $id;
