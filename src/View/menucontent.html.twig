@@ -1,0 +1,33 @@
+{% include "head.html.twig" %}
+{% include "header.html.twig" %}
+
+<div class="container">
+    <h1 class="menu">LA CARTE </h1>
+</div>
+
+<div id="exTab1" class="container">
+    <ul class="nav nav-pills">
+        {% for consistency, menu in menus %}
+            <li class="{{ loop.first ? 'active' }}">
+                <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="tab-content clearfix">
+        {% for consistency, menu in menus %}
+            <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
+                {% for categories, crepes in menu %}
+                    <h2> {{ categories }} </h2>
+                    <ul>
+                        {% for crepe in crepes %}
+                            <li> {{ crepe.description }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'footer.html.twig' %}
