@@ -22,6 +22,10 @@
                         {% for crepe in crepes %}
                             <h4>{{ crepe.title }}</h4>
                             <li> {{ crepe.description }}</li>
+                            <form action="?route=deleteCrepe" method="post">
+                                <input type="hidden" name="id" value="{{ crepe.id }}"/>
+                                <button type="submit">Delete</button>
+                            </form>
                         {% endfor %}
                     </ul>
                 {% endfor %}
