@@ -142,12 +142,9 @@ class AdminController extends Controller
 
     public function addPictureAction()
     {
-        $upload = '';
+        $error = '';
 
         if (!empty($_FILES['upload'])) {
-
-            // Récuparation de l'id
-            // TO DO
 
             // Nettoyage du name
             $_FILES['upload']['name'] = strtr($_FILES['upload']['name'], 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY', 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
@@ -160,22 +157,24 @@ class AdminController extends Controller
             if (!in_array($extension_upload, $extensions_valids)) {
                 $error = 'le fichier n\'est pas du bon format';
 
-                // Vérification de la taille
+            // Vérification de la taille
             } elseif ($_FILES['upload']['size'] >= 5000000)  {
                 $error = 'la taille de l\'image est trop lourde';
 
-                // Tout est bon
+            // Tout est bon
             } else {
+
+                // Insert fichier upload
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
-                // Update via Model
-                $upload = new updateCompanyPictureById();
-                $upload->updateCompanyPictureById(id, $_FILES['upload']['name'], $extension_upload);
+                // Insert Bdd via Model
+                $upload = new CompanyPictureManager();
+                $upload->insertCompanyPicture($_FILES['upload']['name'], $extension_upload);
             }
         }
 
         return $this->twig->render('Admin/addPicture.html.twig', [
-            'uploadFile' => $upload,
+            'error' => $error,
         ]);
     }
 
