@@ -3,7 +3,7 @@
 namespace AuPenDuick\Model;
 
 
-class CompanyPictures
+class CompanyPicture
 {
     public $id;
     public $name;
@@ -19,7 +19,7 @@ class CompanyPictures
 
     /**
      * @param mixed $id
-     * @return CompanyPictures
+     * @return CompanyPicture
      */
     public function setId($id)
     {
@@ -37,7 +37,7 @@ class CompanyPictures
 
     /**
      * @param mixed $name
-     * @return CompanyPictures
+     * @return CompanyPicture
      */
     public function setName($name)
     {
@@ -55,7 +55,7 @@ class CompanyPictures
 
     /**
      * @param mixed $extension
-     * @return CompanyPictures
+     * @return CompanyPicture
      */
     public function setExtension($extension)
     {

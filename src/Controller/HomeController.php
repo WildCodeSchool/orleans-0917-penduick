@@ -3,8 +3,8 @@
 namespace AuPenDuick\Controller;
 
 use AuPenDuick\Model\CategoryManager;
-use AuPenDuick\Model\CompanyPicturesManager;
-use AuPenDuick\Model\CompanyTextsManager;
+use AuPenDuick\Model\CompanyPictureManager;
+use AuPenDuick\Model\CompanyTextManager;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\TypeManager;
 
@@ -17,8 +17,7 @@ class HomeController extends Controller
     public function homeAction()
     {
         // Appel company (Model)
-
-        $companyManager = new CompanyTextsManager();
+        $companyManager = new CompanyTextManager();
         $companyManagerContent = $companyManager->findAllcompany();
 
         // Appel de la vue
@@ -30,7 +29,7 @@ class HomeController extends Controller
     public function menuContentAction()
     {
         // Récupération des photos de la carte
-        $companyPicturesManager = new CompanyPicturesManager();
+        $companyPicturesManager = new CompanyPictureManager();
         $pictures = $companyPicturesManager->findAll();
         foreach ($pictures as $picture) {
             $listPictures[] = $picture;

@@ -8,12 +8,12 @@
 
 namespace AuPenDuick\Model;
 
-class CompanyPicturesManager extends EntityManager
+class CompanyPictureManager extends EntityManager
 {
     public function findAll()
     {
         $query = "SELECT * FROM companyPictures";
         $statement = $this->pdo->query($query);
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyPictures::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyPicture::class);
     }
 }
