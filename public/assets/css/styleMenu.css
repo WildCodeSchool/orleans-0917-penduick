@@ -1,0 +1,78 @@
+.titreMenu {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 4vw;
+}
+
+/* Onglets */
+.nav-pills > li > a {
+    width: 145px;
+    text-align: center;
+    border: 2px solid black;
+    background-color: lightgreen;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Onglet actif */
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
+    color: black;
+    text-decoration: underline;
+    background-color: rgb(78, 192, 80);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.tab-content {
+    color: black;
+    margin-left: -15px;
+    margin-bottom: 15px;
+    background-color: rgb(78, 192, 80);
+    width: auto;
+    border: 2px solid black;
+}
+
+a {
+    color: black;
+}
+
+a:hover, a:focus {
+    color: black;
+}
+
+.category {
+    margin-top: 25px;
+}
+
+.description {
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.price {
+    padding-right: 10px;
+    float:right;
+    Font-Weight: bold;
+}
+
+/* Photos de coté */
+.rowP {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.picture {
+    margin-left: -20px;
+    margin-bottom: 15px;
+    background-color: rgb(78, 192, 80);
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.pictureDetail {
+    margin-top: 100%;
+    border: 1px solid black;
+}
