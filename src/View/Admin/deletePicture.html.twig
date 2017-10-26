@@ -1,0 +1,36 @@
+{% include "head.html.twig" %}
+{% include "Admin/header.html.twig" %}
+
+<h1>Supprimer des photos</h1>
+
+{{ uploadInfo }}
+
+<table border="1">
+    <tr>
+        <th>Nom de l'image</th>
+        <th>Image</th>
+        <th>Action</th>
+    </tr>
+    {% for picture in listPictures %}
+        <tr>
+            <td>
+                {{ picture.name }}
+            </td>
+            <td>
+                <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}" alt="{{ picture.name }}"
+                     style="width:300px"/>
+            </td>
+            <td>
+                <form id="{{ picture.id }}" method="post" action="#">
+                    <input type="text" name="delete" value="{{ picture.id }}" style="display:none">
+                    <input type="submit" value="Supprimer">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+</table>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
