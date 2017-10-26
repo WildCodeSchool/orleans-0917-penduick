@@ -22,4 +22,5 @@ if (!empty($route) && $route == 'carte') {
     echo $foodController->deleteCrepe();
 }else {
     $foodController = new \AuPenDuick\Controller\HomeController();
-    echo $foodController->homeAction();}
+    echo $foodController->homeAction();
+}
