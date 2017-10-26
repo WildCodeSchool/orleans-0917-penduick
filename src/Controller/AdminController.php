@@ -147,8 +147,6 @@ class AdminController extends Controller
         if (!empty($_FILES['upload'])) {
 
             // Nettoyage du name
-            $_FILES['upload']['name'] = strtr($_FILES['upload']['name'], 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY', 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
-            $_FILES['upload']['name'] = preg_replace('/([^.a-z0-9]+)/i', '-', $_FILES['upload']['name']);
             $_FILES['upload']['name'] = uniqid() . $_FILES['upload']['name'];
 
             // Vérification du type
@@ -158,7 +156,7 @@ class AdminController extends Controller
                 $error = 'le fichier n\'est pas du bon format';
 
             // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= 5000000)  {
+            } elseif ($_FILES['upload']['size'] >= 1000000)  {
                 $error = 'la taille de l\'image est trop lourde';
 
             // Tout est bon
