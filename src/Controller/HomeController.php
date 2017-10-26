@@ -3,7 +3,8 @@
 namespace AuPenDuick\Controller;
 
 use AuPenDuick\Model\CategoryManager;
-use AuPenDuick\Model\CompanyManager;
+use AuPenDuick\Model\CompanyPictureManager;
+use AuPenDuick\Model\CompanyTextManager;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\TypeManager;
 
@@ -16,7 +17,7 @@ class HomeController extends Controller
     public function homeAction()
     {
         // Appel company (Model)
-        $companyManager = new companyManager();
+        $companyManager = new CompanyTextManager();
         $companyManagerContent = $companyManager->findAllcompany();
 
         // Appel de la vue
@@ -24,15 +25,23 @@ class HomeController extends Controller
             'company' => $companyManagerContent[0],
         ]);
     }
+
     public function menuContentAction()
     {
+        // Récupération des photos de la carte
+        $companyPicturesManager = new CompanyPictureManager();
+        $pictures = $companyPicturesManager->findAll();
+        foreach ($pictures as $picture) {
+            $listPictures[] = $picture;
+        }
+
         // Récupération de tous les types (salé,sucré)
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
-        $menus = [];
 
         // Récupération des catégories en fonction de l'id du type
+        $menus = [];
         foreach ($types as $type) {
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->findByType($type->getId());
@@ -50,6 +59,12 @@ class HomeController extends Controller
         }
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
+            'pictures' => $listPictures,
         ]);
+    }
+
+    public function adminAction()
+    {
+        return $this->twig->render('Admin/chemin.html.twig');
     }
 }
