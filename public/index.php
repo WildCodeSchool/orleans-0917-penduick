@@ -9,13 +9,12 @@ if (!empty($_GET['route'])) {
 }
 
 if (!empty($route) && $route == 'carte') {
-    $personController = new \AuPenDuick\Controller\HomeController();
-    echo $personController->menuContentAction();
+    $foodController = new \AuPenDuick\Controller\HomeController();
+    echo $foodController->menuContentAction();
 } elseif (!empty($route) && $route == 'admin') {
-    $personController = new \AuPenDuick\Controller\HomeController();
-    echo $personController->adminAction();
+    $foodController = new \AuPenDuick\Controller\HomeController();
+    echo $foodController->menuAdminAction();git status
 } else {
-    $personController = new \AuPenDuick\Controller\HomeController();
-    echo $personController->homeAction();
+    $foodController = new \AuPenDuick\Controller\HomeController();
+    echo $foodController->homeAction();
 }
-

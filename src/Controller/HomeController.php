@@ -2,11 +2,13 @@
 
 namespace AuPenDuick\Controller;
 
-use AuPenDuick\Model\CategoryManager;
-use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CompanyTextManager;
+use AuPenDuick\Model\CompanyPictureManager;
+use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\Food;
 use AuPenDuick\Model\TypeManager;
+
 
 /**
  * Class HomeController
@@ -26,6 +28,7 @@ class HomeController extends Controller
         ]);
     }
 
+    // Carte visible par le public
     public function menuContentAction()
     {
         // Récupération des photos de la carte
@@ -57,14 +60,41 @@ class HomeController extends Controller
                 }
             }
         }
+
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
         ]);
     }
 
-    public function adminAction()
+    // Carte visible par l'admin avec bouton admin
+    public function menuAdminAction()
     {
-        return $this->twig->render('Admin/chemin.html.twig');
+        // Récupération de tous les types (salé,sucré)
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        // Récupération des catégories en fonction de l'id du type
+        $menus = [];
+        foreach ($types as $type) {
+            $categoryManager = new CategoryManager();
+            $categories = $categoryManager->findByType($type->getId());
+
+            // Récupération des crêpes en fonction de l'id de la catégorie
+            foreach ($categories as $category) {
+                $foodManager = new FoodManager();
+                $foods = $foodManager->findByCategory($category->getId());
+
+                // Tableau des crêpes en fonction du type et de la catégorie
+                foreach ($foods as $food) {
+                    $menus[$type->getConsistency()][$category->getName()][] = $food;
+                }
+            }
+        }
+
+        return $this->twig->render('Admin/menuAdmin.html.twig', [
+            'menus' => $menus,
+        ]);
     }
+
 }
