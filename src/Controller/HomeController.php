@@ -39,6 +39,7 @@ class HomeController extends Controller
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
+
         // Récupération des catégories en fonction de l'id du type
         $menus = [];
         foreach ($types as $type) {

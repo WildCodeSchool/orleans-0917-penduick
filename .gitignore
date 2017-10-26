@@ -4,4 +4,3 @@ vendor/
 composer.json
 connect.php
 src/View/Admin/admin.html.twig
-
