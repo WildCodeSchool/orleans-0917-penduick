@@ -13,9 +13,8 @@ if (!empty($route) && $route == 'carte') {
     echo $personController->menuContentAction();
 } elseif (!empty($route) && $route == 'admin') {
     $personController = new \AuPenDuick\Controller\HomeController();
-    echo $personController->adminAction();
+    echo $personController->menuAdminAction();
 } else {
     $personController = new \AuPenDuick\Controller\HomeController();
     echo $personController->homeAction();
 }
-
