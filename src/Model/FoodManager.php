@@ -2,7 +2,6 @@
 
 namespace AuPenDuick\Model;
 
-
 class FoodManager extends EntityManager
 {
     public function findByCategory($id)
