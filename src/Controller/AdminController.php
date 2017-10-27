@@ -11,6 +11,8 @@ use AuPenDuick\Model\TypeManager;
 
 class AdminController extends Controller
 {
+    const MaxSize = 1000000;
+
     public function adminAction()
     {
         return $this->twig->render('Admin/admin.html.twig');
@@ -117,20 +119,28 @@ class AdminController extends Controller
             // appel Class
             $upload = new CompanyPictureManager();
 
-            // Delete de l'image dans le dossier upload
+            // Nom du fichier
             $name = $upload->findOne($id);
             $fullName = $name->getName();
             $fullName .= $name->getExtension();
-             unlink('pictures/upload/' . $fullName);
 
-            // Delete via Model
-            $upload->deleteById($id);
+            // Vérification de la présence du fichier
+            if (file_exists('pictures/upload/' . $fullName)) {
 
-            // Message d'informations
-            $uploadInfo = 'Suppression de l\'image réussie';
+                // Delete
+                $upload->deleteById($id);
+                unlink('pictures/upload/' . $fullName);
+
+                // Message d'informations
+                $uploadInfo = 'Suppression de l\'image réussie';
+
+            } else {
+                // Message d'informations
+                $uploadInfo = 'L\'image n\' pas été supprimée à car elle n\'existe pas';
+            }
         }
 
-        // Récupération de la lste des images
+        // Récupération de la liste des images
         $companyPictureManager = new CompanyPictureManager();
         $listPictures = $companyPictureManager->findAll();
 
@@ -151,12 +161,13 @@ class AdminController extends Controller
 
             // Vérification du type
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
-            $extension_upload = strtolower(substr(strrchr($_FILES['upload']['name'], '.'), 1));
+            $extension_upload = pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION);
+
             if (!in_array($extension_upload, $extensions_valids)) {
                 $error = 'le fichier n\'est pas du bon format';
 
             // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= 1000000)  {
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
                 $error = 'la taille de l\'image est trop lourde';
 
             // Tout est bon
@@ -167,7 +178,7 @@ class AdminController extends Controller
 
                 // Insert Bdd via Model
                 $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], $extension_upload);
+                $upload->insertCompanyPicture($_FILES['upload']['name'], '.'.$extension_upload);
             }
         }
 
