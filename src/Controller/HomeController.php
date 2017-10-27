@@ -21,7 +21,10 @@ class HomeController extends Controller
         $companyManager = new CompanyTextManager();
         $companyManagerContent = $companyManager->findAllcompany();
 
-        // Appel de la vue
+        // Appel
+
+
+        // Return
         return $this->twig->render('home.html.twig', [
             'company' => $companyManagerContent[0],
         ]);

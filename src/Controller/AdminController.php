@@ -119,17 +119,13 @@ class AdminController extends Controller
             // appel Class
             $upload = new CompanyPictureManager();
 
-            // Nom du fichier
-            $name = $upload->findOne($id);
-            $fullName = $name->getName();
-            $fullName .= $name->getExtension();
-
             // Vérification de la présence du fichier
-            if (file_exists('pictures/upload/' . $fullName)) {
+            $name = $upload->findOne($id);
+            if (file_exists('pictures/upload/' . $name->getName())) {
 
                 // Delete
                 $upload->deleteById($id);
-                unlink('pictures/upload/' . $fullName);
+                unlink('pictures/upload/' . $name->getName());
 
                 // Message d'informations
                 $uploadInfo = 'Suppression de l\'image réussie';
