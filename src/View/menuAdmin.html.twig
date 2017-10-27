@@ -1,8 +1,7 @@
 {% include "head.html.twig" %}
 
-<section id="menu" class="">
 <div class="container">
-    <h1 class="titreMenu">LA CARTE</h1>
+    <h1 class="menu">LA CARTE </h1>
 </div>
 
 <div id="exTab1" class="container">
@@ -22,19 +21,16 @@
                     <ul>
                         {% for crepe in crepes %}
                             <li> {{ crepe.description }}</li>
+                            <form action="?route=deleteCrepe" method="post">
+                                <input type="hidden" name="id" value="{{ crepe.id }}"/>
+                                <button type="submit">Delete</button>
+                            </form>
                         {% endfor %}
-                    </div>
+                    </ul>
                 {% endfor %}
             </div>
-        </div>
-        <div class="col-xs-3 picture">
-            {% for picture in pictures %}
-                <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
 </div>
-</section>
 
 {% include 'footer.html.twig' %}
-

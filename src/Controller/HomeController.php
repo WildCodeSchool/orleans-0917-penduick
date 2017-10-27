@@ -6,6 +6,7 @@ use AuPenDuick\Model\CompanyTextManager;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\Food;
 use AuPenDuick\Model\TypeManager;
 
 /**
@@ -63,5 +64,4 @@ class HomeController extends Controller
             'pictures' => $listPictures,
         ]);
     }
-
 }

@@ -1,0 +1,36 @@
+{% if errors %}
+    <ul class="alert alert-danger">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form action="index.php?route=addCrepe" method="post">
+
+    <fieldset class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" value="{{ crepe.title }}"/>
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" id="description" value="{{ crepe.description }}"/>
+        <label for="price">Price</label>
+        <input type="number" step="0.1" class="form-control" name="price" id="price" value="{{ crepe.price }}"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="category">Category</label>
+        <select name="category" id="category" class="form-control">
+            {% for category in categories %}
+                <option {{ category == category.id ? 'selected' }}
+                        value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">
+
+        <span class="glyphicon glyphicon-plus"></span>Add crepe
+    </button>
+</form>
+
+
