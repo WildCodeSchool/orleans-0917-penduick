@@ -5,3 +5,13 @@
 .sizePicture{
     width:300px
 }
+
+.tabDelete {
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.tabDelete tr, td, th {
+    border: 1px solid black;
+    text-align: center;
+}

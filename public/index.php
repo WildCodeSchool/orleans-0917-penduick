@@ -13,12 +13,12 @@ if (!empty($_GET['route'])) {
 if ($route == 'admin') {
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->adminAction();
-} elseif ($route == 'deleteMenu') {
+} elseif ($route == 'menuAdmin') {
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->deleteMenuAction();
-} elseif ($route == 'updatePrice'){
+    echo $personController->menuAction();
+} elseif ($route == 'updatePlat'){
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->updatePriceAction();
+    echo $personController->updatePlatAction();
 } elseif ($route == 'addType'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addTypeAction();

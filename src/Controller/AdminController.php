@@ -18,8 +18,15 @@ class AdminController extends Controller
         return $this->twig->render('Admin/admin.html.twig');
     }
 
-    public function deleteMenuAction()
+    public function menuAction()
     {
+        // Récupération des photos de la carte
+        $companyPicturesManager = new CompanyPictureManager();
+        $pictures = $companyPicturesManager->findAll();
+        foreach ($pictures as $picture) {
+            $listPictures[] = $picture;
+        }
+
         // Récupération de tous les types (salé,sucré)
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
@@ -40,15 +47,22 @@ class AdminController extends Controller
                     $menus[$type->getConsistency()][$category->getName()][] = $food;
                 }
             }
+            if (!empty($_POST['id'])) {
+                $FoodManager = new FoodManager();
+                $food = $FoodManager->findOneFood($_POST['id']);
+                $FoodManager->deleteFood($food);
+                header('Location: index.php?route=menuAdmin');
+            }
         }
 
-        return $this->twig->render('Admin/deleteMenu.html.twig', [
+        return $this->twig->render('Admin/menuAdmin.html.twig', [
             'menus' => $menus,
+            'pictures' => $listPictures,
         ]);
     }
 
-    public function updatePriceAction(){
-        return $this->twig->render('Admin/updatePrice.html.twig');
+    public function updatePlatAction(){
+        return $this->twig->render('Admin/updatePlat.html.twig');
     }
 
     public function addTypeAction(){
@@ -93,6 +107,8 @@ class AdminController extends Controller
 
                 $foodManager = new FoodManager();
                 $foodManager->insertFood($crepe);
+
+                header('Location: index.php?route=menuAdmin');
             }
         }
 
