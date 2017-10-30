@@ -1,40 +1,50 @@
 {% include "head.html.twig" %}
+{% include 'header.html.twig' %}
+
 
 <section id="menu" class="">
-<div class="container">
-    <h1 class="titreMenu">LA CARTE</h1>
-</div>
+    <div class="container">
+        <h1 class="titreMenu">LA CARTE</h1>
+    </div>
 
-<div id="exTab1" class="container">
-    <ul class="nav nav-pills">
-
-        {% for consistency, menu in menus %}
-            <li class="{{ loop.first ? 'active' }}">
-                <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <div class="tab-content clearfix">
-        {% for consistency, menu in menus %}
-            <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
-                {% for category, crepes in menu %}
-                    <h2> {{ category }} </h2>
-                    <ul>
-                        {% for crepe in crepes %}
-                            <li> {{ crepe.description }}</li>
-                        {% endfor %}
-                    </div>
+    <div id="exTab1" class="container">
+        <ul class="nav nav-pills">
+            {% for consistency, menu in menus %}
+                <li class="{{ loop.first ? 'active' }}">
+                    <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="rowP">
+            <div class="col-xs-9">
+                <div class="tab-content clearfix">
+                    {% for consistency, menu in menus %}
+                        <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
+                            {% for categories, crepes in menu %}
+                                <div class="col-xs-12">
+                                    <h2> {{ categories }} </h2>
+                                    <ul>
+                                        {% for crepe in crepes %}
+                                            <h4 class="category">{{ crepe.title }}</h4>
+                                            <span class="description">{{ crepe.description }}</span>
+                                            <span class="price">... {{ crepe.price }}€</span>
+                                            </span>
+                                        {% endfor %}
+                                        {{ categories }}
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-xs-3 picture">
+                {% for picture in pictures %}
+                    <img src="pictures/upload/{{ picture.name }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
                 {% endfor %}
             </div>
         </div>
-        <div class="col-xs-3 picture">
-            {% for picture in pictures %}
-                <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
-            {% endfor %}
-        </div>
     </div>
-</div>
 </section>
 
 {% include 'footer.html.twig' %}
-
