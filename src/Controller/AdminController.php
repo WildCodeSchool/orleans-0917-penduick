@@ -133,7 +133,7 @@ class AdminController extends Controller
                 $categoryManager = new CategoryManager();
                 $categoryManager->insertCategory($category);
 
-                header('Location: index.php?route=menuAdmin');
+                header('Location: index.php?route=addCategory');
             }
         }
 
@@ -155,7 +155,7 @@ class AdminController extends Controller
             $CategoryManager = new CategoryManager();
             $category = $CategoryManager->findOneCategory($_POST['id']);
             $CategoryManager->deleteCategory($category);
-            header('Location: index.php?route=menuAdmin');
+            header('Location: index.php?route=addCategory');
         }
     }
 
