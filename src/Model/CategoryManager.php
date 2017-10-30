@@ -18,4 +18,5 @@ class CategoryManager extends EntityManager
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
     }
+
 }

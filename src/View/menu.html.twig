@@ -1,41 +1,28 @@
 <section id="menu" class="fondMenu">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
-                <h1 class="titleMenu">
-                    <img src="pictures/couverts.png" class="logoMenu" alt="Couverts">
-                    <span class="yellow">LA CARTE</span>
-                </h1>
-                <span class="titleStars">********************************************</span>
-                <br/>
-                <span class="titlePhrase">Découvrez la carte de votre restaurant Au Pen Duick <span class="yellow textShadow">&</span> ses spécialitées</span>
-            </div>
-            {#Vignette 1#}
-            <div class="col-xs-12 col-sm-12 col-md-4 col-xl-4 menuMargin">
-                <div class="vignettes">
-                    <div>
-                        <h3>GALETTES BIO SARRASIN</h3>
-                    </div>
-                    <img src="pictures/upload/menu-aperitif.jpg" alt="menu-aperitif"/>
+            {#TITRE#}
+            <h1 class="titleMenu">
+                <img src="pictures/couverts.png" class="logoMenu" alt="Couverts">
+                <span class="yellow">LA CARTE</span>
+            </h1>
+            <span class="titleStars">********************************************</span>
+            <br/>
+            <span class="titlePhrase">Découvrez la carte de votre restaurant Au Pen Duick <span class="yellow textShadow">&</span> ses spécialitées</span>
+            {#Catégories#}
+            <div class="row espaceCote">
+            {% for category in categories %}
+                <div class="col-sm-6 col-md-6 col-lg-4 vignettes">
+                    <a href="?route=carte">
+                        <figure class="thumbnail radius">
+                            <figcaption>
+                                <h3>{{ category.nameShortcut }}</h3>
+                            </figcaption>
+                            <img src="pictures/upload/{{ category.picture }}" alt="{{ category.picture }}" />
+                        </figure>
+                    </a>
                 </div>
-            </div>
-            {#Vignette 2#}
-            <div class="col-xs-12 col-sm-12 col-md-4 col-xl-4 menuMargin">
-                <div class="vignettes">
-                    <div>
-                        <h3>CRÊPES BIO FROMENT</h3>
-                    </div>
-                    <img src="pictures/upload/menu-crepes-bretonnes.jpg" alt="menu-crepes-bretonnes"/>
-                </div>
-            </div>
-            {#Vignette 3#}
-            <div class="col-xs-12 col-sm-12 col-md-4 col-xl-4 menuMargin">
-                <div class="vignettes">
-                    <div>
-                        <h3>CRÊPES FLAMBÉES</h3>
-                    </div>
-                    <img src="pictures/upload/menu-desserts.jpg" alt="menu-desserts"/>
-                </div>
+            {% endfor %}
             </div>
         </div><!-- row -->
     </div><!-- container -->
