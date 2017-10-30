@@ -1,9 +1,43 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
-<h1>Modifier les textes</h1>
+<h1 class="adminStyle">Modifier les textes</h1>
+<div class="container">
+    <p>{{ info }}</p>
+    <div class="row">
+        {% for text in texts %}
+            <h3>Texte de la page d'accueil</h3>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="header">En-tête</label>
+                    <input type="text" class="form-control" name="header" id="header" value="{{ text.header }}" />
+                </div>
 
-TO DO
+                <div class="form-group">
+                    <label for="header2">En-tête détaillé</label>
+                    <input type="text" class="form-control" name="header2" id="header2" value="{{ text.header_2 }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="event">Evènement</label>
+                    <input type="text" class="form-control" name="event" id="event" value="{{ text.event }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="aboutUs">A propos</label>
+                    <input type="text" class="form-control" name="aboutUs" id="aboutUs" value="{{ text.about_us }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" class="form-control" name="telephone" id="telephone" value="{{ text.telephone }}" />
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right">Valider les changements</button>
+            </form>
+        {% endfor %}
+    </div>
+</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

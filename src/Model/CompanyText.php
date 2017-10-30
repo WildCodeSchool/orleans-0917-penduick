@@ -6,6 +6,8 @@ class CompanyText
 {
     public $id;
     public $header;
+    public $header2;
+    public $event;
     public $aboutUs;
     public $telephone;
 
@@ -42,6 +44,42 @@ class CompanyText
     public function setHeader($header)
     {
         $this->header = $header;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeader2()
+    {
+        return $this->header2;
+    }
+
+    /**
+     * @param mixed $header_2
+     * @return CompanyText
+     */
+    public function setHeader2($header2)
+    {
+        $this->header2 = $header2;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param mixed $event
+     * @return CompanyText
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
         return $this;
     }
 
