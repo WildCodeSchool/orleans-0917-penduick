@@ -62,7 +62,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updatePlatAction(){
+    public function updatePlatAction()
+    {
         return $this->twig->render('Admin/updatePlat.html.twig');
     }
 
@@ -111,7 +112,8 @@ class AdminController extends Controller
         }
     }
 
-    public function addCategoryAction(){
+    public function addCategoryAction()
+    {
         return $this->twig->render('Admin/addCategory.html.twig');
     }
 
@@ -172,7 +174,7 @@ class AdminController extends Controller
         if (!empty($_POST['delete'])) {
 
             // Récup id via form
-            $id = (int) $_POST['delete'];
+            $id = (int)$_POST['delete'];
 
             // appel Class
             $upload = new CompanyPictureManager();
@@ -224,11 +226,11 @@ class AdminController extends Controller
             if (!in_array($extension_upload, $extensions_valids)) {
                 $error = 'le fichier n\'est pas du bon format';
 
-            // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $error = 'la taille de l\'image est trop lourde';
 
-            // Tout est bon
+                // Tout est bon
             } else {
 
                 // Insert fichier upload
@@ -236,7 +238,7 @@ class AdminController extends Controller
 
                 // Insert Bdd via Model
                 $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.'.$extension_upload);
+                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
             }
         }
 
@@ -245,7 +247,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
         return $this->twig->render('Admin/updateText.html.twig');
     }
 }

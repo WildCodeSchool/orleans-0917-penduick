@@ -1,35 +1,45 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
+<h1>Ajouter un type</h1>
+<hr>
+
 {% for type in types %}
-    {{ type.consistency }}
-    <form action="?route=deleteType" method="post">
-        <input type="hidden" name="id" value="{{ type.id }}"/>
-        <button type="submit">Delete</button>
-    </form>
+    <div class="col-xs-4">
+        {{ type.consistency }}
+        <form action="?route=deleteType" method="post">
+            <input type="hidden" name="id" value="{{ type.id }}"/>
+            <button type="submit">Supprimer</button>
+        </form>
+    </div>
 {% endfor %}
 
-{% if errors %}
-    <ul class="alert alert-danger">
-        {% for error in errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
-<form action="?route=addType" method="post">
+<div class="col-xs-12">
+    {% if errors %}
+        <ul class="alert alert-danger">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br/>
 
-    <fieldset class="form-group">
-        <label for="consistency">Type</label>
-        <input type="text" class="form-control" name="consistency" id="consistency"/>
-    </fieldset>
+    <form action="?route=addType" method="post">
 
-    <button type="submit" class="btn btn-success">
+        <fieldset class="form-group">
+            <label for="consistency">Type</label>
+            <input type="text" class="form-control" name="consistency" id="consistency"/>
+        </fieldset>
 
-        <span class="glyphicon glyphicon-plus"></span>Add type
-    </button>
-</form>
+        <button type="submit" class="btn btn-success">
 
-{% include "footer.html.twig" %}
+            <span class="glyphicon glyphicon-plus"></span>Ajouter un type
+        </button>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
