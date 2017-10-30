@@ -7,6 +7,7 @@ use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\Type;
 use AuPenDuick\Model\TypeManager;
 
 class AdminController extends Controller
@@ -65,8 +66,49 @@ class AdminController extends Controller
         return $this->twig->render('Admin/updatePlat.html.twig');
     }
 
-    public function addTypeAction(){
-        return $this->twig->render('Admin/addType.html.twig');
+    public function addTypeAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+        // creation d'un objet Type vide
+        $type = new Type();
+
+        if (!empty($_POST)) {
+            // traitement des erreurs éventuelles
+            $type->setConsistency($_POST['consistency']);
+
+            if (empty($_POST['consistency'])) {
+                $errors[] = 'Type is required';
+            }
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $typeManager = new TypeManager();
+                $typeManager->insertType($type);
+
+                header('Location: index.php?route=menuAdmin');
+            }
+        }
+
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addType.html.twig', [
+            'errors' => $errors,
+            'type' => $type,
+            'types' => $types,
+        ]);
+    }
+
+    public function deleteTypeAction()
+    {
+        if (!empty($_POST['id'])) {
+            $TypeManager = new TypeManager();
+            $type = $TypeManager->findOneType($_POST['id']);
+            $TypeManager->deleteType($type);
+            header('Location: index.php?route=menuAdmin');
+        }
     }
 
     public function addCategoryAction(){
