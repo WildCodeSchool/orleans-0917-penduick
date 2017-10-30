@@ -52,4 +52,10 @@ class CompanyPictureManager extends EntityManager
         $statement->execute();
     }
 
+    public function countAll()
+    {
+        $statement = $this->pdo->query('SELECT count(*) FROM companyPictures');
+        return $statement->fetchColumn();
+    }
+
 }

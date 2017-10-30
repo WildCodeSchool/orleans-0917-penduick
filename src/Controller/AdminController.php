@@ -12,6 +12,7 @@ use AuPenDuick\Model\TypeManager;
 class AdminController extends Controller
 {
     const MaxSize = 1000000;
+    const LimitPicture = 4;
 
     public function adminAction()
     {
@@ -148,9 +149,18 @@ class AdminController extends Controller
 
     public function addPictureAction()
     {
+        // Infos
         $addInfo = '';
 
-        if (!empty($_FILES['upload'])) {
+        // Maximum 4 images
+        $limitCompanyPictureManager = new CompanyPictureManager();
+        $nbPictures = $limitCompanyPictureManager->countAll();
+
+        if ($nbPictures >= self::LimitPicture) {
+            $addInfo = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
+        }
+
+        if (!empty($_FILES['upload']) && $addInfo == '') {
 
             // Nettoyage du name
             $_FILES['upload']['name'] = uniqid() . $_FILES['upload']['name'];
