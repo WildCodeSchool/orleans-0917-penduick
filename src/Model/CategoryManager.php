@@ -4,7 +4,6 @@ namespace AuPenDuick\Model;
 
 class CategoryManager extends EntityManager
 {
-
     public function findAll()
     {
         $statement = $this->pdo->query('SELECT * FROM category');

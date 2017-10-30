@@ -150,15 +150,15 @@ class AdminController extends Controller
     public function addPictureAction()
     {
         // Initialise
-        $addInfo = '';
+        $info = '';
         $companyPictureManager = new CompanyPictureManager();
 
         // Maximum 4 images
         if ($companyPictureManager->countAll() >= self::LimitPicture) {
-            $addInfo = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
+            $info = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
         }
 
-        if (!empty($_FILES['upload']) && $addInfo == '') {
+        if (!empty($_FILES['upload']) && $info == '') {
 
             // Nettoyage du name
             $_FILES['upload']['name'] = uniqid() . $_FILES['upload']['name'];
@@ -168,11 +168,11 @@ class AdminController extends Controller
             $extension_upload = pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION);
 
             if (!in_array($extension_upload, $extensions_valids)) {
-                $addInfo = 'le fichier n\'est pas du bon format';
+                $info = 'le fichier n\'est pas du bon format';
 
             // Vérification de la taille
             } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
-                $addInfo = 'la taille de l\'image est trop lourde';
+                $info = 'la taille de l\'image est trop lourde';
 
             // Tout est bon
             } else {
@@ -184,12 +184,12 @@ class AdminController extends Controller
                 $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
-                $addInfo = 'L\'image a bien été ajoutée';
+                $info = 'L\'image a bien été ajoutée';
             }
         }
 
         return $this->twig->render('Admin/addPicture.html.twig', [
-            'error' => $addInfo,
+            'error' => $info,
         ]);
     }
 
