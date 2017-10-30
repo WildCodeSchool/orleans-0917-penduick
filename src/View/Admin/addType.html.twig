@@ -3,7 +3,26 @@
 
 <h1>Ajouter des types</h1>
 
-TO DO
+{% if errors %}
+    <ul class="alert alert-danger">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form action="index.php?route=addType" method="post">
+
+    <fieldset class="form-group">
+        <label for="consistency">Type</label>
+        <input type="text" class="form-control" name="consistency" id="consistency"/>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">
+
+        <span class="glyphicon glyphicon-plus"></span>Add type
+    </button>
+</form>
 
 {% include "footer.html.twig" %}
 </body>

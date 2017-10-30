@@ -19,9 +19,9 @@ if ($route == 'admin') {
 } elseif ($route == 'updatePlat'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->updatePlatAction();
-} elseif ($route == 'addType'){
-    $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->addTypeAction();
+}elseif (!empty($route) && $route == 'addTypeAction'){
+    $foodController = new \AuPenDuick\Controller\HomeController();
+    echo $foodController->addType();
 } elseif ($route == 'addCategory'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addCategoryAction();
