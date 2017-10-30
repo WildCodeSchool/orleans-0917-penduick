@@ -16,18 +16,18 @@ if ($route == 'admin') {
 } elseif ($route == 'menuAdmin') {
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->menuAction();
-} elseif ($route == 'updatePlat'){
+} elseif ($route == 'updateFood'){
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->updatePlatAction();
+    echo $personController->updateFoodAction();
 } elseif ($route == 'addType'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addTypeAction();
 } elseif ($route == 'addCategory'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addCategoryAction();
-} elseif ($route == 'addPlat'){
+} elseif ($route == 'addFood'){
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->addPlatAction();
+    echo $personController->addFoodAction();
 } elseif ($route == 'updateText'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->updateTextAction();
