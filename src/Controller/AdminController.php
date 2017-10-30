@@ -149,14 +149,12 @@ class AdminController extends Controller
 
     public function addPictureAction()
     {
-        // Infos
+        // Initialise
         $addInfo = '';
+        $companyPictureManager = new CompanyPictureManager();
 
         // Maximum 4 images
-        $limitCompanyPictureManager = new CompanyPictureManager();
-        $nbPictures = $limitCompanyPictureManager->countAll();
-
-        if ($nbPictures >= self::LimitPicture) {
+        if ($companyPictureManager->countAll() >= self::LimitPicture) {
             $addInfo = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
         }
 
@@ -183,8 +181,7 @@ class AdminController extends Controller
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
                 // Insert Bdd via Model
-                $upload = new CompanyPictureManager();
-                $upload->addOne($_FILES['upload']['name']);
+                $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
                 $addInfo = 'L\'image a bien été ajoutée';
