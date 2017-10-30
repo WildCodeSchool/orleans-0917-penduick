@@ -88,7 +88,7 @@ class AdminController extends Controller
                 $typeManager = new TypeManager();
                 $typeManager->insertType($type);
 
-                header('Location: index.php?route=menuAdmin');
+                header('Location: index.php?route=addType');
             }
         }
 
@@ -108,7 +108,7 @@ class AdminController extends Controller
             $TypeManager = new TypeManager();
             $type = $TypeManager->findOneType($_POST['id']);
             $TypeManager->deleteType($type);
-            header('Location: index.php?route=menuAdmin');
+            header('Location: index.php?route=addType');
         }
     }
 
