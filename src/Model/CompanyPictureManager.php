@@ -44,13 +44,18 @@ class CompanyPictureManager extends EntityManager
         $statement->execute();
     }
 
-    public function insertCompanyPicture($name, $extension)
+    public function addOne($name)
     {
-        $query = 'UPDATE companyPictures SET name=:name, extension=:extension';
+        $query = 'INSERT INTO companyPictures (name) VALUES(:name)';
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':name', $name);
-        $statement->bindValue(':extension', $extension);
+        $statement->bindValue('name', $name, \PDO::PARAM_STR);
         $statement->execute();
+    }
+
+    public function countAll()
+    {
+        $statement = $this->pdo->query('SELECT count(*) FROM companyPictures');
+        return $statement->fetchColumn();
     }
 
 }

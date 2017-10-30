@@ -25,6 +25,9 @@ if ($route == 'admin') {
 } elseif ($route == 'addCategory'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addCategoryAction();
+}elseif (!empty($route) && $route == 'deleteCategory'){
+    $foodController = new \AuPenDuick\Controller\AdminController();
+    echo $foodController->deleteCategoryAction();
 } elseif ($route == 'addPlat'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addPlatAction();

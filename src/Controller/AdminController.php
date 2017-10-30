@@ -5,6 +5,7 @@ namespace AuPenDuick\Controller;
 use AuPenDuick\Model\CompanyTextManager;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
+use AuPenDuick\Model\Category;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\TypeManager;
@@ -61,17 +62,103 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updatePlatAction(){
+    public function updatePlatAction()
+    {
         return $this->twig->render('Admin/updatePlat.html.twig');
     }
 
-    public function addTypeAction(){
+    public function addTypeAction()
+    {
         return $this->twig->render('Admin/addType.html.twig');
     }
 
-    public function addCategoryAction(){
-        return $this->twig->render('Admin/addCategory.html.twig');
+    public function addCategoryAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+
+        $fileUploadErrors = [
+            0 => "Aucune erreur, le téléchargement est correct.",
+            1 => "La taille du fichier téléchargé excède la valeur maximum",
+            2 => "La taille du fichier téléchargé excède la valeur maximum",
+            3 => "Le fichier n'a été que partiellement téléchargé.",
+            4 => "Aucun fichier n'a été téléchargé.",
+            6 => "Un dossier temporaire est manquant, contactez l'administrateur du site.",
+            7 => "Échec de l'écriture du fichier sur le disque, contactez l'administrateur du site.",
+            8 => "Erreur inconnu, contactez l'administrateur du site.",
+        ];
+
+        // creation d'un objet category vide
+        $category = new Category();
+
+        if (!empty($_FILES['picture']) && !empty($_POST)) {
+
+            // traitement des erreurs éventuelles
+            $category->setName($_POST['name']);
+            $category->setNameShortcut($_POST['nameShortcut']);
+            $category->setTypeId($_POST['type']);
+
+            $maxsize = 1048576;
+            $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
+            $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+
+            // Vérification image présente, si oui attribution nom unique
+            if (empty($_FILES['picture']['name'])){
+                $errors[] = 'A picture is required';
+            } else {
+                $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
+                $category->setPicture($_FILES['picture']['name']);
+            }
+            // Vérification du format
+            if (!empty($_FILES['picture']['name']) && !in_array($extension_upload, $extensions_valids)) {
+                $errors[] = 'le fichier n\'est pas du bon format';
+            }
+            // Vérification de la taille
+            if ($_FILES['picture']['error']){
+                $errors[] = $fileUploadErrors[$_FILES['picture']['error']];
+            }
+
+            if (empty($_POST['name'])) {
+                $errors[] = 'Name is required';
+            }
+            if (empty($_POST['nameShortcut'])) {
+                $errors[] = 'A shortcut name is required';
+            }
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                move_uploaded_file($_FILES['picture']['tmp_name'], 'pictures/upload/' . $_FILES['picture']['name']);
+
+                $categoryManager = new CategoryManager();
+                $categoryManager->insertCategory($category);
+
+                header('Location: index.php?route=menuAdmin');
+            }
+        }
+
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addCategory.html.twig', [
+            'errors' => $errors,
+            'categories' => $categories,
+            'types' => $types,
+        ]);
     }
+
+    public function deleteCategoryAction()
+    {
+        if (!empty($_POST['id'])) {
+            $CategoryManager = new CategoryManager();
+            $category = $CategoryManager->findOneCategory($_POST['id']);
+            $CategoryManager->deleteCategory($category);
+            header('Location: index.php?route=menuAdmin');
+        }
+    }
+
 
     public function addPlatAction()
     {
@@ -130,7 +217,7 @@ class AdminController extends Controller
         if (!empty($_POST['delete'])) {
 
             // Récup id via form
-            $id = (int) $_POST['delete'];
+            $id = (int)$_POST['delete'];
 
             // appel Class
             $upload = new CompanyPictureManager();
@@ -182,11 +269,11 @@ class AdminController extends Controller
             if (!in_array($extension_upload, $extensions_valids)) {
                 $error = 'le fichier n\'est pas du bon format';
 
-            // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $error = 'la taille de l\'image est trop lourde';
 
-            // Tout est bon
+                // Tout est bon
             } else {
 
                 // Insert fichier upload
@@ -194,7 +281,7 @@ class AdminController extends Controller
 
                 // Insert Bdd via Model
                 $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.'.$extension_upload);
+                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
             }
         }
 
@@ -203,7 +290,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
         return $this->twig->render('Admin/updateText.html.twig');
     }
 }
