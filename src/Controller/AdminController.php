@@ -62,9 +62,9 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updatePlatAction()
+    public function updateFoodAction()
     {
-        return $this->twig->render('Admin/updatePlat.html.twig');
+        return $this->twig->render('Admin/updateFood.html.twig');
     }
 
     public function addTypeAction()
@@ -117,7 +117,7 @@ class AdminController extends Controller
         return $this->twig->render('Admin/addCategory.html.twig');
     }
 
-    public function addPlatAction()
+    public function addFoodAction()
     {
         // récupérer $_POST et traiter
         $errors = [];
@@ -159,7 +159,7 @@ class AdminController extends Controller
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
-        return $this->twig->render('Admin/addPlat.html.twig', [
+        return $this->twig->render('Admin/addFood.html.twig', [
             'errors' => $errors,
             'categories' => $categories,
             'crepe' => $crepe,
