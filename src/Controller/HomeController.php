@@ -16,13 +16,18 @@ class HomeController extends Controller
 {
     public function homeAction()
     {
-        // Appel company (Model)
-        $companyManager = new CompanyTextManager();
-        $companyManagerContent = $companyManager->findAllcompany();
+        // Appel companyText
+        $companyTextManager = new CompanyTextManager();
+        $companyTextManagerContent = $companyTextManager->findAllcompany();
+
+        // Appel category
+        $categoryManager = new CategoryManager();
+        $categoryManagerContent = $categoryManager->findAll();
 
         // Return
         return $this->twig->render('home.html.twig', [
-            'company' => $companyManagerContent[0],
+            'company' => $companyTextManagerContent[0],
+            'categories' => $categoryManagerContent,
         ]);
     }
 
