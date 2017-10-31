@@ -6,7 +6,7 @@ class CompanyText
 {
     public $id;
     public $header;
-    public $header2;
+    public $subHeader;
     public $event;
     public $aboutUs;
     public $telephone;
@@ -50,18 +50,18 @@ class CompanyText
     /**
      * @return mixed
      */
-    public function getHeader2()
+    public function getSubHeader()
     {
-        return $this->header2;
+        return $this->subHeader;
     }
 
     /**
-     * @param mixed $header_2
+     * @param mixed $subHeader
      * @return CompanyText
      */
-    public function setHeader2($header2)
+    public function setSubHeader($subHeader)
     {
-        $this->header2 = $header2;
+        $this->subHeader = $subHeader;
         return $this;
     }
 
