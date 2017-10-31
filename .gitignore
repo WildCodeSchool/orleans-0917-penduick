@@ -1,6 +1,6 @@
-db/
 fournitures/
 vendor/
 composer.json
 connect.php
-src/View/Admin/deleteCrepeAdmin.html.twig
+upload/*
+upload/

@@ -2,30 +2,20 @@
     display: none;
 }
 
-.validation {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    color: blue;
-    text-align: center;
-    font-size: 30px;
+.sizePicture{
+    width:300px;
 }
 
-.limitPicture {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    max-width: 150px;
-    max-height: 150px;
-}
-
-.limitInput {
-    max-height: 30px;
-}
-
-.spaceBack {
+.tabDelete {
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-left: 50px;
 }
 
-.bar {
-    border: 2px lightgrey inset;
+.tabDelete tr, td, th {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.addPicture input, label {
+    margin-top:15px;
 }

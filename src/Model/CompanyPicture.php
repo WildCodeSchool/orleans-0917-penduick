@@ -7,7 +7,6 @@ class CompanyPicture
 {
     public $id;
     public $name;
-    public $extension;
 
     /**
      * @return mixed
@@ -42,24 +41,6 @@ class CompanyPicture
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    /**
-     * @param mixed $extension
-     * @return CompanyPicture
-     */
-    public function setExtension($extension)
-    {
-        $this->extension = $extension;
         return $this;
     }
 }
