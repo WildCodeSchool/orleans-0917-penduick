@@ -2,6 +2,7 @@
 
 namespace AuPenDuick\Controller;
 
+use AuPenDuick\Model\CompanyText;
 use AuPenDuick\Model\CompanyTextManager;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
@@ -259,8 +260,30 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction()
-    {
-        return $this->twig->render('Admin/updateText.html.twig');
+    public function updateTextAction(){
+
+        // Initialisation
+        $info = '';
+        $textManager = new CompanyTextManager();
+
+        if (!empty($_POST)){
+
+            $update = new CompanyText();
+            $update->setHeader($_POST['header']);
+            $update->setHeader2($_POST['subHeader']);
+            $update->setEvent($_POST['event']);
+            $update->setAboutUs($_POST['aboutUs']);
+            $update->setTelephone($_POST['telephone']);
+            $textManager->updateText($update, 1);
+            $info = 'La modification a bien été pris en compte.';
+        }
+
+        // Récupérer les textes
+        $texts = $textManager->findAll();
+
+        return $this->twig->render('Admin/updateText.html.twig', [
+            'texts' => $texts,
+            'info' => $info,
+        ]);
     }
 }
