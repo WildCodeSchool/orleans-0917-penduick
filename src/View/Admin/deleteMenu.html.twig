@@ -1,9 +1,9 @@
-{% include "head.html.twig" %}
-{% include "header.html.twig" %}
+{% include "Admin/head.html.twig" %}
+{% include "Admin/header.html.twig" %}
 
 <section id="menu" class="">
     <div class="container">
-        <h1 class="titreMenu">LA CARTE</h1>
+        <h1 class="titreMenu">Supprimer des crêpes</h1>
     </div>
 
     <div id="exTab1" class="container">
@@ -26,23 +26,30 @@
                                         {% for crepe in crepes %}
                                             <h4 class="category">{{ crepe.title }}</h4>
                                             <span class="description">{{ crepe.description }}</span>
+                                            <form action="?route=deleteCrepe" method="post">
+                                                <input type="hidden" name="id" value="{{ crepe.id }}"/>
+                                                <button type="submit">Delete</button>
+                                            </form>
                                             <span class="price">... {{ crepe.price }}€</span>
                                         {% endfor %}
                                         {{ categories }}
                                     </ul>
                                 </div>
                             {% endfor %}
+
                         </div>
                     {% endfor %}
                 </div>
             </div>
             <div class="col-xs-3 picture">
                 {% for picture in pictures %}
-                    <img src="pictures/upload/{{ picture.name }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
+                    <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
                 {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
-{% include 'footer.html.twig' %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

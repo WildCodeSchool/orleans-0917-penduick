@@ -3,7 +3,7 @@
 }
 
 .sizePicture{
-    width:300px
+    width:300px;
 }
 
 .tabDelete {
@@ -15,3 +15,8 @@
     border: 1px solid black;
     text-align: center;
 }
+
+.addPicture input, label {
+    margin-top:15px;
+}
+
