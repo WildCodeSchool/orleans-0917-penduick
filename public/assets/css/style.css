@@ -85,24 +85,18 @@ p {
 }
 
 /*------------ Who are We ------------*/
-    /* EN TETE */
 .titleHeader {
     font-size: calc(3vw + 1vw);
-    margin-top: -48vh;
+    margin-top: -53vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 .btnHeader {
-    font-size: 1vw;
     background: rgb(254, 236, 4);
-    border: 1px solid grey;
-    border-radius: 50px;
+    border-radius: 15px;
     box-shadow: 1px 1px 2px black;
-    width: 15vw;
-    height: auto;
-    color: black;
-    text-decoration: none;
+    font-weight: bold;
 }
 
     /* EVENT */
