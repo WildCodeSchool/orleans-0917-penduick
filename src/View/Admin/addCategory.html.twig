@@ -10,7 +10,7 @@
     <img src="pictures/upload/{{ category.picture }}" style="height: 150px;">
     <form action="?route=deleteCategory" method="post">
         <input type="hidden" name="id" value="{{ category.id }}"/>
-        <button type="submit">Delete</button>
+        <button type="submit">Supprimer</button>
     </form>
     </div>
 {% endfor %}
@@ -35,7 +35,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-        <label for="nameShortcut">Titre raccourci (max 25 lettres)</label>
+        <label for="nameShortcut">Titre raccourci (25 caractères max)</label>
         <input type="text" class="form-control" name="nameShortcut" id="nameShortcut"/>
     </fieldset>
 
