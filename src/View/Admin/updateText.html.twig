@@ -13,14 +13,15 @@
                     <input type="text" class="form-control" name="header" id="header" value="{{ text.header }}" />
                 </div>
 
+
                 <div class="form-group">
-                    <label for="header2">En-tête détaillé</label>
-                    <input type="text" class="form-control" name="header2" id="header2" value="{{ text.header_2 }}" />
+                    <label for="subheader">En-tête détaillé</label>
+                    <input type="text" class="form-control" name="subHeader" id="subHeader" value="{{ text.subHeader }}" />
                 </div>
 
                 <div class="form-group">
-                    <label for="event">Evènement</label>
-                    <input type="text" class="form-control" name="event" id="event" value="{{ text.event }}" />
+                    <label for="summernote">Evènement</label>
+                    <textarea id="summernote" name="event">{{ text.event }}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -33,12 +34,19 @@
                     <input type="text" class="form-control" name="telephone" id="telephone" value="{{ text.telephone }}" />
                 </div>
 
-                <button type="submit" class="btn btn-primary pull-right">Valider les changements</button>
+                <button type="submit" class="btn btn-primary pull-right decalBtnValidModifText">Valider les changements</button>
             </form>
         {% endfor %}
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
 </body>
 </html>
