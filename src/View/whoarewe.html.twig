@@ -1,32 +1,11 @@
-<section>
-    <div class="fondbody">
-        <div class="container" id="whoarewe">
-            <div class="row">
-                <div>
-                    <h1 class="titleHeader">{{ company.header | raw }}</h1>
-                    <hr/>
-                    <p>{{ company.header_2 | raw }}</p>
-                    <hr/>
-                    <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
-                    {{ company.event | raw }}
-                </div>
-            </div>
-        </div>
-        <div class="bio">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="logoaupenduick">
-                        <img src="pictures/logotype-au-pen-duick.png" alt="logo1" id="logo1" class="img-responsive"
-                             style="margin:auto">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div>
-                        <p class="aboutUs">{{ company.about_us | raw }}</p>
-                    </div>
-                </div>
-            </div>
+<section id="whoarewe" class="fondbody">
+    <div class="container">
+        <div class="row">
+            <h1 class="titleHeader">{{ company.header | raw }}</h1>
+            <hr/>
+            <p>{{ company.header_2 | raw }}</p>
+            <hr/>
+            <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
         </div>
     </div>
 </section>
