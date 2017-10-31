@@ -1,6 +1,5 @@
 {% include "head.html.twig" %}
-{% include 'header.html.twig' %}
-
+{% include "header.html.twig" %}
 
 <section id="menu" class="">
     <div class="container">
@@ -28,9 +27,7 @@
                                             <h4 class="category">{{ crepe.title }}</h4>
                                             <span class="description">{{ crepe.description }}</span>
                                             <span class="price">... {{ crepe.price }}€</span>
-                                            </span>
                                         {% endfor %}
-                                        {{ categories }}
                                     </ul>
                                 </div>
                             {% endfor %}

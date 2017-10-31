@@ -1,10 +1,47 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
-<h1>Ajouter des types</h1>
+<h1>Ajouter un type</h1>
+<hr>
 
-TO DO
+{% for type in types %}
+    <div class="col-xs-4">
+        {{ type.consistency }}
+        <form action="?route=deleteType" method="post">
+            <input type="hidden" name="id" value="{{ type.id }}"/>
+            <button type="submit">Supprimer</button>
+        </form>
+    </div>
+{% endfor %}
 
+
+<div class="col-xs-12">
+    {% if errors %}
+        <ul class="alert alert-danger">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br/>
+
+    <form action="?route=addType" method="post">
+
+        <fieldset class="form-group">
+            <label for="consistency">Type</label>
+            <input type="text" class="form-control" name="consistency" id="consistency"/>
+        </fieldset>
+
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span> Ajouter un type
+        </button>
+        <a href="?route=menuAdmin"><button type="button" class="btn btn-info">
+            <span class="glyphicon glyphicon-home"></span> Revenir à la carte
+        </button></a>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

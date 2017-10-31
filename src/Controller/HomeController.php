@@ -68,4 +68,5 @@ class HomeController extends Controller
             'pictures' => $listPictures,
         ]);
     }
+
 }
