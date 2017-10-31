@@ -50,9 +50,9 @@ class AdminController extends Controller
                 }
             }
             if (!empty($_POST['id'])) {
-                $FoodManager = new FoodManager();
-                $food = $FoodManager->findOneFood($_POST['id']);
-                $FoodManager->deleteFood($food);
+                $foodManager = new FoodManager();
+                $food = $foodManager->findOneFood($_POST['id']);
+                $foodManager->deleteFood($food);
                 header('Location: index.php?route=menuAdmin');
             }
         }
@@ -61,11 +61,6 @@ class AdminController extends Controller
             'menus' => $menus,
             'pictures' => $listPictures,
         ]);
-    }
-
-    public function updateFoodAction()
-    {
-        return $this->twig->render('Admin/updateFood.html.twig');
     }
 
     public function addTypeAction()
@@ -101,6 +96,12 @@ class AdminController extends Controller
             'type' => $type,
             'types' => $types,
         ]);
+    }
+
+    public function updateFoodAction()
+    {
+        return $this->twig->render('Admin/updateFood.html.twig');
+
     }
 
     public function deleteTypeAction()
@@ -215,7 +216,7 @@ class AdminController extends Controller
 
         // Maximum 4 images
         if ($companyPictureManager->countAll() >= self::LimitPicture) {
-            $info = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
+            $info = 'Vous ne pouvez mettre que ' . self::LimitPicture . ' photos sur la carte';
         }
 
         if (!empty($_FILES['upload']) && $info == '') {
@@ -233,8 +234,8 @@ class AdminController extends Controller
                 // Vérification de la taille
             } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $error = 'la taille de l\'image est trop lourde';
-            // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $info = 'la taille de l\'image est trop lourde';
 
                 // Tout est bon
