@@ -1,3 +1,4 @@
+
 /* **************** */
 /*		FONTS		*/
 /* **************** */
@@ -32,11 +33,6 @@ p {
 
 .textShadow {
     text-shadow: 1px 1px 2px black;
-}
-
-.container {
-    margin-left: 9vw;
-    margin-top: 10vh;
 }
 
 /* **************** */
@@ -85,40 +81,36 @@ p {
 }
 
 /*------------ Who are We ------------*/
-    /* EN TETE */
 .titleHeader {
-    font-size: calc(3vw + 1vw);
-    margin-top: -48vh;
+    font-size: calc(3vw + 10px);
+    margin-top: -53vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 .btnHeader {
-    font-size: 1vw;
+    font-size: 1.5em;
     background: rgb(254, 236, 4);
     border: 1px solid grey;
     border-radius: 50px;
     box-shadow: 1px 1px 2px black;
-    width: 15vw;
-    height: auto;
     color: black;
     text-decoration: none;
 }
 
-    /* EVENT */
+
+.align {
+    margin-left: 9vw;
+    margin-top: 10vh;
+}
+
+/*------------ Event ------------*/
 .event {
-    font-size: 30px;
     height: auto;
-    color: darkgreen;
     background: rgba(254,236,4,0.4);
 }
 
-/*[class*="col-"] {*/
-    /*background-color: lightgreen;*/
-    /*border: 1px solid black;*/
-/*}*/
-
-    /* ABOUT US */
+/*------------ About Us ------------*/
 .logoaupenduick{
     margin-top: 20px;
 }
@@ -139,7 +131,7 @@ p {
 .fondMenu {
     padding-bottom: 20px;
     text-align: center;
-    background-color: rgb(78, 192, 80);
+    background-color: #85C17E;
 }
 
 .logoMenu {
@@ -193,12 +185,12 @@ p {
 }
 
 /*------------ Find Us  ------------*/
-    /* GENERAL */
+/* GENERAL */
 .row0, .row1, .row2{
     background: white;
 }
 
-    /* SECTION LOCALISATION */
+/* SECTION LOCALISATION */
 .localisation{
     font-size: 2.5em;
     background-color: black;
@@ -221,7 +213,7 @@ iframe{
     vertical-align:middle;
 }
 
-    /* SECTION TRANSPORTS EN COMMUN */
+/* SECTION TRANSPORTS EN COMMUN */
 .bus, .tram{
     margin-bottom: 30px;
 }
