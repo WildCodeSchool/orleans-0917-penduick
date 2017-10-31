@@ -13,21 +13,21 @@ if (!empty($_GET['route'])) {
 if ($route == 'admin') {
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->adminAction();
-} elseif ($route == 'deleteMenu') {
+} elseif ($route == 'menuAdmin') {
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->deleteMenuAction();
-} elseif ($route == 'updatePrice'){
+    echo $personController->menuAction();
+} elseif ($route == 'updateFood'){
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->updatePriceAction();
+    echo $personController->updateFoodAction();
 } elseif ($route == 'addType'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addTypeAction();
 } elseif ($route == 'addCategory'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addCategoryAction();
-} elseif ($route == 'addPlat'){
+} elseif ($route == 'addFood'){
     $personController = new \AuPenDuick\Controller\AdminController();
-    echo $personController->addPlatAction();
+    echo $personController->addFoodAction();
 } elseif ($route == 'updateText'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->updateTextAction();

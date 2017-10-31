@@ -1,0 +1,50 @@
+{% include "Admin/head.html.twig" %}
+{% include "Admin/header.html.twig" %}
+
+<section id="menu" class="">
+<div id="exTab1" class="container">
+    <ul class="nav nav-pills">
+        {% for consistency, menu in menus %}
+            <li class="{{ loop.first ? 'active' }}">
+                <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
+            </li>
+        {% endfor %}
+        <li><a href="?route=addType"><span class="glyphicon glyphicon-plus"></span></a></li>
+    </ul>
+    <div class="rowP">
+        <div class="col-xs-9">
+            <div class="tab-content clearfix">
+                {% for consistency, menu in menus %}
+                    <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
+                        {% for categories, crepes in menu %}
+                            <div class="col-xs-12">
+                                <h2> {{ categories }} <a href="?route=addCategory"><span class="glyphicon glyphicon-plus"></span></a> </h2>
+                                <ul>
+                                    {% for crepe in crepes %}
+                                        <h4 class="category">{{ crepe.title }}</h4>
+                                        <span class="description">{{ crepe.description }}</span>
+                                        <form action="?route=menuAdmin" method="post">
+                                            <input type="hidden" name="id" value="{{ crepe.id }}"/>
+                                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        </form>
+                                        <span class="price">... {{ crepe.price }}€</span>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-xs-3 picture">
+            {% for picture in pictures %}
+                <img src="pictures/upload/{{ picture.name }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+
+{% include 'footer.html.twig' %}
+</body>
+</html>

@@ -2,6 +2,10 @@
 
 namespace AuPenDuick\Model;
 
+/**
+ * Class CategoryManager
+ * @package AuPenDuick\Model
+ */
 class CategoryManager extends EntityManager
 {
     public function findAll()

@@ -2,4 +2,5 @@ fournitures/
 vendor/
 composer.json
 connect.php
-
+upload/*
+upload/

@@ -19,8 +19,15 @@ class AdminController extends Controller
         return $this->twig->render('Admin/admin.html.twig');
     }
 
-    public function deleteMenuAction()
+    public function menuAction()
     {
+        // Récupération des photos de la carte
+        $companyPicturesManager = new CompanyPictureManager();
+        $pictures = $companyPicturesManager->findAll();
+        foreach ($pictures as $picture) {
+            $listPictures[] = $picture;
+        }
+
         // Récupération de tous les types (salé,sucré)
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
@@ -41,15 +48,22 @@ class AdminController extends Controller
                     $menus[$type->getConsistency()][$category->getName()][] = $food;
                 }
             }
+            if (!empty($_POST['id'])) {
+                $foodManager = new FoodManager();
+                $food = $foodManager->findOneFood($_POST['id']);
+                $foodManager->deleteFood($food);
+                header('Location: index.php?route=menuAdmin');
+            }
         }
 
-        return $this->twig->render('Admin/deleteMenu.html.twig', [
+        return $this->twig->render('Admin/menuAdmin.html.twig', [
             'menus' => $menus,
+            'pictures' => $listPictures,
         ]);
     }
 
-    public function updatePriceAction(){
-        return $this->twig->render('Admin/updatePrice.html.twig');
+    public function updateFoodAction(){
+        return $this->twig->render('Admin/updateFood.html.twig');
     }
 
     public function addTypeAction(){
@@ -60,7 +74,7 @@ class AdminController extends Controller
         return $this->twig->render('Admin/addCategory.html.twig');
     }
 
-    public function addPlatAction()
+    public function addFoodAction()
     {
         // récupérer $_POST et traiter
         $errors = [];
@@ -94,13 +108,15 @@ class AdminController extends Controller
 
                 $foodManager = new FoodManager();
                 $foodManager->insertFood($crepe);
+
+                header('Location: index.php?route=menuAdmin');
             }
         }
 
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
-        return $this->twig->render('Admin/addPlat.html.twig', [
+        return $this->twig->render('Admin/addFood.html.twig', [
             'errors' => $errors,
             'categories' => $categories,
             'crepe' => $crepe,
