@@ -7,6 +7,7 @@ use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\Type;
 use AuPenDuick\Model\TypeManager;
 
 class AdminController extends Controller
@@ -62,15 +63,59 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateFoodAction(){
+    public function addTypeAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+        // creation d'un objet Type vide
+        $type = new Type();
+
+        if (!empty($_POST)) {
+            // traitement des erreurs éventuelles
+            $type->setConsistency($_POST['consistency']);
+
+            if (empty($_POST['consistency'])) {
+                $errors[] = 'Type is required';
+            }
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $typeManager = new TypeManager();
+                $typeManager->insertType($type);
+
+                header('Location: index.php?route=addType');
+            }
+        }
+
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addType.html.twig', [
+            'errors' => $errors,
+            'type' => $type,
+            'types' => $types,
+        ]);
+    }
+
+    public function updateFoodAction()
+    {
         return $this->twig->render('Admin/updateFood.html.twig');
+
     }
 
-    public function addTypeAction(){
-        return $this->twig->render('Admin/addType.html.twig');
+    public function deleteTypeAction()
+    {
+        if (!empty($_POST['id'])) {
+            $TypeManager = new TypeManager();
+            $type = $TypeManager->findOneType($_POST['id']);
+            $TypeManager->deleteType($type);
+            header('Location: index.php?route=addType');
+        }
     }
 
-    public function addCategoryAction(){
+    public function addCategoryAction()
+    {
         return $this->twig->render('Admin/addCategory.html.twig');
     }
 
@@ -131,7 +176,7 @@ class AdminController extends Controller
         if (!empty($_POST['delete'])) {
 
             // Récup id via form
-            $id = (int) $_POST['delete'];
+            $id = (int)$_POST['delete'];
 
             // appel Class
             $upload = new CompanyPictureManager();
@@ -171,7 +216,7 @@ class AdminController extends Controller
 
         // Maximum 4 images
         if ($companyPictureManager->countAll() >= self::LimitPicture) {
-            $info = 'Vous ne pouvez mettre que '.self::LimitPicture.' photos sur la carte';
+            $info = 'Vous ne pouvez mettre que ' . self::LimitPicture . ' photos sur la carte';
         }
 
         if (!empty($_FILES['upload']) && $info == '') {
@@ -186,17 +231,22 @@ class AdminController extends Controller
             if (!in_array($extension_upload, $extensions_valids)) {
                 $info = 'le fichier n\'est pas du bon format';
 
-            // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
+                $error = 'la taille de l\'image est trop lourde';
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $info = 'la taille de l\'image est trop lourde';
 
-            // Tout est bon
+                // Tout est bon
             } else {
 
                 // Insert fichier upload
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
                 // Insert Bdd via Model
+                $upload = new CompanyPictureManager();
+                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
                 $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
@@ -209,7 +259,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
         return $this->twig->render('Admin/updateText.html.twig');
     }
 }
