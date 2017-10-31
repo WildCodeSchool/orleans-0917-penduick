@@ -63,8 +63,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateFoodAction()
-    {
+    public function updateFoodAction(){
         return $this->twig->render('Admin/updateFood.html.twig');
     }
 
@@ -149,6 +148,7 @@ class AdminController extends Controller
             'types' => $types,
         ]);
     }
+
 
     public function deleteCategoryAction()
     {
