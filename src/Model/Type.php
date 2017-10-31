@@ -36,7 +36,7 @@ class Type
 
     /**
      * @param mixed $consistency
-     * @return Type
+     * @return Category
      */
     public function setConsistency($consistency)
     {
