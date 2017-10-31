@@ -204,7 +204,7 @@ class AdminController extends Controller
 
             $update = new CompanyText();
             $update->setHeader($_POST['header']);
-            $update->setHeader2($_POST['header2']);
+            $update->setHeader2($_POST['subHeader']);
             $update->setEvent($_POST['event']);
             $update->setAboutUs($_POST['aboutUs']);
             $update->setTelephone($_POST['telephone']);
