@@ -1,47 +1,72 @@
 {% include "head.html.twig" %}
-{% include "header.html.twig" %}
+{% include 'header.html.twig' %}
 
-<section id="menu" class="">
-    <div class="container">
-        <h1 class="titreMenu">LA CARTE</h1>
+<section id="menu">
+    <div class="container-fluid menuFond">
+        <div class="row">
+            <div class="col-xs-7 col-xs-offset-3 col-lg-6 col-lg-offset-4">
+                <h1 class="titreMenu">LA CARTE</h1>
+            </div>
+        </div>
     </div>
-
-    <div id="exTab1" class="container">
-        <ul class="nav nav-pills">
+    <div id="exTab1" class="color container-fluid">
+        <ul class="nav nav-pills text-center">
             {% for consistency, menu in menus %}
                 <li class="{{ loop.first ? 'active' }}">
-                    <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
+                    <a class="couleurOnglet" href="#type{{ consistency }}"
+                       data-toggle="tab">{{ consistency }}</a>
                 </li>
             {% endfor %}
         </ul>
+    </div>
+    <div class="container bois">
         <div class="rowP">
-            <div class="col-xs-9">
+            <div class="col-lg-10">
                 <div class="tab-content clearfix">
                     {% for consistency, menu in menus %}
                         <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
                             {% for categories, crepes in menu %}
-                                <div class="col-xs-12">
-                                    <h2> {{ categories }} </h2>
-                                    <ul>
-                                        {% for crepe in crepes %}
-                                            <h4 class="category">{{ crepe.title }}</h4>
-                                            <span class="description">{{ crepe.description }}</span>
-                                            <span class="price">... {{ crepe.price }}€</span>
-                                        {% endfor %}
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-xs-11 col-xs-offset-2 col-lg-10 col-lg-offset-2 fond">
+                                        <h2 class="titreCategorie"> {{ categories }} </h2>
+                                    </div>
                                 </div>
+                                <ul>
+                                    {% for crepe in crepes %}
+                                        <div class="row">
+                                            <div class="col-xs-8 col-lg-8 col-lg-offset-1">
+                                                <h4 class="category">{{ crepe.title }}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8 col-lg-9 col-lg-offset-1">
+                                                <span class="description">{{ crepe.description }}</span>
+                                            </div>
+                                            <div class="col-xs-2 col-lg-2">
+                                                <span class="price">{{ crepe.price }}€</span>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </ul>
                             {% endfor %}
                         </div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-xs-3 picture">
+            <div class="col-xs-3 col-lg-3">
                 {% for picture in pictures %}
-                    <img src="pictures/upload/{{ picture.name }}" class="pictureDetail img-responsive" alt="{{ picture.name }}" />
+                    <ul>
+                        <li>
+                            <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}"
+                                 class="pictureDetail img-responsive" alt="{{ picture.name }}"/>
+                        </li>
+                    </ul>
                 {% endfor %}
             </div>
         </div>
     </div>
+    <div class="color"></div>
+    <div class="color"></div>
 </section>
 
 {% include 'footer.html.twig' %}

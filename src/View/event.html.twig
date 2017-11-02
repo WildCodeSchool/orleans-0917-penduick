@@ -1,0 +1,12 @@
+<section id="event" class="container-fluid event" >
+    {% if company.event != '' %}
+        <div class="row">
+            <div>
+                <p class="aboutUs">{{ company.event | raw }}</p>
+            </div>
+        </div>
+    {% else %}
+        {#Laisse un fond jaune voulu par le client#}
+        <div class="transition"></div>
+    {% endif %}
+</section>
