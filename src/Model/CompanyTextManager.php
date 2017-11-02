@@ -17,7 +17,7 @@ class CompanyTextManager extends EntityManager
     public function updateText($text)
     {
         $query = "UPDATE companyText SET header=:header, subHeader=:subHeader, event=:event, about_us=:about_us,
-                  telephone=:telephone LIMIT 0,1";
+                  telephone=:telephone";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('header', $text->getHeader(), \PDO::PARAM_STR);
         $statement->bindValue('subHeader', $text->getsubHeader(), \PDO::PARAM_STR);

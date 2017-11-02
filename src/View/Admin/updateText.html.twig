@@ -6,13 +6,12 @@
     <p>{{ info }}</p>
     <div class="row">
         {% for text in texts %}
-            <h3>Texte de la page d'accueil</h3>
+            <h3>Textes de la page d'accueil</h3>
             <form action="" method="post">
                 <div class="form-group">
                     <label for="header">En-tête</label>
                     <input type="text" class="form-control" name="header" id="header" value="{{ text.header }}" />
                 </div>
-
 
                 <div class="form-group">
                     <label for="subheader">En-tête détaillé</label>
