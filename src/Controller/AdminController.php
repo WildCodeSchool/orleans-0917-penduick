@@ -7,19 +7,28 @@ use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
+use AuPenDuick\Model\Type;
 use AuPenDuick\Model\TypeManager;
 
 class AdminController extends Controller
 {
     const MaxSize = 1000000;
+    const LimitPicture = 4;
 
     public function adminAction()
     {
         return $this->twig->render('Admin/admin.html.twig');
     }
 
-    public function deleteMenuAction()
+    public function menuAction()
     {
+        // Récupération des photos de la carte
+        $companyPicturesManager = new CompanyPictureManager();
+        $pictures = $companyPicturesManager->findAll();
+        foreach ($pictures as $picture) {
+            $listPictures[] = $picture;
+        }
+
         // Récupération de tous les types (salé,sucré)
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
@@ -40,26 +49,77 @@ class AdminController extends Controller
                     $menus[$type->getConsistency()][$category->getName()][] = $food;
                 }
             }
+            if (!empty($_POST['id'])) {
+                $foodManager = new FoodManager();
+                $food = $foodManager->findOneFood($_POST['id']);
+                $foodManager->deleteFood($food);
+                header('Location: index.php?route=menuAdmin');
+            }
         }
 
-        return $this->twig->render('Admin/deleteMenu.html.twig', [
+        return $this->twig->render('Admin/menuAdmin.html.twig', [
             'menus' => $menus,
+            'pictures' => $listPictures,
         ]);
     }
 
-    public function updatePriceAction(){
-        return $this->twig->render('Admin/updatePrice.html.twig');
+    public function addTypeAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+        // creation d'un objet Type vide
+        $type = new Type();
+
+        if (!empty($_POST)) {
+            // traitement des erreurs éventuelles
+            $type->setConsistency($_POST['consistency']);
+
+            if (empty($_POST['consistency'])) {
+                $errors[] = 'Type is required';
+            }
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $typeManager = new TypeManager();
+                $typeManager->insertType($type);
+
+                header('Location: index.php?route=addType');
+            }
+        }
+
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addType.html.twig', [
+            'errors' => $errors,
+            'type' => $type,
+            'types' => $types,
+        ]);
     }
 
-    public function addTypeAction(){
-        return $this->twig->render('Admin/addType.html.twig');
+    public function updateFoodAction()
+    {
+        return $this->twig->render('Admin/updateFood.html.twig');
+
     }
 
-    public function addCategoryAction(){
+    public function deleteTypeAction()
+    {
+        if (!empty($_POST['id'])) {
+            $TypeManager = new TypeManager();
+            $type = $TypeManager->findOneType($_POST['id']);
+            $TypeManager->deleteType($type);
+            header('Location: index.php?route=addType');
+        }
+    }
+
+    public function addCategoryAction()
+    {
         return $this->twig->render('Admin/addCategory.html.twig');
     }
 
-    public function addPlatAction()
+    public function addFoodAction()
     {
         // récupérer $_POST et traiter
         $errors = [];
@@ -93,13 +153,15 @@ class AdminController extends Controller
 
                 $foodManager = new FoodManager();
                 $foodManager->insertFood($crepe);
+
+                header('Location: index.php?route=menuAdmin');
             }
         }
 
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
-        return $this->twig->render('Admin/addPlat.html.twig', [
+        return $this->twig->render('Admin/addFood.html.twig', [
             'errors' => $errors,
             'categories' => $categories,
             'crepe' => $crepe,
@@ -114,22 +176,18 @@ class AdminController extends Controller
         if (!empty($_POST['delete'])) {
 
             // Récup id via form
-            $id = (int) $_POST['delete'];
+            $id = (int)$_POST['delete'];
 
             // appel Class
             $upload = new CompanyPictureManager();
 
-            // Nom du fichier
-            $name = $upload->findOne($id);
-            $fullName = $name->getName();
-            $fullName .= $name->getExtension();
-
             // Vérification de la présence du fichier
-            if (file_exists('pictures/upload/' . $fullName)) {
+            $name = $upload->findOne($id);
+            if (file_exists('pictures/upload/' . $name->getName())) {
 
                 // Delete
                 $upload->deleteById($id);
-                unlink('pictures/upload/' . $fullName);
+                unlink('pictures/upload/' . $name->getName());
 
                 // Message d'informations
                 $uploadInfo = 'Suppression de l\'image réussie';
@@ -152,9 +210,16 @@ class AdminController extends Controller
 
     public function addPictureAction()
     {
-        $error = '';
+        // Initialise
+        $info = '';
+        $companyPictureManager = new CompanyPictureManager();
 
-        if (!empty($_FILES['upload'])) {
+        // Maximum 4 images
+        if ($companyPictureManager->countAll() >= self::LimitPicture) {
+            $info = 'Vous ne pouvez mettre que ' . self::LimitPicture . ' photos sur la carte';
+        }
+
+        if (!empty($_FILES['upload']) && $info == '') {
 
             // Nettoyage du name
             $_FILES['upload']['name'] = uniqid() . $_FILES['upload']['name'];
@@ -164,13 +229,16 @@ class AdminController extends Controller
             $extension_upload = pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION);
 
             if (!in_array($extension_upload, $extensions_valids)) {
-                $error = 'le fichier n\'est pas du bon format';
+                $info = 'le fichier n\'est pas du bon format';
 
-            // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize)  {
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
                 $error = 'la taille de l\'image est trop lourde';
+                // Vérification de la taille
+            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
+                $info = 'la taille de l\'image est trop lourde';
 
-            // Tout est bon
+                // Tout est bon
             } else {
 
                 // Insert fichier upload
@@ -178,16 +246,21 @@ class AdminController extends Controller
 
                 // Insert Bdd via Model
                 $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.'.$extension_upload);
+                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
+                $companyPictureManager->addOne($_FILES['upload']['name']);
+
+                // Message
+                $info = 'L\'image a bien été ajoutée';
             }
         }
 
         return $this->twig->render('Admin/addPicture.html.twig', [
-            'error' => $error,
+            'error' => $info,
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
         return $this->twig->render('Admin/updateText.html.twig');
     }
 }
