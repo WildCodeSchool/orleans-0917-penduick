@@ -11,18 +11,18 @@
             <span class="titlePhrase">Découvrez la carte de votre restaurant Au Pen Duick <span class="yellow textShadow">&</span> ses spécialitées</span>
             {#Catégories#}
             <div class="row espaceCote">
-            {% for category in categories %}
-                <div class="col-sm-6 col-md-6 col-lg-4 vignettes">
-                    <a href="?route=carte">
-                        <figure class="thumbnail radius">
-                            <figcaption>
-                                <h3>{{ category.nameShortcut }}</h3>
-                            </figcaption>
-                            <img src="pictures/upload/{{ category.picture }}" alt="{{ category.picture }}" />
-                        </figure>
-                    </a>
-                </div>
-            {% endfor %}
+                {% for category in categories %}
+                    <div class="col-sm-6 col-md-6 col-lg-3 vignettes">
+                        <a href="?route=carte">
+                            <figure class="thumbnail radius">
+                                <figcaption>
+                                    <h3>{{ category.nameShortcut }}</h3>
+                                </figcaption>
+                                <img src="pictures/upload/{{ category.picture }}" alt="{{ category.picture }}" />
+                            </figure>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div><!-- row -->
     </div><!-- container -->
