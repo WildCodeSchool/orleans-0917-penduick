@@ -12,19 +12,31 @@
 }
 
 /* **************** */
-/*		FABIEN		*/
+/*		COMMUN		*/
 /* **************** */
 
-.fondbody {
-    background-image: url("../../pictures/bg-crepe.jpg");
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    height: 100%;
-    padding-top: 90vh;
+hr {
+    height: 0.2vw;
+    visibility: hidden;
 }
+
+p {
+    font-size: 2vw;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.yellow {
+    color: rgb(254, 236, 4);
+}
+
+.textShadow {
+    text-shadow: 1px 1px 2px black;
+}
+
+/* **************** */
+/*		NAVBAR		*/
+/* **************** */
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: white;
@@ -32,6 +44,10 @@
 
 .navbar-default .navbar-toggle {
     margin-top: 20px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: black;
 }
 
 .logo1 {
@@ -48,68 +64,58 @@
     color: black;
 }
 
-.logott {
-    width: 40%;
-    margin-top: 9vh;
+/* **************** */
+/*		HOME		*/
+/* **************** */
+
+/*------------ Body ------------*/
+.fondbody {
+    background-image: url("../../pictures/bg-crepe.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    padding-top: 73vh;
 }
 
-.logofb {
-    width: 30%;
-    margin-left: 2vw;
-    margin-top: 9vh;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: black;
-}
-
-.textShadow {
-    text-shadow: 1px 1px 2px black;
-}
-
+/*------------ Who are We ------------*/
 .titleHeader {
-    font-size: calc(3vw + 1vw);
+    font-size: calc(3vw + 10px);
     margin-top: -53vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
-p {
-    font-size: 2vw;
-    color: white;
-    text-shadow: 1px 1px 2px black;
-}
-
-.container {
-    margin-left: 9vw;
-    margin-top: 10vh;
-}
-
-hr {
-    height: 0.2vw;
-    visibility: hidden;
-}
-
 .btnHeader {
-    font-size: 1vw;
+    font-size: 1.5em;
     background: rgb(254, 236, 4);
     border: 1px solid grey;
     border-radius: 50px;
     box-shadow: 1px 1px 2px black;
-    width: 15vw;
-    height: auto;
     color: black;
     text-decoration: none;
 }
 
-.btn-carte {
-    margin-left: 2vw;
+
+.align {
+    margin-left: 9vw;
+    margin-top: 10vh;
 }
 
-.bio {
-    margin-top: 20vh;
-    background: white;
+/*------------ Event ------------*/
+.event {
     height: auto;
+    background: rgba(254,236,4,0.4);
+}
+
+/*------------ About Us ------------*/
+.logoaupenduick{
+    margin-top: 20px;
+}
+
+.logoaupenduick img {
+    margin:auto
 }
 
 .aboutUs {
@@ -120,57 +126,11 @@ hr {
     margin-top: 2vh;
 }
 
-
-/*--------------------footer---------------------*/
-.footer {
-    background: black;
-    height: auto;
-    padding-bottom: 10px;
-}
-
-.footerP {
-    margin-top: 12vh;
-    text-align: center;
-}
-
-strong {
-    text-decoration: underline;
-    margin-right: 3vw;
-}
-
-.logoPinter {
-    width: 15%;
-    margin-right: 15px;
-}
-
-.logoInsta {
-    width: 15%;
-    margin-right: 15px;
-}
-
-.logofb {
-    width: 14%;
-    margin-top: 2px;
-    border: 2px solid black;
-    border-radius: 50px;
-}
-
-.rowfooter {
-    margin-top: 15px;
-}
-
-.rowSpacer {
-    margin-top: 15px;
-}
-
-/* **************** */
-/*		PIERRE		*/
-/* **************** */
-
+/*------------ Menu ------------*/
 .fondMenu {
     padding-bottom: 20px;
     text-align: center;
-    background-color: rgb(78, 192, 80);
+    background-color: #85C17E;
 }
 
 .logoMenu {
@@ -192,10 +152,6 @@ strong {
 .titlePhrase {
     color: white;
     font-size: 20px;
-}
-
-.yellow {
-    color: rgb(254, 236, 4);
 }
 
 .espaceCote {
@@ -227,32 +183,13 @@ strong {
     border-bottom-right-radius: 12px;
 }
 
-/* **************** */
-/*		DORIAN		*/
-/* **************** */
-
+/*------------ Find Us  ------------*/
 /* GENERAL */
-
 .row0, .row1, .row2{
     background: white;
 }
 
-/* SECTION QUI NOUS SOMMES */
-
-.logoaupenduick{
-    margin-top: 20px;
-}
-
-.aboutUs {
-    font-size: 2.2em;
-    color: black;
-    text-align: center;
-    margin-bottom: 4vh;
-    margin-top: 2vh;
-}
-
 /* SECTION LOCALISATION */
-
 .localisation{
     font-size: 2.5em;
     background-color: black;
@@ -276,7 +213,6 @@ iframe{
 }
 
 /* SECTION TRANSPORTS EN COMMUN */
-
 .bus, .tram{
     margin-bottom: 30px;
 }
@@ -317,4 +253,49 @@ iframe{
 
 .bus6{
     background: rgb(171,163,78);
+}
+
+/* **************** */
+/*		FOOTER		*/
+/* **************** */
+
+.footer {
+    background: black;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.footerP {
+    margin-top: 12vh;
+    text-align: center;
+}
+
+strong {
+    text-decoration: underline;
+    margin-right: 3vw;
+}
+
+.logoPinter {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.logoInsta {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.logofb {
+    width: 14%;
+    margin-top: 2px;
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+.rowfooter {
+    margin-top: 15px;
+}
+
+.rowSpacer {
+    margin-top: 15px;
 }
