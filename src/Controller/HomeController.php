@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         // Appel companyText
         $companyTextManager = new CompanyTextManager();
-        $companyTextManagerContent = $companyTextManager->findAllcompany();
+        $companyTextManagerContent = $companyTextManager->findAll();
 
         // Appel category
         $categoryManager = new CategoryManager();
