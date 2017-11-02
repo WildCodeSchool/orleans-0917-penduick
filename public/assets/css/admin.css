@@ -19,3 +19,26 @@
 .addPicture input, label {
     margin-top:15px;
 }
+
+.decalBtnValidModifText {
+    margin-bottom: 25px;
+}
+
+.adminStyle {
+    text-align: center;
+    font-size: 3vw;
+    color: yellow;
+    text-shadow: 1px 1px 1px black;
+    background-color: darkseagreen;
+    border: 1px black solid;
+
+}
+
+legend {
+    text-align: center;
+
+}
+
+.rowZ {
+    margin-top: 2vh;
+}

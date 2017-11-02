@@ -10,16 +10,15 @@ namespace AuPenDuick\Model;
 
 class CompanyPictureManager extends EntityManager
 {
-
     public function findAll()
     {
-        $statement = $this->pdo->query('SELECT * FROM companyPictures');
+        $statement = $this->pdo->query('SELECT * FROM companyPicture');
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyPicture::class);
     }
 
     public function findByCategory($id)
     {
-        $query = "SELECT * FROM companyPictures WHERE id=:id";
+        $query = "SELECT * FROM companyPicture WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
@@ -28,7 +27,7 @@ class CompanyPictureManager extends EntityManager
 
     public function findOne($id)
     {
-        $query = "SELECT * FROM companyPictures WHERE id=:id";
+        $query = "SELECT * FROM companyPicture WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
@@ -38,7 +37,7 @@ class CompanyPictureManager extends EntityManager
 
     public function deleteById($id)
     {
-        $query = 'DELETE FROM companyPictures WHERE id=:id';
+        $query = 'DELETE FROM companyPicture WHERE id=:id';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->execute();
@@ -46,7 +45,7 @@ class CompanyPictureManager extends EntityManager
 
     public function addOne($name)
     {
-        $query = 'INSERT INTO companyPictures (name) VALUES(:name)';
+        $query = 'INSERT INTO companyPicture (name) VALUES(:name)';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('name', $name, \PDO::PARAM_STR);
         $statement->execute();
@@ -54,7 +53,7 @@ class CompanyPictureManager extends EntityManager
 
     public function countAll()
     {
-        $statement = $this->pdo->query('SELECT count(*) FROM companyPictures');
+        $statement = $this->pdo->query('SELECT count(*) FROM companyPicture');
         return $statement->fetchColumn();
     }
 
