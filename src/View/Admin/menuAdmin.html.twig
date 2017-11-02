@@ -9,7 +9,7 @@
                 <a href="#type{{ consistency }}" data-toggle="tab">{{ consistency }}</a>
             </li>
         {% endfor %}
-        <li><a href="?route=addType"><span class="glyphicon glyphicon-plus"></span></a></li>
+        <li><a href="?route=addType"><button type="button" class="btn btn-primary">Ajouter un type <span class="glyphicon glyphicon-plus"></span></button></a></li>
     </ul>
     <div class="rowP">
         <div class="col-xs-9">
@@ -18,7 +18,9 @@
                     <div class="tab-pane {{ loop.first ? 'active' }}" id="type{{ consistency }}">
                         {% for categories, crepes in menu %}
                             <div class="col-xs-12">
-                                <h2> {{ categories }} <a href="?route=addCategory"><span class="glyphicon glyphicon-plus"></span></a> </h2>
+                                <h2>{{ categories }}</h2>
+                                <a href="?route=addCategory"><button type="button" class="btn btn-primary">Ajouter une catégorie <span class="glyphicon glyphicon-plus"></span></button></a>
+                                <a href="?route=addFood"><button type="button" class="btn btn-default">Ajouter un plat <span class="glyphicon glyphicon-plus"></span></button></a>
                                 <ul>
                                     {% for crepe in crepes %}
                                         <h4 class="category">{{ crepe.title }}</h4>
