@@ -1,9 +1,65 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
-<h1>Ajouter des catégories</h1>
+<div class="container-fluid">
+<div class="row">
 
-{#TO DO#}
+{% for category in categories %}
+    <div class="col-xs-3">
+    {{ category.name }}<br/>
+    <img src="pictures/upload/{{ category.picture }}" style="height: 150px;">
+    <form action="?route=deleteCategory" method="post">
+        <input type="hidden" name="id" value="{{ category.id }}"/>
+        <button type="submit">Supprimer</button>
+    </form>
+    </div>
+{% endfor %}
+
+</div>
+
+{% if errors %}
+    <ul class="alert alert-danger">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form action="?route=addCategory" method="post" enctype="multipart/form-data">
+
+    <fieldset class="form-group">
+        <label for="name">Nom de la catégorie</label>
+        <input type="text" class="form-control" name="name" id="name"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="nameShortcut">Titre raccourci (25 caractères max)</label>
+        <input type="text" class="form-control" name="nameShortcut" id="nameShortcut"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+            <label for="picture">Choisissez l'image à envoyer :</label>
+            <input type="file" name="picture" id="picture">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="type">Type</label>
+        <select name="type" id="type" class="form-control">
+            {% for type in types %}
+                <option {{ type == type.id ? 'selected' }}
+                        value="{{ type.id }}">{{ type.consistency }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span> Ajouter une catégorie
+    </button>
+    <a href="?route=menuAdmin"><button type="button" class="btn btn-info">
+        <span class="glyphicon glyphicon-home"></span> Revenir à la carte
+    </button></a>
+</form>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
