@@ -1,35 +1,82 @@
+.menuFond {
+    background-image: url("../../pictures/bg-crepe.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 49vh;
+    border:1px solid black;
+}
+
 .titreMenu {
-    margin-top: 100px;
-    text-align: center;
-    font-size: 4vw;
+    font-size: 6vw;
+    color: yellow;
+    text-shadow: 2px 2px 1px black;
+    padding-top: 23vh;
 }
 
 /* Onglets */
+.underTitle {
+    text-align: center;
+    font-size: 3vw;
+    color: white;
+}
+.nav > li > .couleurOnglet {
+    position: relative;
+    display: block;
+    padding: 1.5vh 3vw;
+    width: 20vw;
+    text-align:center;
+    color: black;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
 .nav-pills > li > a {
+    margin-left: 1vw;
     width: 145px;
     text-align: center;
-    border: 2px solid black;
-    background-color: lightgreen;
+    border: 1px solid black;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    border: 1px solid black;
 }
 
 /* Onglet actif */
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
-    color: black;
-    text-decoration: underline;
-    background-color: rgb(78, 192, 80);
+    color: yellow;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
 
-.tab-content {
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display: inline-block;
+}
+
+
+.nav > li > .couleurOnglet {
+    position: relative;
+    display: block;
+    padding: 1.5vh 3vw;
+    width: 20vw;
+    text-align:center;
     color: black;
-    margin-left: -15px;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: black;
+    font-size: 1vw;
+    font-weight: bold;
+    background: white;
+}
+
+.tab-content {
+    color: white;
     margin-bottom: 15px;
-    background-color: rgb(78, 192, 80);
-    width: auto;
-    border: 2px solid black;
 }
 
 a {
@@ -40,33 +87,52 @@ a:hover, a:focus {
     color: black;
 }
 
+.titreCategorie {
+    font-size: calc(1.5vw + 10px);
+    text-align: center;
+    margin-top: 12vh;
+    margin-bottom: 5vh;
+    font-weight: bold;
+    color: black;
+}
+
 .category {
     margin-top: 25px;
+    margin-bottom: 2vh;
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: black;
 }
 
 .description {
-    margin-left: 10px;
     font-style: italic;
+    font-size: 1.2vw;
+    color: black;
+    margin-bottom: 2vh;
 }
 
 .price {
     padding-right: 10px;
     float:right;
-    Font-Weight: bold;
+    font-size: 1.5vw;
+    color: black;
 }
 
 /* Photos de coté */
 .rowP {
+    border: 1px solid black;
+    border-radius: 10px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    /*background: url("../../pictures/wall-4-light.png") , #232428;*/
+    width:100%;
 }
 
 .picture {
     margin-left: -20px;
     margin-bottom: 15px;
-    background-color: rgb(78, 192, 80);
     border-right: 2px solid black;
     border-top: 2px solid black;
     border-bottom: 2px solid black;

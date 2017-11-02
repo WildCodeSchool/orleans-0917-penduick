@@ -6,6 +6,7 @@ class Category
 {
     private $id;
     private $name;
+    private $nameShortcut;
     private $picture;
     private $type_id;
 
@@ -42,6 +43,21 @@ class Category
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getNameShortcut()
+    {
+        return $this->nameShortcut;
+    }
+
+    /**
+     * @param mixed $nameShortcut
+     * @return Category
+     */
+    public function setNameShortcut($nameShortcut)
+    {
+        $this->nameShortcut = $nameShortcut;
         return $this;
     }
 

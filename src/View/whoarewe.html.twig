@@ -3,9 +3,11 @@
         <div class="row">
             <h1 class="titleHeader">{{ company.header | raw }}</h1>
             <hr/>
-            <p>{{ company.subHeader | raw }}</p>
+            <p class="subHeader">{{ company.subHeader | raw }}</p>
             <hr/>
-            <button type="button" class="btnHeader"><strong>VOIR LA CARTE</strong></button>
+            <form action="?route=carte" method="post">
+                <button type="submit" class="btnHeader">VOIR LA CARTE</button>
+            </form>
         </div>
     </div>
 </section>
