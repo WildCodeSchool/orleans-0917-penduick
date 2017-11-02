@@ -27,6 +27,7 @@
                                             <input type="hidden" name="id" value="{{ crepe.id }}"/>
                                             <button type="submit" class="btn btn-danger">Supprimer</button>
                                         </form>
+                                        <a href="?route=updateFood&id={{ crepe.id }}" class="btn btn-warning">Éditer</a>
                                         <span class="price">... {{ crepe.price }}€</span>
                                     {% endfor %}
                                 </ul>
