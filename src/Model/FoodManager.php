@@ -50,10 +50,10 @@ class FoodManager extends EntityManager
         $query = "UPDATE food SET title=:title, description=:description, price=:price, category_id=:category 
                   WHERE id=:id";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('firstname', $food->getTitle(), \PDO::PARAM_STR);
-        $statement->bindValue('lastname', $food->getDescription(), \PDO::PARAM_STR);
-        $statement->bindValue('birthdate', $food->getPrice(), \PDO::PARAM_STR);
-        $statement->bindValue('category', $food->getCategoryId()->getId(), \PDO::PARAM_INT);
+        $statement->bindValue('title', $food->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('description', $food->getDescription(), \PDO::PARAM_STR);
+        $statement->bindValue('price', $food->getPrice(), \PDO::PARAM_STR);
+        $statement->bindValue('category', $food->getCategoryId(), \PDO::PARAM_INT);
         $statement->bindValue('id', $food->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
