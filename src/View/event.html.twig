@@ -1,0 +1,12 @@
+<section id="event" class="container-fluid event" >
+    {#Si event vide (ou équivalent a <p><br></p> par Summernote#}
+    {% if company.event != '<p><br></p>' %}
+        <div class="row">
+            <div>
+                <p class="aboutUs">{{ company.event | raw }}</p>
+            </div>
+        </div>
+    {% else %}
+        <br/>
+    {% endif %}
+</section>
