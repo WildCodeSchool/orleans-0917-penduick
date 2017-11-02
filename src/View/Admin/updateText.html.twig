@@ -1,10 +1,52 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
-<h1>Modifier les textes</h1>
+<h1 class="adminStyle">Modifier les textes</h1>
+<div class="container">
+    <p>{{ info }}</p>
+    <div class="row">
+        {% for text in texts %}
+            <h3>Texte de la page d'accueil</h3>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="header">En-tête</label>
+                    <input type="text" class="form-control" name="header" id="header" value="{{ text.header }}" />
+                </div>
 
-TO DO
 
+                <div class="form-group">
+                    <label for="subheader">En-tête détaillé</label>
+                    <input type="text" class="form-control" name="subHeader" id="subHeader" value="{{ text.subHeader }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="summernote">Evènement</label>
+                    <textarea id="summernote" name="event">{{ text.event }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="aboutUs">A propos</label>
+                    <input type="text" class="form-control" name="aboutUs" id="aboutUs" value="{{ text.about_us }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" class="form-control" name="telephone" id="telephone" value="{{ text.telephone }}" />
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right decalBtnValidModifText">Valider les changements</button>
+            </form>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
 </body>
 </html>
