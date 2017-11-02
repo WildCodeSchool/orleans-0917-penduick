@@ -10,7 +10,6 @@ namespace AuPenDuick\Model;
 
 class CompanyPictureManager extends EntityManager
 {
-
     public function findAll()
     {
         $statement = $this->pdo->query('SELECT * FROM companyPictures');
