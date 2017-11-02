@@ -3,6 +3,7 @@
 namespace AuPenDuick\Controller;
 
 use AuPenDuick\Model\CompanyTextManager;
+use AuPenDuick\Model\CompanyText;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Category;
@@ -192,7 +193,6 @@ class AdminController extends Controller
         ]);
     }
 
-
     public function deleteCategoryAction()
     {
         if (!empty($_POST['id'])) {
@@ -203,7 +203,6 @@ class AdminController extends Controller
         }
         return $this->twig->render('Admin/addCategory.html.twig');
     }
-
 
     public function addFoodAction()
     {
@@ -349,6 +348,12 @@ class AdminController extends Controller
         $textManager = new CompanyTextManager();
 
         if (!empty($_POST)){
+
+            // Correction summernote vide
+            if ($_POST['event'] == '<p><br></p>') {
+                $_POST['event'] = '';
+            }
+
             $update = new CompanyText();
             $update->setHeader($_POST['header']);
             $update->setSubHeader($_POST['subHeader']);
