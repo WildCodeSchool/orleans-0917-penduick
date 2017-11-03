@@ -285,7 +285,6 @@ class AdminController extends Controller
         }else {
             $food = $foodManager->findOneFood($_GET['id']);
         }
-        var_dump($food);
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
