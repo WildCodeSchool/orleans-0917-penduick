@@ -14,7 +14,7 @@ class CategoryManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
     }
 
-    public function findByType($id)
+    public function findByType(int $id)
     {
         $query = "SELECT * FROM category WHERE type_id=:type_id";
         $statement = $this->pdo->prepare($query);
@@ -23,7 +23,7 @@ class CategoryManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
     }
 
-    public function findOneCategory($id)
+    public function findOneCategory(int $id)
     {
         $query = "SELECT * FROM category WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -55,3 +55,4 @@ class CategoryManager extends EntityManager
         $statement->execute();
     }
 }
+
