@@ -16,7 +16,7 @@ class CompanyPictureManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyPicture::class);
     }
 
-    public function findByCategory($id)
+    public function findByCategory(int $id)
     {
         $query = "SELECT * FROM companyPicture WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -25,7 +25,7 @@ class CompanyPictureManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyPicture::class);
     }
 
-    public function findOne($id)
+    public function findOne(int $id)
     {
         $query = "SELECT * FROM companyPicture WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -35,7 +35,7 @@ class CompanyPictureManager extends EntityManager
         return $picture[0];
     }
 
-    public function deleteById($id)
+    public function deleteById(int $id)
     {
         $query = 'DELETE FROM companyPicture WHERE id=:id';
         $statement = $this->pdo->prepare($query);
@@ -43,7 +43,7 @@ class CompanyPictureManager extends EntityManager
         $statement->execute();
     }
 
-    public function addOne($name)
+    public function addOne(string $name)
     {
         $query = 'INSERT INTO companyPicture (name) VALUES(:name)';
         $statement = $this->pdo->prepare($query);
@@ -58,3 +58,4 @@ class CompanyPictureManager extends EntityManager
     }
 
 }
+

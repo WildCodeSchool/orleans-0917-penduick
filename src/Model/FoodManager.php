@@ -4,7 +4,7 @@ namespace AuPenDuick\Model;
 
 class FoodManager extends EntityManager
 {
-    public function findByCategory($id)
+    public function findByCategory(int $id)
     {
         $query = "SELECT * FROM food WHERE category_id=:category_id";
         $statement = $this->pdo->prepare($query);
@@ -13,7 +13,7 @@ class FoodManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Food::class);
     }
 
-    public function findOneFood($id)
+    public function findOneFood(int $id)
     {
         $query = "SELECT * FROM food WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -58,3 +58,4 @@ class FoodManager extends EntityManager
         $statement->execute();
     }
 }
+
