@@ -279,7 +279,9 @@ iframe{
 
 .footerP {
     margin-top: 12vh;
+    font-size: 20px;
     text-align: center;
+    color: lightgrey;
 }
 
 strong {
