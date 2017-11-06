@@ -2,22 +2,26 @@
     list-style: none;
 }
 
-.menuFond {
+.menuBack {
     background: darkseagreen;
     height: auto;
 }
 
-.titreCarte {
+.titleCard {
     font-size: calc(3vw + 10px);
     color: yellow;
     margin-top: 7%;
 }
 
-#title {
+.yellowTitle {
     margin-top: 10vh;
     color: yellow;
     text-shadow: 1px 1px 1px black;
     font-size: calc(3vw + 10px);
+}
+
+.titleSentence{
+    font-size: calc(1vw + 10px);
 }
 
 .styleSpacer {
@@ -25,7 +29,7 @@
     height: 4vh;
 }
 
-.backOnglet {
+.backTab {
     background: white;
 }
 
@@ -42,7 +46,7 @@
 
 /* Onglets */
 
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
     position: relative;
     display: block;
     text-align: center;
@@ -57,7 +61,7 @@
     display: inline-block;
 }
 
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
     position: relative;
     display: block;
     padding: 3vh 3vw;
@@ -83,11 +87,7 @@ a:hover, a:focus {
     color: black;
 }
 
-#title {
-    font-size: 2vw;
-}
-
-.titreCategorie {
+.titleCategory {
     font-size: calc(2vw + 5px);
     text-align: center;
     margin-top: 8vh;
@@ -109,6 +109,7 @@ a:hover, a:focus {
 .price {
     font-size: calc(1.5vw + 5px);
     color: cornflowerblue;
+    margin-left: -2.5vw;
 }
 
 .columnsPics {
@@ -137,10 +138,7 @@ a:hover, a:focus {
         height: 18vh;
     }
 
-    #title {
-        margin-top: 8vh;
 
-    }
 
     .columnsPics {
         -webkit-columns: 2;
@@ -152,7 +150,7 @@ a:hover, a:focus {
         margin-top: 1vh;
 
     }
-    .titreCategorie {
+    .titleCategory {
         margin-bottom: 6vh;
     }
 
