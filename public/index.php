@@ -18,12 +18,13 @@ if ($route == 'admin') {
     echo $personController->menuAction();
 } elseif ($route == 'updateFood'){
     $personController = new \AuPenDuick\Controller\AdminController();
+    echo $personController->updateFoodAction();
 }elseif (!empty($route) && $route == 'addType'){
-    $foodController = new \AuPenDuick\Controller\AdminController();
-    echo $foodController->addTypeAction();
+    $personController = new \AuPenDuick\Controller\AdminController();
+    echo $personController->addTypeAction();
 }elseif (!empty($route) && $route == 'deleteType'){
-    $foodController = new \AuPenDuick\Controller\AdminController();
-    echo $foodController->deleteTypeAction();
+    $personController = new \AuPenDuick\Controller\AdminController();
+    echo $personController->deleteTypeAction();
 } elseif ($route == 'addType'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addTypeAction();
