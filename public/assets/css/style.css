@@ -45,16 +45,16 @@ hr {
 }
 
 .logo1 {
-    width: 40%;
+    width: 25%;
     margin-top: 2vh;
     margin-bottom: 3vh;
     margin-left: 1vw;
 }
 
 .puce {
-    margin-top: 3vw;
+    margin-top: 2vw;
     margin-right: 1vw;
-    font-size: calc(1vw+ 3px);
+    font-size: calc(1vw+ 2px);
     color: black;
 }
 
@@ -310,4 +310,20 @@ strong {
 
 .rowSpacer {
     margin-top: 15px;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+    .puce {
+        margin-top: 2.5vw;
+        font-size: calc(1vw + 1.5px);
+        color: black;
+    }
+
+    .logo1 {
+        width: 40%;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        margin-left: 1vw;
+    }
 }
