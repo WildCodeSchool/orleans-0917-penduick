@@ -13,7 +13,7 @@
                     <img src="pictures/upload/{{ picture.name }}" class="sizePicture" alt="{{ picture.name }}" />
                 </figure>
                 <form id="{{ picture.id }}" method="post" action="">
-                    <input type="text" name="delete" value="{{ picture.id }}" class="hidden">
+                    <input type="hidden" name="delete" value="{{ picture.id }}">
                     <button type="submit" class="btn btn-danger"
                             onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image?');">
                         Supprimer
