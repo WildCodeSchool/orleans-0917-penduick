@@ -162,6 +162,11 @@ class AdminController extends Controller
             $category->setNameShortcut($_POST['nameShortcut']);
             $category->setTypeId($_POST['type']);
 
+            // Max 25 Caractères ShortCut
+            if (strlen ($_POST['nameShortcut']) > 25) {
+                $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
+            }
+
             $maxsize = 1048576;
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
             $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
