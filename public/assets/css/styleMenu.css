@@ -2,12 +2,12 @@
     list-style: none;
 }
 
-.menuFond {
+.menuBack {
     background: darkseagreen;
     height: auto;
 }
 
-.titreCarte {
+.titleCard {
     font-size: calc(3vw + 10px);
     color: yellow;
     margin-top: 7%;
@@ -20,12 +20,17 @@
     font-size: calc(3vw + 10px);
 }
 
+
+.titleSentence{
+    font-size: calc(1vw + 10px);
+}
+
 .styleSpacer {
     background: white;
     height: 4vh;
 }
 
-.backOnglet {
+.backTab {
     background: white;
 }
 
@@ -42,7 +47,8 @@
 
 /* Onglets */
 
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
+
     position: relative;
     display: block;
     text-align: center;
@@ -57,7 +63,7 @@
     display: inline-block;
 }
 
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
     position: relative;
     display: block;
     padding: 3vh 3vw;
@@ -83,7 +89,7 @@ a:hover, a:focus {
     color: black;
 }
 
-.titreCategorie {
+.titleCategory {
     font-size: calc(2vw + 5px);
     text-align: center;
     margin-top: 8vh;
@@ -106,6 +112,7 @@ a:hover, a:focus {
     font-size: calc(1.5vw + 5px);
     color: cornflowerblue;
     margin-left: -2.5vw;
+
 }
 
 .columnsPics {
@@ -120,6 +127,53 @@ a:hover, a:focus {
 
 .rowHeight {
     height: 220px;
+}
+
+@media screen and (min-width: 310px) and (max-width: 640px) {
+
+    .backgroundCategory {
+        background-image: url("../../pictures/bg-crepe.jpg");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 18vh;
+    }
+
+
+
+    .columnsPics {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        -webkit-column-gap: 2em;
+        -moz-column-gap: 2em;
+        column-gap: 3em;
+        margin-top: 1vh;
+
+    }
+    .titleCategory {
+        margin-bottom: 6vh;
+    }
+
+    .rowHeight {
+        height: 60px;
+    }
+.columnsPics {
+    -webkit-columns: 4;
+    -moz-columns: 4;
+    columns: 4;
+    -webkit-column-gap: 1em;
+    -moz-column-gap: 1em;
+    column-gap: 1em;
+    margin-bottom: 4vh;
+}
+
+.rowHeight {
+    height: 220px;
+}
+  
 }
 
 @media screen and (min-width: 310px) and (max-width: 640px) {
