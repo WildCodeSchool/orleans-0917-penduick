@@ -14,18 +14,17 @@
 /* **************** */
 /*		COMMUN		*/
 /* **************** */
-
-hr {
-    height: 0.2vw;
-    visibility: hidden;
-}
-
 .yellow {
     color: rgb(254, 236, 4);
 }
 
 .textShadow {
     text-shadow: 1px 1px 2px black;
+}
+
+hr {
+    height: 0.2vw;
+    visibility: hidden;
 }
 
 /* **************** */
@@ -76,21 +75,30 @@ hr {
 /*------------ Who are We ------------*/
 .titleHeader {
     font-size: calc(3vw + 10px);
-    margin-top: -53vh;
+    margin-top: -56vh;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.subHeader {
+    font-size: 2vw;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 .btnHeader {
-    font-size: 1.5em;
-    background: rgb(254, 236, 4);
+    font-size: 1.2em;
+    padding: 15px;
     border: 1px solid grey;
-    border-radius: 50px;
+    border-radius: 10px;
     box-shadow: 1px 1px 2px black;
     color: black;
-    text-decoration: none;
+    background: rgb(254, 236, 4);
 }
 
+.btnHeader:hover {
+    text-decoration: underline;
+}
 
 .align {
     margin-left: 9vw;
@@ -103,6 +111,9 @@ hr {
     background: rgba(254,236,4,0.4);
 }
 
+.transition {
+    margin-bottom: 20px;
+}
 /*------------ About Us ------------*/
 .logoaupenduick{
     margin-top: 20px;

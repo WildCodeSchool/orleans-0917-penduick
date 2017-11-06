@@ -55,7 +55,7 @@ class AdminController extends Controller
                 $foodManager = new FoodManager();
                 $food = $foodManager->findOneFood($_POST['id']);
                 $foodManager->deleteFood($food);
-                header('Location: index.php?route=menuAdmin');
+                header('Location: admin.php?route=menuAdmin');
             }
         }
 
@@ -86,7 +86,7 @@ class AdminController extends Controller
                 $typeManager = new TypeManager();
                 $typeManager->insertType($type);
 
-                header('Location: index.php?route=addType');
+                header('Location: admin.php?route=addType');
             }
         }
 
@@ -132,7 +132,7 @@ class AdminController extends Controller
             $TypeManager = new TypeManager();
             $type = $TypeManager->findOneType($_POST['id']);
             $TypeManager->deleteType($type);
-            header('Location: index.php?route=addType');
+            header('Location: admin.php?route=addType');
         }
     }
 
@@ -202,7 +202,7 @@ class AdminController extends Controller
                 $categoryManager = new CategoryManager();
                 $categoryManager->insertCategory($category);
 
-                header('Location: index.php?route=addCategory');
+                header('Location: admin.php?route=addCategory');
             }
         }
 
@@ -224,7 +224,7 @@ class AdminController extends Controller
             $CategoryManager = new CategoryManager();
             $category = $CategoryManager->findOneCategory($_POST['id']);
             $CategoryManager->deleteCategory($category);
-            header('Location: index.php?route=addCategory');
+            header('Location: admin.php?route=addCategory');
         }
         return $this->twig->render('Admin/addCategory.html.twig');
     }
@@ -249,7 +249,7 @@ class AdminController extends Controller
                 $foodManager = new FoodManager();
                 $foodManager->insertFood($crepe);
 
-                header('Location: index.php?route=menuAdmin');
+                header('Location: admin.php?route=menuAdmin');
             }
         }
 
@@ -284,7 +284,7 @@ class AdminController extends Controller
 
                 $foodManager->updateFood($food);
 
-                header('Location: index.php?route=menuAdmin');
+                header('Location: admin.php?route=menuAdmin');
 
             }
         }else {
@@ -374,8 +374,6 @@ class AdminController extends Controller
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
                 // Insert Bdd via Model
-                $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
                 $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
