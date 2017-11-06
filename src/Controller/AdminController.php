@@ -374,8 +374,6 @@ class AdminController extends Controller
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
                 // Insert Bdd via Model
-                $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
                 $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
