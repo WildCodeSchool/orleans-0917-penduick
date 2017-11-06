@@ -100,10 +100,30 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateFoodAction()
+    private function addOrUpdateAction(Food $food)
     {
-        return $this->twig->render('Admin/updateFood.html.twig');
+        // traitement des erreurs éventuelles
+        $food->setTitle($_POST['title']);
+        $food->setDescription($_POST['description']);
+        $food->setPrice($_POST['price']);
+        $food->setCategoryId($_POST['category']);
+        return $food;
+    }
 
+    private function checkError()
+    {
+        $errors = '';
+
+        if (empty($_POST['title'])) {
+            $errors[] = 'Title is required';
+        }
+        if (empty($_POST['description'])) {
+            $errors[] = 'Description is required';
+        }
+        if (empty($_POST['price'])) {
+            $errors[] = 'Price is required';
+        }
+        return $errors;
     }
 
     public function deleteTypeAction()
@@ -141,6 +161,11 @@ class AdminController extends Controller
             $category->setName($_POST['name']);
             $category->setNameShortcut($_POST['nameShortcut']);
             $category->setTypeId($_POST['type']);
+
+            // Max 25 Caractères ShortCut
+            if (strlen ($_POST['nameShortcut']) > 25) {
+                $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
+            }
 
             $maxsize = 1048576;
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
@@ -209,29 +234,14 @@ class AdminController extends Controller
         // récupérer $_POST et traiter
         $errors = [];
 
-        // creation d'un objet person vide
+        // creation d'un objet food vide
         $crepe = new Food();
 
         if (!empty($_POST)) {
 
             // traitement des erreurs éventuelles
-            $crepe->setTitle($_POST['title']);
-            $crepe->setDescription($_POST['description']);
-            $crepe->setPrice($_POST['price']);
-            $crepe->setCategoryId($_POST['category']);
-
-            if (empty($_POST['title'])) {
-                $errors[] = 'Title is required';
-            } elseif (strlen($_POST['title']) < 3) {
-                $errors[] = 'Title should be at least 3 characters';
-            }
-            if (empty($_POST['description'])) {
-                $errors[] = 'Description is required';
-            }
-
-            if (empty($_POST['price'])) {
-                $errors[] = 'Price is required';
-            }
+            $crepe = $this->addOrUpdateAction($crepe);
+            $errors = $this->checkError();
 
             // si pas d'erreur, insert en bdd
             if (empty($errors)) {
@@ -250,6 +260,43 @@ class AdminController extends Controller
             'errors' => $errors,
             'categories' => $categories,
             'crepe' => $crepe,
+        ]);
+    }
+
+    public function updateFoodAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+
+        // creation d'un objet food vide
+        $foodManager = new FoodManager();
+
+        if (!empty($_POST)) {
+            // traitement des erreurs éventuelles
+            $food = $foodManager->findOneFood($_POST['id']);
+            $food = $this->addOrUpdateAction($food);
+            $errors = $this->checkError();
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $foodManager = new FoodManager();
+
+                $foodManager->updateFood($food);
+
+                header('Location: index.php?route=menuAdmin');
+
+            }
+        }else {
+            $food = $foodManager->findOneFood($_GET['id']);
+        }
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+
+        return $this->twig->render('Admin/addFood.html.twig', [
+            'errors' => $errors,
+            'categories' => $categories,
+            'crepe' => $food,
         ]);
     }
 

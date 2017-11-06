@@ -2,12 +2,12 @@
     list-style: none;
 }
 
-.menuFond {
+.menuBack {
     background: darkseagreen;
     height: auto;
 }
 
-.titreCarte {
+.titleCard {
     font-size: calc(3vw + 10px);
     color: yellow;
     margin-top: 7%;
@@ -20,12 +20,17 @@
     font-size: calc(3vw + 10px);
 }
 
+
+.titleSentence{
+    font-size: calc(1vw + 10px);
+}
+
 .styleSpacer {
     background: white;
     height: 4vh;
 }
 
-.backOnglet {
+.backTab {
     background: white;
 }
 
@@ -40,6 +45,17 @@
     box-shadow: 0px 10px 2px black;
 }
 
+/* Onglets */
+
+.nav > li > .colorTab {
+
+    position: relative;
+    display: block;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
 /* Onglet actif */
 
 .nav-tabs > li, .nav-pills > li {
@@ -47,7 +63,7 @@
     display: inline-block;
 }
 
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
     position: relative;
     display: block;
     padding: 3vh 3vw;
@@ -64,9 +80,9 @@
     text-decoration: underline;
     outline: none;
 }
+
 .nav-pills > li > a:hover {
     background: white;
-
 }
 
 a {
@@ -77,7 +93,7 @@ a:hover, a:focus {
     color: black;
 }
 
-.titreCategorie {
+.titleCategory {
     font-size: calc(2vw + 5px);
     text-align: center;
     margin-top: 8vh;
@@ -93,13 +109,9 @@ a:hover, a:focus {
 
 .description {
     font-size: calc(1.2vw + 8px);
-    color: grey;
+    color: cornflowerblue;
 }
 
-.logoMenuCard {
-    width: 1.1%;
-    margin-bottom: 1vh;
-}
 .price {
     font-size: calc(1.5vw + 5px);
     color: cornflowerblue;

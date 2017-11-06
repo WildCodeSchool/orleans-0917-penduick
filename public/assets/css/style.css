@@ -76,30 +76,21 @@ hr {
 /*------------ Who are We ------------*/
 .titleHeader {
     font-size: calc(3vw + 10px);
-    margin-top: -54vh;
-    color: white;
-    text-shadow: 1px 1px 2px black;
-}
-
-.subHeader {
-    font-size: 2vw;
+    margin-top: -53vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 .btnHeader {
-    font-size: 1.2em;
-    padding: 15px;
+    font-size: 1.5em;
+    background: rgb(254, 236, 4);
     border: 1px solid grey;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 1px 1px 2px black;
     color: black;
-    background: rgb(254, 236, 4);
+    text-decoration: none;
 }
 
-.btnHeader:hover {
-    text-decoration: underline;
-}
 
 .align {
     margin-left: 9vw;
@@ -110,10 +101,6 @@ hr {
 .event {
     height: auto;
     background: rgba(254,236,4,0.4);
-}
-
-.transition {
-    margin-bottom: 20px;
 }
 
 /*------------ About Us ------------*/
@@ -131,7 +118,7 @@ hr {
 }
 
 .aboutUs p {
-    font-size: 2.1vw;
+    font-size: 1.5vw;
     color: black;
     text-align: center;
     margin-bottom: 4vh;
@@ -166,7 +153,7 @@ hr {
     font-size: 20px;
 }
 
-.espaceCote {
+.marginRow {
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -190,18 +177,19 @@ hr {
 
 .vignettes img {
     width: 100%;
+    max-height: 200px;
     cursor: pointer;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
 
 /*------------ Find Us  ------------*/
-/* GENERAL */
+    /* GENERAL */
 .row0, .row1, .row2{
     background: white;
 }
 
-/* SECTION LOCALISATION */
+    /* SECTION LOCALISATION */
 .localisation{
     font-size: 2.5em;
     background-color: black;
@@ -224,7 +212,7 @@ iframe{
     vertical-align:middle;
 }
 
-/* SECTION TRANSPORTS EN COMMUN */
+    /* SECTION TRANSPORTS EN COMMUN */
 .bus, .tram{
     margin-bottom: 30px;
 }
@@ -279,7 +267,9 @@ iframe{
 
 .footerP {
     margin-top: 12vh;
+    font-size: 20px;
     text-align: center;
+    color: lightgrey;
 }
 
 strong {
