@@ -84,10 +84,11 @@
                                                         <form action="?route=menuAdmin" method="post">
                                                             <input type="hidden" name="id" value="{{ crepe.id }}"/>
                                                             <button type="submit" class="btn btn-danger"
-                                                                    onclick="return confirm('Are you sure you want to delete this item?');">
+                                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce plat ?');">
                                                                 Supprimer
                                                             </button>
                                                         </form>
+                                                        <a href="?route=updateFood&id={{ crepe.id }}" class="btn btn-warning">Editer</a>
                                                     </div>
 
                                                 </div>
