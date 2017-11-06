@@ -124,6 +124,11 @@ hr {
 }
 
 .aboutUs {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.aboutUs p {
     font-size: 1.5vw;
     color: black;
     text-align: center;
