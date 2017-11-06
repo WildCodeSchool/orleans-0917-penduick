@@ -93,9 +93,13 @@ a:hover, a:focus {
 
 .description {
     font-size: calc(1.2vw + 8px);
-    color: cornflowerblue;
+    color: grey;
 }
 
+.logoMenuCard {
+    width: 1.1%;
+    margin-bottom: 1vh;
+}
 .price {
     font-size: calc(1.5vw + 5px);
     color: cornflowerblue;
