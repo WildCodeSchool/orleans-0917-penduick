@@ -13,6 +13,9 @@ if (!empty($_GET['route'])) {
 if ($route == 'carte') {
     $personController = new \AuPenDuick\Controller\HomeController();
     echo $personController->menuContentAction();
+} elseif ($route == 'legalNotice') {
+    $personController = new \AuPenDuick\Controller\HomeController();
+    echo $personController->legalNoticeAction();
 } else {
     $personController = new \AuPenDuick\Controller\HomeController();
     echo $personController->homeAction();

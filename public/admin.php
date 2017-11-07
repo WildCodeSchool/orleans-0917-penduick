@@ -37,6 +37,9 @@ if ($route == 'menuAdmin') {
 } elseif ($route == 'updateText'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->updateTextAction();
+} elseif ($route == 'addExtra'){
+    $personController = new \AuPenDuick\Controller\AdminController();
+    echo $personController->addExtraAction();
 } elseif ($route == 'addPicture'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addPictureAction();

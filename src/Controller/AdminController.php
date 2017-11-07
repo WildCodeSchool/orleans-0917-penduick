@@ -7,6 +7,8 @@ use AuPenDuick\Model\CompanyText;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Category;
+use AuPenDuick\Model\Extra;
+use AuPenDuick\Model\ExtraManager;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\Type;
@@ -35,9 +37,10 @@ class AdminController extends Controller
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
-        // Récupération des catégories en fonction de l'id du type
+        // Récupération des catégories et extra en fonction de l'id du type
         $menus = [];
         foreach ($types as $type) {
+
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->findByType($type->getId());
 
@@ -51,6 +54,7 @@ class AdminController extends Controller
                     $menus[$type->getConsistency()][$category->getName()][] = $food;
                 }
             }
+
             if (!empty($_POST['id'])) {
                 $foodManager = new FoodManager();
                 $food = $foodManager->findOneFood($_POST['id']);
@@ -59,9 +63,27 @@ class AdminController extends Controller
             }
         }
 
+        // Supprimer Extra
+        if (!empty($_POST['idExtra'])) {
+            $extraManager = new ExtraManager();
+            $extraManager->deleteExtra($_POST['idExtra']);
+            header('Location: admin.php?route=menuAdmin');
+        }
+
+        // Extra
+        $extraManager = new ExtraManager();
+        $extras = $extraManager->findAll();
+        $formatedExtras = [];
+
+        foreach ($extras as $extra) {
+            $type =  $typeManager->findOneType($extra->getTypeId());
+            $formatedExtras[$type->getConsistency()][] = $extra;
+        }
+
         return $this->twig->render('Admin/menuAdmin.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
+            'extras' => $formatedExtras,
         ]);
     }
 
@@ -115,13 +137,13 @@ class AdminController extends Controller
         $errors = '';
 
         if (empty($_POST['title'])) {
-            $errors[] = 'Title is required';
+            $errors[] = 'Un titre est requis';
         }
         if (empty($_POST['description'])) {
-            $errors[] = 'Description is required';
+            $errors[] = 'Une description est requise';
         }
         if (empty($_POST['price'])) {
-            $errors[] = 'Price is required';
+            $errors[] = 'Un prix est requis';
         }
         return $errors;
     }
@@ -163,7 +185,7 @@ class AdminController extends Controller
             $category->setTypeId($_POST['type']);
 
             // Max 25 Caractères ShortCut
-            if (strlen ($_POST['nameShortcut']) > 25) {
+            if (strlen($_POST['nameShortcut']) > 25) {
                 $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
             }
 
@@ -172,8 +194,8 @@ class AdminController extends Controller
             $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
             // Vérification image présente, si oui attribution nom unique
-            if (empty($_FILES['picture']['name'])){
-                $errors[] = 'A picture is required';
+            if (empty($_FILES['picture']['name'])) {
+                $errors[] = 'Une photo est requise';
             } else {
                 $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
                 $category->setPicture($_FILES['picture']['name']);
@@ -183,15 +205,15 @@ class AdminController extends Controller
                 $errors[] = 'le fichier n\'est pas du bon format';
             }
             // Vérification de la taille
-            if ($_FILES['picture']['error']){
+            if ($_FILES['picture']['error']) {
                 $errors[] = $fileUploadErrors[$_FILES['picture']['error']];
             }
 
             if (empty($_POST['name'])) {
-                $errors[] = 'Name is required';
+                $errors[] = 'Un nom est requis';
             }
             if (empty($_POST['nameShortcut'])) {
-                $errors[] = 'A shortcut name is required';
+                $errors[] = 'Un titre raccourci est requis';
             }
 
             // si pas d'erreur, insert en bdd
@@ -287,7 +309,7 @@ class AdminController extends Controller
                 header('Location: admin.php?route=menuAdmin');
 
             }
-        }else {
+        } else {
             $food = $foodManager->findOneFood($_GET['id']);
         }
         $categoryManager = new CategoryManager();
@@ -386,13 +408,14 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
 
         // Initialisation
         $info = '';
         $textManager = new CompanyTextManager();
 
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
 
             // Correction summernote vide
             if ($_POST['event'] == '<p><br></p>') {
@@ -402,9 +425,9 @@ class AdminController extends Controller
             $update = new CompanyText();
             $update->setHeader($_POST['header']);
             $update->setSubHeader($_POST['subHeader']);
-            $update->setEvent($_POST['event']);
             $update->setAboutUs($_POST['aboutUs']);
             $update->setTelephone($_POST['telephone']);
+            $update->setEvent($_POST['event']);
             $textManager->updateText($update);
             $info = 'La modification a bien été pris en compte.';
         }
@@ -417,4 +440,48 @@ class AdminController extends Controller
             'info' => $info,
         ]);
     }
+
+    public function addExtraAction()
+    {
+        // Initialise
+        $errors = [];
+        $extra = '';
+
+
+        if (!empty($_POST)) {
+
+            if (empty($_POST['title'])) {
+                $errors[] = 'Un titre est requis';
+            }
+
+            $_POST['price'] = (int) $_POST['price'];
+            if (empty($_POST['price'])) {
+                $errors[] = 'Un prix est requis';
+            }
+
+            // On valide
+            if (empty($errors)) {
+
+                // Création d'un objet food vide
+                $extra = new Extra();
+                $extra->setTitle($_POST['title']);
+                $extra->setPrice($_POST['price']);
+                $extra->setTypeId($_POST['type']);
+                $extraManager = new ExtraManager();
+                $extraManager->addOne($extra);
+                header('Location: admin.php?route=menuAdmin');
+            }
+
+        }
+
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addExtra.html.twig', [
+            'errors' => $errors,
+            'extra' => $extra,
+            'types' => $types,
+        ]);
+    }
 }
+

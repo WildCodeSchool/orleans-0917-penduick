@@ -3,17 +3,9 @@
 
 <section id="menu">
     <!-------------------------------------header-------------------------------------------------------------------->
-    <div class="container-fluid menuBack">
-        <div class="row text-center">
-            <h1 class="titleCard">
-                <img src="pictures/couverts.png" class="logoMenu" alt="Couverts">
-                <span class="yellow">LA CARTE</span>
-            </h1>
-        </div>
-        <br/>
-        <div class="row text-center">
-        <span class="titleSentence">Découvrez la carte de votre restaurant Au Pen Duick <br/><span
-                    class="yellow textShadow">&</span> ses spécialitées</span>
+    <div class="container-fluid menuBackAdmin">
+        <div class="row">
+            <h1 class="yellow text-center">LA CARTE</h1>
         </div>
     </div>
     <div class="styleSpacer"></div>
@@ -96,9 +88,25 @@
                                         </div>
                                     {% endfor %}
                                 </div>
+                                {% for extra in extras[consistency] %}
+                                    <div class="row spaceMarginBot">
+                                        <div class="col-lg-6">
+                                            <div class="col-xs-4 col-lg-9 description">{{ extra.title }}</div>
+                                            <div class="col-xs-2 col-lg-2 price"> {{ extra.price }}€</div>
+                                            <form action="?route=menuAdmin" method="post">
+                                                <input type="hidden" name="idExtra" value="{{ extra.id }}"/>
+                                                <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce supplément ?');">
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+               {% endfor %}
                 </div>
             {% endfor %}
         </div>
@@ -106,16 +114,15 @@
 
         <!-----------------------------------------------pics---------------------------------------------------------->
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-10 col-lg-8 col-lg-offset-2">
-                    <div class="columnsPics">
+            <div class="row pics">
+                <div class="col-xs-10 col-lg-10 col-lg-offset-1">
+                    <div class="row ">
                         {% for picture in pictures %}
-                            <ul>
-                                <li>
-                                    <img src="pictures/upload/{{ picture.name }}{{ picture.extension }}"
-                                         class="pictureDetail img-responsive" alt="{{ picture.name }}"/>
-                                </li>
-                            </ul>
+                            <div class="col-sm-3 col-xs-6">
+                                <img src="pictures/upload/{{ picture.name }}"
+                                     class="pictureDetail img-responsive" alt="{{ picture.name }}"/>
+                            </div>
+
                         {% endfor %}
                     </div>
                 </div>

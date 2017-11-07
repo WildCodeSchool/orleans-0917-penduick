@@ -129,7 +129,7 @@ hr {
 }
 
 .aboutUs p {
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     color: black;
     text-align: center;
     margin-bottom: 4vh;
@@ -195,12 +195,12 @@ hr {
 }
 
 /*------------ Find Us  ------------*/
-    /* GENERAL */
+/* GENERAL */
 .row0, .row1, .row2{
     background: white;
 }
 
-    /* SECTION LOCALISATION */
+/* SECTION LOCALISATION */
 .localisation{
     font-size: 2.5em;
     background-color: black;
@@ -223,7 +223,7 @@ iframe{
     vertical-align:middle;
 }
 
-    /* SECTION TRANSPORTS EN COMMUN */
+/* SECTION TRANSPORTS EN COMMUN */
 .bus, .tram{
     margin-bottom: 30px;
 }
@@ -277,15 +277,19 @@ iframe{
 }
 
 .footerP {
-    margin-top: 12vh;
+    margin-top: 6vh;
     font-size: 20px;
     text-align: center;
     color: lightgrey;
 }
 
-strong {
+.legalNotice {
+    color: lightgrey;
+}
+
+.legalNotice:hover {
     text-decoration: underline;
-    margin-right: 3vw;
+    color: white;
 }
 
 .logoPinter {
@@ -312,6 +316,15 @@ strong {
 .rowSpacer {
     margin-top: 15px;
 }
+
+.legalNoticeContent {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    text-align: center;
+    color: black;
+}
+
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
 
