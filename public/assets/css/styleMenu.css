@@ -1,3 +1,11 @@
+.bodyMenu {
+    padding-top:95px;
+}
+
+.bodyLegalNotice {
+    padding-top:200px;
+}
+
 * {
     list-style: none;
 }
@@ -10,7 +18,8 @@
 .titleCard {
     font-size: calc(3vw + 10px);
     color: yellow;
-    margin-top: 7%;
+    padding-top:0.3em;
+    padding-bottom:0.3em;
 }
 
 .yellowTitle {
@@ -70,11 +79,12 @@
     text-align: center;
     color: black;
     font-weight: bold;
+    font-size: 2vw;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     color: black;
-    font-size: calc(1vw + 5px);
+    font-size: calc(1.5vw + 15px);
     font-weight: bold;
     background: white;
     text-decoration: underline;
@@ -94,42 +104,40 @@ a:hover, a:focus {
 }
 
 .titleCategory {
-    font-size: calc(2vw + 5px);
+    font-size: calc(1.2vw + 1.2em);
     text-align: center;
-    margin-top: 8vh;
-    margin-bottom: 12vh;
+    margin-top: 2em;
+    margin-bottom: 1.2em;
     font-weight: bold;
     color: black;
 }
 
 .category {
-    font-size: calc(1.8vw + 5px);
+    font-size: calc(1vw + 1em);
     font-weight: bold;
 }
 
 .description {
-    font-size: calc(1.2vw + 8px);
-    color: cornflowerblue;
+    font-size: calc(0.5vw + 0.9em);
+    color: grey;
 }
 
 .price {
-    font-size: calc(1.5vw + 5px);
+    font-size: calc(1vw + 1em);
     color: cornflowerblue;
-    margin-left: -2.5vw;
-}
-
-.columnsPics {
-    -webkit-columns: 4;
-    -moz-columns: 4;
-    columns: 4;
-    -webkit-column-gap: 1em;
-    -moz-column-gap: 1em;
-    column-gap: 1em;
-    margin-bottom: 4vh;
 }
 
 .rowHeight {
-    height: 220px;
+    height: 80px;
+}
+
+.pictureDetail {
+    margin-bottom: 10px;
+}
+
+.backTop{
+    max-width: 55px;
+    max-height: 55px;
 }
 
 @media screen and (min-width: 310px) and (max-width: 640px) {
@@ -165,4 +173,14 @@ a:hover, a:focus {
     .rowHeight {
         height: 60px;
     }
+}
+
+.go-top {
+    position:sticky;
+    bottom:20px;
+    right:20px;
+}
+
+.pics {
+    margin-top:4em;
 }

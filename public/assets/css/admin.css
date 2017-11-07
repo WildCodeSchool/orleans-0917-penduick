@@ -36,7 +36,6 @@
 
 legend {
     text-align: center;
-
 }
 
 .rowZ {
@@ -45,4 +44,13 @@ legend {
 
 .marginBottom {
     margin-top: 1vh;
+}
+
+.menuBackAdmin {
+    background: darkseagreen;
+    height: 100px;
+}
+
+.menuBackAdmin h1 {
+    font-size: calc(3vw + 10px);
 }
