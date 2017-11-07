@@ -12,7 +12,7 @@ class TypeManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Type::class);
     }
 
-    public function findOneType($id)
+    public function findOneType(int $id)
     {
         $query = "SELECT * FROM type WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -25,9 +25,7 @@ class TypeManager extends EntityManager
 
     public function insertType(Type $type)
     {
-        $query = "INSERT INTO type 
-                  (consistency) 
-                  VALUES (:consistency)";
+        $query = "INSERT INTO type (consistency) VALUES (:consistency)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('consistency', $type->getConsistency(), \PDO::PARAM_STR);
         $statement->execute();

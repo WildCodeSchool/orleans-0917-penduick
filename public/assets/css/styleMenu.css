@@ -1,82 +1,98 @@
-.menuFond {
+.bodyMenu {
+    padding-top:95px;
+}
+
+.bodyLegalNotice {
+    padding-top:200px;
+}
+
+* {
+    list-style: none;
+}
+
+.menuBack {
+    background: darkseagreen;
+    height: auto;
+}
+
+.titleCard {
+    font-size: calc(3vw + 10px);
+    color: yellow;
+    padding-top:0.3em;
+    padding-bottom:0.3em;
+}
+
+.yellowTitle {
+    margin-top: 10vh;
+    color: yellow;
+    text-shadow: 1px 1px 1px black;
+    font-size: calc(3vw + 10px);
+}
+
+
+.titleSentence{
+    font-size: calc(1vw + 10px);
+}
+
+.styleSpacer {
+    background: white;
+    height: 4vh;
+}
+
+.backTab {
+    background: white;
+}
+
+.backgroundCategory {
     background-image: url("../../pictures/bg-crepe.jpg");
+    background-position: bottom center;
     background-repeat: no-repeat;
-    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    height: 49vh;
-    border:1px solid black;
-}
-
-.titreMenu {
-    font-size: 6vw;
-    color: yellow;
-    text-shadow: 2px 2px 1px black;
-    padding-top: 23vh;
+    height: 28vh;
+    box-shadow: 0px 10px 2px black;
 }
 
 /* Onglets */
-.underTitle {
-    text-align: center;
-    font-size: 3vw;
-    color: white;
-}
-.nav > li > .couleurOnglet {
+
+.nav > li > .colorTab {
+
     position: relative;
     display: block;
-    padding: 1.5vh 3vw;
-    width: 20vw;
-    text-align:center;
+    text-align: center;
     color: black;
     font-weight: bold;
-    font-size: 1vw;
-}
-
-.nav-pills > li > a {
-    margin-left: 1vw;
-    width: 145px;
-    text-align: center;
-    border: 1px solid black;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border: 1px solid black;
 }
 
 /* Onglet actif */
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active {
-    color: yellow;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
 
 .nav-tabs > li, .nav-pills > li {
-    float:none;
+    float: none;
     display: inline-block;
 }
 
-
-.nav > li > .couleurOnglet {
+.nav > li > .colorTab {
     position: relative;
     display: block;
-    padding: 1.5vh 3vw;
-    width: 20vw;
-    text-align:center;
+    padding: 3vh 3vw;
+    text-align: center;
     color: black;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 2vw;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     color: black;
-    font-size: 1vw;
+    font-size: calc(1.5vw + 15px);
     font-weight: bold;
     background: white;
+    text-decoration: underline;
+    outline: none;
 }
 
-.tab-content {
-    color: white;
-    margin-bottom: 15px;
+.nav-pills > li > a:hover {
+    background: white;
 }
 
 a {
@@ -87,58 +103,84 @@ a:hover, a:focus {
     color: black;
 }
 
-.titreCategorie {
-    font-size: calc(1.5vw + 10px);
+.titleCategory {
+    font-size: calc(1.2vw + 1.2em);
     text-align: center;
-    margin-top: 12vh;
-    margin-bottom: 5vh;
+    margin-top: 2em;
+    margin-bottom: 1.2em;
     font-weight: bold;
     color: black;
 }
 
 .category {
-    margin-top: 25px;
-    margin-bottom: 2vh;
-    font-size: 1.8vw;
+    font-size: calc(1vw + 1em);
     font-weight: bold;
-    color: black;
 }
 
 .description {
-    font-style: italic;
-    font-size: 1.2vw;
-    color: black;
-    margin-bottom: 2vh;
+    font-size: calc(0.5vw + 0.9em);
+    color: grey;
 }
 
 .price {
-    padding-right: 10px;
-    float:right;
-    font-size: 1.5vw;
-    color: black;
+    font-size: calc(1vw + 1em);
+    color: cornflowerblue;
 }
 
-/* Photos de coté */
-.rowP {
-    border: 1px solid black;
-    border-radius: 10px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    /*background: url("../../pictures/wall-4-light.png") , #232428;*/
-    width:100%;
-}
-
-.picture {
-    margin-left: -20px;
-    margin-bottom: 15px;
-    border-right: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+.rowHeight {
+    height: 80px;
 }
 
 .pictureDetail {
-    margin-top: 100%;
-    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.backTop{
+    max-width: 55px;
+    max-height: 55px;
+}
+
+@media screen and (min-width: 310px) and (max-width: 640px) {
+
+    .backgroundCategory {
+        background-image: url("../../pictures/bg-crepe.jpg");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 18vh;
+    }
+
+    .yellowTitle {
+        margin-top: 8vh;
+    }
+
+    .columnsPics {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        -webkit-column-gap: 2em;
+        -moz-column-gap: 2em;
+        column-gap: 3em;
+        margin-top: 1vh;
+
+    }
+    .titreCategorie {
+        margin-bottom: 6vh;
+    }
+
+    .rowHeight {
+        height: 60px;
+    }
+}
+
+.go-top {
+    position:sticky;
+    bottom:20px;
+    right:20px;
+}
+
+.pics {
+    margin-top:4em;
 }

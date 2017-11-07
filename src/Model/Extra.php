@@ -1,14 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: wilder11
+ * Date: 07/11/17
+ * Time: 09:47
+ */
 
 namespace AuPenDuick\Model;
 
-class Food
+
+class Extra
 {
-    private $id;
-    private $title;
-    private $description;
-    private $price;
-    private $category_id;
+    public $id;
+    public $title;
+    public $price;
+    public $type_id;
 
     /**
      * @return mixed
@@ -20,7 +26,7 @@ class Food
 
     /**
      * @param mixed $id
-     * @return Food
+     * @return Extra
      */
     public function setId($id)
     {
@@ -38,29 +44,11 @@ class Food
 
     /**
      * @param mixed $title
-     * @return Food
+     * @return Extra
      */
     public function setTitle($title)
     {
         $this->title = $title;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
-     * @return Food
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
         return $this;
     }
 
@@ -74,7 +62,7 @@ class Food
 
     /**
      * @param mixed $price
-     * @return Food
+     * @return Extra
      */
     public function setPrice($price)
     {
@@ -85,18 +73,18 @@ class Food
     /**
      * @return mixed
      */
-    public function getCategoryId()
+    public function getTypeId()
     {
-        return $this->category_id;
+        return $this->type_id;
     }
 
     /**
-     * @param mixed $category_id
-     * @return Food
+     * @param mixed $type_id
+     * @return Extra
      */
-    public function setCategoryId($category_id)
+    public function setTypeId($type_id)
     {
-        $this->category_id = $category_id;
+        $this->type_id = $type_id;
         return $this;
     }
 }

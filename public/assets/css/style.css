@@ -14,18 +14,17 @@
 /* **************** */
 /*		COMMUN		*/
 /* **************** */
-
-hr {
-    height: 0.2vw;
-    visibility: hidden;
-}
-
 .yellow {
     color: rgb(254, 236, 4);
 }
 
 .textShadow {
     text-shadow: 1px 1px 2px black;
+}
+
+hr {
+    height: 0.2vw;
+    visibility: hidden;
 }
 
 /* **************** */
@@ -45,16 +44,16 @@ hr {
 }
 
 .logo1 {
-    width: 40%;
+    width: 25%;
     margin-top: 2vh;
     margin-bottom: 3vh;
     margin-left: 1vw;
 }
 
 .puce {
-    margin-top: 3vw;
+    margin-top: 2vw;
     margin-right: 1vw;
-    font-size: calc(1vw+ 3px);
+    font-size: calc(1vw+ 2px);
     color: black;
 }
 
@@ -76,7 +75,7 @@ hr {
 /*------------ Who are We ------------*/
 .titleHeader {
     font-size: calc(3vw + 10px);
-    margin-top: -54vh;
+    margin-top: -56vh;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
@@ -115,7 +114,6 @@ hr {
 .transition {
     margin-bottom: 20px;
 }
-
 /*------------ About Us ------------*/
 .logoaupenduick{
     margin-top: 20px;
@@ -131,7 +129,7 @@ hr {
 }
 
 .aboutUs p {
-    font-size: 2.1vw;
+    font-size: 1.3vw;
     color: black;
     text-align: center;
     margin-bottom: 4vh;
@@ -166,7 +164,7 @@ hr {
     font-size: 20px;
 }
 
-.espaceCote {
+.marginRow {
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -190,6 +188,7 @@ hr {
 
 .vignettes img {
     width: 100%;
+    max-height: 200px;
     cursor: pointer;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -278,13 +277,19 @@ iframe{
 }
 
 .footerP {
-    margin-top: 12vh;
+    margin-top: 6vh;
+    font-size: 20px;
     text-align: center;
+    color: lightgrey;
 }
 
-strong {
+.legalNotice {
+    color: lightgrey;
+}
+
+.legalNotice:hover {
     text-decoration: underline;
-    margin-right: 3vw;
+    color: white;
 }
 
 .logoPinter {
@@ -310,4 +315,29 @@ strong {
 
 .rowSpacer {
     margin-top: 15px;
+}
+
+.legalNoticeContent {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    text-align: center;
+    color: black;
+}
+
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+    .puce {
+        margin-top: 2.5vw;
+        font-size: calc(1vw + 1.5px);
+        color: black;
+    }
+
+    .logo1 {
+        width: 40%;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        margin-left: 1vw;
+    }
 }

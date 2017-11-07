@@ -36,9 +36,21 @@
 
 legend {
     text-align: center;
-
 }
 
 .rowZ {
     margin-top: 2vh;
+}
+
+.marginBottom {
+    margin-top: 1vh;
+}
+
+.menuBackAdmin {
+    background: darkseagreen;
+    height: 100px;
+}
+
+.menuBackAdmin h1 {
+    font-size: calc(3vw + 10px);
 }

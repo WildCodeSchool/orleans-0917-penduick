@@ -7,6 +7,8 @@ use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\TypeManager;
+use AuPenDuick\Model\Extra;
+use AuPenDuick\Model\ExtraManager;
 
 /**
  * Class HomeController
@@ -63,10 +65,27 @@ class HomeController extends Controller
             }
         }
 
+        // Extra
+        $extraManager = new ExtraManager();
+        $extras = $extraManager->findAll();
+        $formatedExtras = [];
+
+        foreach ($extras as $extra) {
+            $type =  $typeManager->findOneType($extra->getTypeId());
+            $formatedExtras[$type->getConsistency()][] = $extra;
+        }
+
         return $this->twig->render('menucontent.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
+            'extras' => $formatedExtras,
         ]);
     }
 
+    public function legalNoticeAction()
+    {
+        // Return
+        return $this->twig->render('legalNotice.html.twig');
+    }
 }
+
