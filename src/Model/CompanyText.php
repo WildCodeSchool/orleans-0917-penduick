@@ -10,6 +10,7 @@ class CompanyText
     public $event;
     public $aboutUs;
     public $telephone;
+    public $mail;
 
     /**
      * @return mixed
@@ -118,4 +119,23 @@ class CompanyText
         $this->telephone = $telephone;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param mixed $mail
+     * @return CompanyText
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+        return $this;
+    }
 }
+

@@ -432,6 +432,7 @@ class AdminController extends Controller
             $update->setSubHeader($_POST['subHeader']);
             $update->setAboutUs($_POST['aboutUs']);
             $update->setTelephone($_POST['telephone']);
+            $update->setMail($_POST['mail']);
             $update->setEvent($_POST['event']);
             $textManager->updateText($update);
             $info = 'La modification a bien été pris en compte.';

@@ -283,6 +283,12 @@ iframe{
     color: lightgrey;
 }
 
+.telephoneFooter {
+    font-size: 30px;
+    font-decoration: bold;
+    color: gray;
+}
+
 .legalNotice {
     color: lightgrey;
 }

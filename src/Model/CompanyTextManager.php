@@ -17,13 +17,14 @@ class CompanyTextManager extends EntityManager
     public function updateText(CompanyText $text)
     {
         $query = "UPDATE companyText SET header=:header, subHeader=:subHeader, event=:event, about_us=:about_us,
-                  telephone=:telephone";
+                  telephone=:telephone, mail=:mail";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('header', $text->getHeader(), \PDO::PARAM_STR);
         $statement->bindValue('subHeader', $text->getsubHeader(), \PDO::PARAM_STR);
         $statement->bindValue('event', $text->getEvent(), \PDO::PARAM_STR);
         $statement->bindValue('about_us', $text->getAboutUs(), \PDO::PARAM_STR);
         $statement->bindValue('telephone', $text->getTelephone(), \PDO::PARAM_STR);
+        $statement->bindValue('mail', $text->getMail(), \PDO::PARAM_STR);
         return $statement->execute();
     }
 }
