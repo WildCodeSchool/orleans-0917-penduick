@@ -6,7 +6,7 @@ class FoodManager extends EntityManager
 {
     public function findByCategory(int $id)
     {
-        $query = "SELECT * FROM food WHERE category_id=:category_id";
+        $query = "SELECT * FROM food WHERE category_id=:category_id ORDER BY price";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('category_id', $id, \PDO::PARAM_INT);
         $statement->execute();
