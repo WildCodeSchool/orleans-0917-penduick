@@ -66,8 +66,8 @@
                                                     <div class="col-xs-8 col-xs-offset-1 col-lg-9"><h4
                                                                 class="category"> {{ crepe.title }}</h4>
                                                     </div>
-                                                    <div class="col-xs-2 col-xs-offset-1 col-lg-1"><span
-                                                                class="price"> {{ crepe.price }}€</span>
+                                                    <div class="col-xs-2 col-xs-offset-1 col-lg-1"><h4
+                                                                class="price pull-right"> {{ crepe.price|number_format(2,",",".") }}€</h4>
                                                     </div>
                                                 </div>
                                                 <div class="rowHeight">
@@ -92,7 +92,7 @@
                                     <div class="row spaceMarginBot">
                                         <div class="col-lg-6">
                                             <div class="col-xs-4 col-lg-9 description">{{ extra.title }}</div>
-                                            <div class="col-xs-2 col-lg-2 price"> {{ extra.price }}€</div>
+                                            <div class="col-xs-2 col-lg-2 price pull-right"> {{ extra.price|number_format(2,",",".") }}€</div>
                                             <form action="?route=menuAdmin" method="post">
                                                 <input type="hidden" name="idExtra" value="{{ extra.id }}"/>
                                                 <button type="submit" class="btn btn-danger"
