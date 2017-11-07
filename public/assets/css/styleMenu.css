@@ -140,6 +140,10 @@ a:hover, a:focus {
     max-height: 55px;
 }
 
+.rowHeight{
+    min-height: 150px;
+}
+
 @media screen and (min-width: 310px) and (max-width: 640px) {
 
     .backgroundCategory {

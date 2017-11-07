@@ -35,6 +35,10 @@ class HomeController extends Controller
 
     public function menuContentAction()
     {
+        // Appel companyText
+        $companyTextManager = new CompanyTextManager();
+        $companyTextManagerContent = $companyTextManager->findAll();
+
         // Récupération des photos de la carte
         $companyPicturesManager = new CompanyPictureManager();
         $pictures = $companyPicturesManager->findAll();
@@ -79,6 +83,7 @@ class HomeController extends Controller
             'menus' => $menus,
             'pictures' => $listPictures,
             'extras' => $formatedExtras,
+            'company' => $companyTextManagerContent[0],
         ]);
     }
 
