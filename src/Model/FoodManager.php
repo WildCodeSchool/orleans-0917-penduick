@@ -4,7 +4,7 @@ namespace AuPenDuick\Model;
 
 class FoodManager extends EntityManager
 {
-    public function findByCategory($id)
+    public function findByCategory(int $id)
     {
         $query = "SELECT * FROM food WHERE category_id=:category_id";
         $statement = $this->pdo->prepare($query);
@@ -13,7 +13,7 @@ class FoodManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Food::class);
     }
 
-    public function findOneFood($id)
+    public function findOneFood(int $id)
     {
         $query = "SELECT * FROM food WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -44,4 +44,18 @@ class FoodManager extends EntityManager
         $statement->bindValue('id', $food->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function updateFood(Food $food)
+    {
+        $query = "UPDATE food SET title=:title, description=:description, price=:price, category_id=:category 
+                  WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('title', $food->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('description', $food->getDescription(), \PDO::PARAM_STR);
+        $statement->bindValue('price', $food->getPrice(), \PDO::PARAM_STR);
+        $statement->bindValue('category', $food->getCategoryId(), \PDO::PARAM_INT);
+        $statement->bindValue('id', $food->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
+

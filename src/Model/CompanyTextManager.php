@@ -14,7 +14,7 @@ class CompanyTextManager extends EntityManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\CompanyText::class);
     }
 
-    public function updateText($text)
+    public function updateText(CompanyText $text)
     {
         $query = "UPDATE companyText SET header=:header, subHeader=:subHeader, event=:event, about_us=:about_us,
                   telephone=:telephone";
@@ -27,3 +27,4 @@ class CompanyTextManager extends EntityManager
         return $statement->execute();
     }
 }
+

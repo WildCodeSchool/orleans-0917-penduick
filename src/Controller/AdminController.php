@@ -7,6 +7,8 @@ use AuPenDuick\Model\CompanyText;
 use AuPenDuick\Model\CompanyPictureManager;
 use AuPenDuick\Model\CategoryManager;
 use AuPenDuick\Model\Category;
+use AuPenDuick\Model\Extra;
+use AuPenDuick\Model\ExtraManager;
 use AuPenDuick\Model\Food;
 use AuPenDuick\Model\FoodManager;
 use AuPenDuick\Model\Type;
@@ -35,9 +37,10 @@ class AdminController extends Controller
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
-        // Récupération des catégories en fonction de l'id du type
+        // Récupération des catégories et extra en fonction de l'id du type
         $menus = [];
         foreach ($types as $type) {
+
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->findByType($type->getId());
 
@@ -51,17 +54,36 @@ class AdminController extends Controller
                     $menus[$type->getConsistency()][$category->getName()][] = $food;
                 }
             }
+
             if (!empty($_POST['id'])) {
                 $foodManager = new FoodManager();
                 $food = $foodManager->findOneFood($_POST['id']);
                 $foodManager->deleteFood($food);
-                header('Location: index.php?route=menuAdmin');
+                header('Location: admin.php?route=menuAdmin');
             }
+        }
+
+        // Supprimer Extra
+        if (!empty($_POST['idExtra'])) {
+            $extraManager = new ExtraManager();
+            $extraManager->deleteExtra($_POST['idExtra']);
+            header('Location: admin.php?route=menuAdmin');
+        }
+
+        // Extra
+        $extraManager = new ExtraManager();
+        $extras = $extraManager->findAll();
+        $formatedExtras = [];
+
+        foreach ($extras as $extra) {
+            $type =  $typeManager->findOneType($extra->getTypeId());
+            $formatedExtras[$type->getConsistency()][] = $extra;
         }
 
         return $this->twig->render('Admin/menuAdmin.html.twig', [
             'menus' => $menus,
             'pictures' => $listPictures,
+            'extras' => $formatedExtras,
         ]);
     }
 
@@ -86,7 +108,7 @@ class AdminController extends Controller
                 $typeManager = new TypeManager();
                 $typeManager->insertType($type);
 
-                header('Location: index.php?route=addType');
+                header('Location: admin.php?route=addType');
             }
         }
 
@@ -100,10 +122,30 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateFoodAction()
+    private function addOrUpdateAction(Food $food)
     {
-        return $this->twig->render('Admin/updateFood.html.twig');
+        // traitement des erreurs éventuelles
+        $food->setTitle($_POST['title']);
+        $food->setDescription($_POST['description']);
+        $food->setPrice($_POST['price']);
+        $food->setCategoryId($_POST['category']);
+        return $food;
+    }
 
+    private function checkError()
+    {
+        $errors = '';
+
+        if (empty($_POST['title'])) {
+            $errors[] = 'Un titre est requis';
+        }
+        if (empty($_POST['description'])) {
+            $errors[] = 'Une description est requise';
+        }
+        if (empty($_POST['price'])) {
+            $errors[] = 'Un prix est requis';
+        }
+        return $errors;
     }
 
     public function deleteTypeAction()
@@ -112,7 +154,7 @@ class AdminController extends Controller
             $TypeManager = new TypeManager();
             $type = $TypeManager->findOneType($_POST['id']);
             $TypeManager->deleteType($type);
-            header('Location: index.php?route=addType');
+            header('Location: admin.php?route=addType');
         }
     }
 
@@ -142,13 +184,18 @@ class AdminController extends Controller
             $category->setNameShortcut($_POST['nameShortcut']);
             $category->setTypeId($_POST['type']);
 
+            // Max 25 Caractères ShortCut
+            if (strlen($_POST['nameShortcut']) > 25) {
+                $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
+            }
+
             $maxsize = 1048576;
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
             $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
             // Vérification image présente, si oui attribution nom unique
-            if (empty($_FILES['picture']['name'])){
-                $errors[] = 'A picture is required';
+            if (empty($_FILES['picture']['name'])) {
+                $errors[] = 'Une photo est requise';
             } else {
                 $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
                 $category->setPicture($_FILES['picture']['name']);
@@ -158,15 +205,15 @@ class AdminController extends Controller
                 $errors[] = 'le fichier n\'est pas du bon format';
             }
             // Vérification de la taille
-            if ($_FILES['picture']['error']){
+            if ($_FILES['picture']['error']) {
                 $errors[] = $fileUploadErrors[$_FILES['picture']['error']];
             }
 
             if (empty($_POST['name'])) {
-                $errors[] = 'Name is required';
+                $errors[] = 'Un nom est requis';
             }
             if (empty($_POST['nameShortcut'])) {
-                $errors[] = 'A shortcut name is required';
+                $errors[] = 'Un titre raccourci est requis';
             }
 
             // si pas d'erreur, insert en bdd
@@ -177,7 +224,7 @@ class AdminController extends Controller
                 $categoryManager = new CategoryManager();
                 $categoryManager->insertCategory($category);
 
-                header('Location: index.php?route=addCategory');
+                header('Location: admin.php?route=addCategory');
             }
         }
 
@@ -199,7 +246,7 @@ class AdminController extends Controller
             $CategoryManager = new CategoryManager();
             $category = $CategoryManager->findOneCategory($_POST['id']);
             $CategoryManager->deleteCategory($category);
-            header('Location: index.php?route=addCategory');
+            header('Location: admin.php?route=addCategory');
         }
         return $this->twig->render('Admin/addCategory.html.twig');
     }
@@ -209,29 +256,14 @@ class AdminController extends Controller
         // récupérer $_POST et traiter
         $errors = [];
 
-        // creation d'un objet person vide
+        // creation d'un objet food vide
         $crepe = new Food();
 
         if (!empty($_POST)) {
 
             // traitement des erreurs éventuelles
-            $crepe->setTitle($_POST['title']);
-            $crepe->setDescription($_POST['description']);
-            $crepe->setPrice($_POST['price']);
-            $crepe->setCategoryId($_POST['category']);
-
-            if (empty($_POST['title'])) {
-                $errors[] = 'Title is required';
-            } elseif (strlen($_POST['title']) < 3) {
-                $errors[] = 'Title should be at least 3 characters';
-            }
-            if (empty($_POST['description'])) {
-                $errors[] = 'Description is required';
-            }
-
-            if (empty($_POST['price'])) {
-                $errors[] = 'Price is required';
-            }
+            $crepe = $this->addOrUpdateAction($crepe);
+            $errors = $this->checkError();
 
             // si pas d'erreur, insert en bdd
             if (empty($errors)) {
@@ -239,7 +271,7 @@ class AdminController extends Controller
                 $foodManager = new FoodManager();
                 $foodManager->insertFood($crepe);
 
-                header('Location: index.php?route=menuAdmin');
+                header('Location: admin.php?route=menuAdmin');
             }
         }
 
@@ -250,6 +282,43 @@ class AdminController extends Controller
             'errors' => $errors,
             'categories' => $categories,
             'crepe' => $crepe,
+        ]);
+    }
+
+    public function updateFoodAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+
+        // creation d'un objet food vide
+        $foodManager = new FoodManager();
+
+        if (!empty($_POST)) {
+            // traitement des erreurs éventuelles
+            $food = $foodManager->findOneFood($_POST['id']);
+            $food = $this->addOrUpdateAction($food);
+            $errors = $this->checkError();
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $foodManager = new FoodManager();
+
+                $foodManager->updateFood($food);
+
+                header('Location: admin.php?route=menuAdmin');
+
+            }
+        } else {
+            $food = $foodManager->findOneFood($_GET['id']);
+        }
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+
+        return $this->twig->render('Admin/addFood.html.twig', [
+            'errors' => $errors,
+            'categories' => $categories,
+            'crepe' => $food,
         ]);
     }
 
@@ -327,8 +396,6 @@ class AdminController extends Controller
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
 
                 // Insert Bdd via Model
-                $upload = new CompanyPictureManager();
-                $upload->insertCompanyPicture($_FILES['upload']['name'], '.' . $extension_upload);
                 $companyPictureManager->addOne($_FILES['upload']['name']);
 
                 // Message
@@ -341,13 +408,14 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateTextAction(){
+    public function updateTextAction()
+    {
 
         // Initialisation
         $info = '';
         $textManager = new CompanyTextManager();
 
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
 
             // Correction summernote vide
             if ($_POST['event'] == '<p><br></p>') {
@@ -357,9 +425,9 @@ class AdminController extends Controller
             $update = new CompanyText();
             $update->setHeader($_POST['header']);
             $update->setSubHeader($_POST['subHeader']);
-            $update->setEvent($_POST['event']);
             $update->setAboutUs($_POST['aboutUs']);
             $update->setTelephone($_POST['telephone']);
+            $update->setEvent($_POST['event']);
             $textManager->updateText($update);
             $info = 'La modification a bien été pris en compte.';
         }
@@ -372,4 +440,48 @@ class AdminController extends Controller
             'info' => $info,
         ]);
     }
+
+    public function addExtraAction()
+    {
+        // Initialise
+        $errors = [];
+        $extra = '';
+
+
+        if (!empty($_POST)) {
+
+            if (empty($_POST['title'])) {
+                $errors[] = 'Un titre est requis';
+            }
+
+            $_POST['price'] = (int) $_POST['price'];
+            if (empty($_POST['price'])) {
+                $errors[] = 'Un prix est requis';
+            }
+
+            // On valide
+            if (empty($errors)) {
+
+                // Création d'un objet food vide
+                $extra = new Extra();
+                $extra->setTitle($_POST['title']);
+                $extra->setPrice($_POST['price']);
+                $extra->setTypeId($_POST['type']);
+                $extraManager = new ExtraManager();
+                $extraManager->addOne($extra);
+                header('Location: admin.php?route=menuAdmin');
+            }
+
+        }
+
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
+
+        return $this->twig->render('Admin/addExtra.html.twig', [
+            'errors' => $errors,
+            'extra' => $extra,
+            'types' => $types,
+        ]);
+    }
 }
+
