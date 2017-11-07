@@ -189,7 +189,6 @@ class AdminController extends Controller
                 $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
             }
 
-            $maxsize = 1048576;
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
             $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
@@ -382,15 +381,21 @@ class AdminController extends Controller
             $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
             $extension_upload = pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION);
 
+            $info = '';
             if (!in_array($extension_upload, $extensions_valids)) {
                 $info = 'le fichier n\'est pas du bon format';
 
                 // Vérification de la taille
-            } elseif ($_FILES['upload']['size'] >= self::MaxSize) {
+            }
+            if ($_FILES['upload']['size'] >= self::MaxSize) {
                 $info = 'la taille de l\'image est trop lourde';
 
                 // Tout est bon
-            } else {
+            }
+            if ($_FILES['upload']['error']) {
+                $info = 'Erreur d\'upload. Taille d\'image maximale : ' . (self::MaxSize / 1000000).'Mo';
+            }
+            if (!$info) {
 
                 // Insert fichier upload
                 move_uploaded_file($_FILES['upload']['tmp_name'], 'pictures/upload/' . $_FILES['upload']['name']);
