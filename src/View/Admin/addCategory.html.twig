@@ -10,8 +10,9 @@
     <img src="pictures/upload/{{ category.picture }}" style="height: 150px;">
     <form action="?route=deleteCategory" method="post">
         <input type="hidden" name="id" value="{{ category.id }}"/>
-        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer la catégorie ?');">Supprimer</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer la catégorie ?');">Supprimer</button>
     </form>
+        <a href="?route=updateCategory&id={{ category.id }}" class="btn btn-warning">Éditer</a>
     </div>
 {% endfor %}
 
@@ -25,16 +26,16 @@
     </ul>
 {% endif %}
 
-<form action="?route=addCategory" method="post" enctype="multipart/form-data">
+<form action="?route={{ category.id ? 'updateCategory' : 'addCategory' }}" method="post" enctype="multipart/form-data">
 
     <fieldset class="form-group">
         <label for="name">Nom de la catégorie</label>
-        <input type="text" class="form-control" name="name" id="name"/>
+        <input type="text" class="form-control" name="name" id="name" value="{{ category.name }}"/>
     </fieldset>
 
     <fieldset class="form-group">
         <label for="nameShortcut">Titre raccourci (25 caractères max)</label>
-        <input type="text" class="form-control" name="nameShortcut" id="nameShortcut"/>
+        <input type="text" class="form-control" name="nameShortcut" id="nameShortcut" value="{{ category.nameShortcut }}"/>
     </fieldset>
 
     <fieldset class="form-group">
@@ -46,14 +47,17 @@
         <label for="type">Type</label>
         <select name="type" id="type" class="form-control">
             {% for type in types %}
-                <option {{ type == type.id ? 'selected' }}
+                <option {{ category.typeId == type.id ? 'selected' }}
                         value="{{ type.id }}">{{ type.consistency }}</option>
             {% endfor %}
         </select>
+        {% if category.id is defined %}
+            <input type="hidden" name="id" value="{{ category.id }}"/>
+        {% endif %}
     </fieldset>
 
     <button type="submit" class="btn btn-success">
-        <span class="glyphicon glyphicon-plus"></span> Ajouter une catégorie
+        <span class="glyphicon glyphicon-plus"></span> Confirmer
     </button>
     <a href="?route=menuAdmin"><button type="button" class="btn btn-info">
         <span class="glyphicon glyphicon-home"></span> Revenir à la carte

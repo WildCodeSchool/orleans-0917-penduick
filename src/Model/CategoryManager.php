@@ -30,8 +30,8 @@ class CategoryManager extends EntityManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        $foods = $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
-        return $foods[0];
+        $categories = $statement->fetchAll(\PDO::FETCH_CLASS, \AuPenDuick\Model\Category::class);
+        return $categories[0];
     }
 
     public function insertCategory(Category $category)
@@ -54,5 +54,17 @@ class CategoryManager extends EntityManager
         $statement->bindValue('id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
-}
 
+    public function updateCategory(Category $category)
+    {
+        $query = "UPDATE category SET name=:name, nameShortcut=:nameShortcut, picture=:picture, type_id=:type 
+                  WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('name', $category->getName(), \PDO::PARAM_STR);
+        $statement->bindValue('nameShortcut', $category->getNameShortcut(), \PDO::PARAM_STR);
+        $statement->bindValue('picture', $category->getPicture(), \PDO::PARAM_STR);
+        $statement->bindValue('type', $category->getTypeId(), \PDO::PARAM_INT);
+        $statement->bindValue('id', $category->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
+}
