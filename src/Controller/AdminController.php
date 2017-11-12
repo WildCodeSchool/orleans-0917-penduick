@@ -163,80 +163,94 @@ class AdminController extends Controller
         // récupérer $_POST et traiter
         $errors = [];
 
-        $fileUploadErrors = [
-            0 => "Aucune erreur, le téléchargement est correct.",
-            1 => "La taille du fichier téléchargé excède la valeur maximum",
-            2 => "La taille du fichier téléchargé excède la valeur maximum",
-            3 => "Le fichier n'a été que partiellement téléchargé.",
-            4 => "Aucun fichier n'a été téléchargé.",
-            6 => "Un dossier temporaire est manquant, contactez l'administrateur du site.",
-            7 => "Échec de l'écriture du fichier sur le disque, contactez l'administrateur du site.",
-            8 => "Erreur inconnu, contactez l'administrateur du site.",
-        ];
-
-        // creation d'un objet category vide
         $category = new Category();
 
         if (!empty($_FILES['picture']) && !empty($_POST)) {
 
-            // traitement des erreurs éventuelles
-            $category->setName($_POST['name']);
-            $category->setNameShortcut($_POST['nameShortcut']);
-            $category->setTypeId($_POST['type']);
 
-            // Max 25 Caractères ShortCut
-            if (strlen($_POST['nameShortcut']) > 25) {
-                $errors[] = 'Le titre raccourci ne peut excéder 25 caractères.';
-            }
-
-            $extensions_valids = array('jpg', 'jpeg', 'gif', 'png');
-            $extension_upload = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
-
-            // Vérification image présente, si oui attribution nom unique
-            if (empty($_FILES['picture']['name'])) {
-                $errors[] = 'Une photo est requise';
-            } else {
-                $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
-                $category->setPicture($_FILES['picture']['name']);
-            }
-            // Vérification du format
-            if (!empty($_FILES['picture']['name']) && !in_array($extension_upload, $extensions_valids)) {
-                $errors[] = 'le fichier n\'est pas du bon format';
-            }
-            // Vérification de la taille
-            if ($_FILES['picture']['error']) {
-                $errors[] = $fileUploadErrors[$_FILES['picture']['error']];
-            }
-
-            if (empty($_POST['name'])) {
-                $errors[] = 'Un nom est requis';
-            }
-            if (empty($_POST['nameShortcut'])) {
-                $errors[] = 'Un titre raccourci est requis';
-            }
+            $category = $this->addOrUpdateCategoryAction($category);
+            $errors = $this->checkErrorCategory();
 
             // si pas d'erreur, insert en bdd
             if (empty($errors)) {
 
+                $categoryManager = new CategoryManager();
+
+                $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
+                $category->setPicture($_FILES['picture']['name']);
+
                 move_uploaded_file($_FILES['picture']['tmp_name'], 'pictures/upload/' . $_FILES['picture']['name']);
 
-                $categoryManager = new CategoryManager();
                 $categoryManager->insertCategory($category);
 
                 header('Location: admin.php?route=addCategory');
+
             }
         }
-
+        $typeManager = new TypeManager();
+        $types = $typeManager->findAllType();
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
+
+        return $this->twig->render('Admin/addCategory.html.twig', [
+            'errors' => $errors,
+            'types' => $types,
+            'categories' => $categories,
+            'category' => $category,
+        ]);
+    }
+
+    public function updateCategoryAction()
+    {
+        // récupérer $_POST et traiter
+        $errors = [];
+
+        $categoryManager = new CategoryManager();
+
+        if (!empty($_FILES['picture']) && !empty($_POST)) {
+
+            $category = $categoryManager->findOneCategory($_POST['id']);
+            $category = $this->addOrUpdateCategoryAction($category);
+            $errors = $this->checkErrorCategory();
+
+            // si pas d'erreur, insert en bdd
+            if (empty($errors)) {
+
+                $categoryManager = new CategoryManager();
+                $_FILES['picture']['name'] = uniqid() . $_FILES['picture']['name'];
+                $category->setPicture($_FILES['picture']['name']);
+
+                move_uploaded_file($_FILES['picture']['tmp_name'], 'pictures/upload/' . $_FILES['picture']['name']);
+
+
+
+                $categoryManager->updateCategory($category);
+
+                header('Location: admin.php?route=addCategory');
+
+            }
+        } else {
+            $category = $categoryManager->findOneCategory($_GET['id']);
+        }
         $typeManager = new TypeManager();
         $types = $typeManager->findAllType();
 
         return $this->twig->render('Admin/addCategory.html.twig', [
             'errors' => $errors,
-            'categories' => $categories,
             'types' => $types,
+            'category' => $category,
         ]);
+    }
+
+    public function deleteCategoryAction()
+    {
+        if (!empty($_POST['id'])) {
+            $CategoryManager = new CategoryManager();
+            $category = $CategoryManager->findOneCategory($_POST['id']);
+            $CategoryManager->deleteCategory($category);
+            header('Location: admin.php?route=addCategory');
+        }
+        return $this->twig->render('Admin/addCategory.html.twig');
     }
 
     private function addOrUpdateCategoryAction(Category $category)
@@ -244,14 +258,13 @@ class AdminController extends Controller
         // traitement des erreurs éventuelles
         $category->setName($_POST['name']);
         $category->setNameShortcut($_POST['nameShortcut']);
-        $category->setPicture($_FILES['picture']['name']);
         $category->setTypeId($_POST['type']);
         return $category;
     }
 
     private function checkErrorCategory()
     {
-        $errors = [];
+        $errors = '';
 
         $fileUploadErrors = [
             0 => "Aucune erreur, le téléchargement est correct.",
@@ -297,58 +310,6 @@ class AdminController extends Controller
             $errors[] = 'Un titre raccourci est requis';
         }
         return $errors;
-    }
-
-    public function updateCategoryAction()
-    {
-        // récupérer $_POST et traiter
-        $errors = [];
-
-        $categoryManager = new CategoryManager();
-
-        if (!empty($_FILES['picture']) && !empty($_POST)) {
-
-            $category = $categoryManager->findOneCategory($_POST['id']);
-            $category = $this->addOrUpdateCategoryAction($category);
-            $errors = $this->checkErrorCategory();
-
-            // si pas d'erreur, insert en bdd
-            if (empty($errors)) {
-
-                move_uploaded_file($_FILES['picture']['tmp_name'], 'pictures/upload/' . $_FILES['picture']['name']);
-
-                $categoryManager = new CategoryManager();
-
-                $categoryManager->updateCategory($category);
-
-                header('Location: admin.php?route=addCategory');
-
-            }
-        } else {
-            $category = $categoryManager->findOneCategory($_GET['id']);
-        }
-        $typeManager = new TypeManager();
-        $types = $typeManager->findAllType();
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->findAll();
-
-        return $this->twig->render('Admin/addCategory.html.twig', [
-            'errors' => $errors,
-            'types' => $types,
-            'category' => $category,
-            'categories' => $categories,
-        ]);
-    }
-
-    public function deleteCategoryAction()
-    {
-        if (!empty($_POST['id'])) {
-            $CategoryManager = new CategoryManager();
-            $category = $CategoryManager->findOneCategory($_POST['id']);
-            $CategoryManager->deleteCategory($category);
-            header('Location: admin.php?route=addCategory');
-        }
-        return $this->twig->render('Admin/addCategory.html.twig');
     }
 
     public function addFoodAction()
