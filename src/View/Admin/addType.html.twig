@@ -1,6 +1,9 @@
 {% include "Admin/head.html.twig" %}
 {% include "Admin/header.html.twig" %}
 
+<div class="container">
+    <div class="row">
+
 <h1>Ajouter un type</h1>
 <hr>
 
@@ -9,7 +12,7 @@
         {{ type.consistency }}
         <form action="?route=deleteType" method="post">
             <input type="hidden" name="id" value="{{ type.id }}"/>
-            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce type ?');">Supprimer</button>
+            <button type="submit" class="btn btn-danger" return confirm('Êtes-vous sûr de vouloir supprimer ce type ?');">Supprimer</button>
         </form>
     </div>
 {% endfor %}
@@ -38,6 +41,9 @@
             <span class="glyphicon glyphicon-home"></span> Revenir à la carte
         </button></a>
     </form>
+</div>
+
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -3,7 +3,11 @@
 
 <h1 class="adminStyle">Ajouter des photos de la carte</h1>
 
-<p>{{ error }}</p>
+{% if error %}
+    <ul class="alert alert-danger">
+            <li>{{ error }}</li>
+    </ul>
+{% endif %}
 
 <div class="container">
     <div class="row">
