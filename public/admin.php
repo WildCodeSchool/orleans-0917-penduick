@@ -25,9 +25,12 @@ if ($route == 'menuAdmin') {
 } elseif ($route == 'addType'){
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addTypeAction();
-} elseif ($route == 'addCategory'){
+} elseif ($route == 'addCategory') {
     $personController = new \AuPenDuick\Controller\AdminController();
     echo $personController->addCategoryAction();
+}elseif ($route == 'updateCategory'){
+    $personController = new \AuPenDuick\Controller\AdminController();
+    echo $personController->updateCategoryAction();
 }elseif (!empty($route) && $route == 'deleteCategory'){
     $foodController = new \AuPenDuick\Controller\AdminController();
     echo $foodController->deleteCategoryAction();
