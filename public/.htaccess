@@ -1,6 +1,6 @@
 <FilesMatch "admin.php">
 AuthName "Admin WCS"
 AuthType Basic
-AuthUserFile "public/.htpasswd"
+AuthUserFile "/home/ubuntu/penduick/public/.htpasswd"
 Require valid-user
 </FilesMatch>
