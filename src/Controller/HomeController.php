@@ -42,6 +42,7 @@ class HomeController extends Controller
         // Récupération des photos de la carte
         $companyPicturesManager = new CompanyPictureManager();
         $pictures = $companyPicturesManager->findAll();
+        $listPictures = [];
         foreach ($pictures as $picture) {
             $listPictures[] = $picture;
         }

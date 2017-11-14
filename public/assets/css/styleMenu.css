@@ -132,7 +132,22 @@ a:hover, a:focus {
 }
 
 .pictureDetail {
-    margin-bottom: 10px;
+    margin: auto;
+    margin-bottom: 15px;
+    min-height: 190px;
+    max-height: 190px;
+}
+
+@media screen and (min-width: 310px) and (max-width: 767px) {
+
+    .pictureDetail {
+        margin: auto;
+        margin-bottom: 15px;
+        min-height: 190px;
+        max-height: 190px;
+        min-width: 360px;
+        max-width: 360px;
+    }
 }
 
 .backTop{
@@ -183,8 +198,15 @@ a:hover, a:focus {
     position:sticky;
     bottom:20px;
     right:20px;
+    max-width: 70px;
+    max-height: 70px;
 }
 
 .pics {
     margin-top:4em;
 }
+
+/*[class*="col-"], footer {*/
+    /*background-color: lightgreen;*/
+    /*border: 1px solid black;*/
+/*}*/

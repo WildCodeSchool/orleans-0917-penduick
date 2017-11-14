@@ -188,7 +188,8 @@ hr {
 
 .vignettes img {
     width: 100%;
-    max-height: 200px;
+    max-height: 190px;
+    min-height: 190px;
     cursor: pointer;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -277,7 +278,7 @@ iframe{
 }
 
 .footerP {
-    margin-top: 6vh;
+    margin-top: 3vh;
     font-size: 20px;
     text-align: center;
     color: lightgrey;
