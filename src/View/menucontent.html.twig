@@ -90,21 +90,21 @@
                 <div class="col-xs-10 col-lg-10 col-lg-offset-1">
                     <div class="row ">
                         {% for picture in pictures %}
-                            <div class="col-sm-3 col-xs-6">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-offset-xs-1 col-xs-11">
                                 <img src="pictures/upload/{{ picture.name }}"
                                      class="pictureDetail img-responsive" alt="{{ picture.name }}"/>
                             </div>
-
                         {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
         <!-----------------------------------------------fin pics------------------------------------------------->
+        <a href="#carte">
+            <img src="pictures/backTop.png" class="pull-right img-responsive go-top" alt="Top"/>
+        </a>
     </div>
-    <a href="#carte">
-        <img src="pictures/backTop.png" class="pull-right img-responsive go-top" alt="Top"/>
-    </a>
+
 
 </section>
 {% include 'footer.html.twig' %}
